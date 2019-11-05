@@ -11,6 +11,7 @@ void swap(int* a, int* b)
 	*b = t;
 }
 
+//test
 /* This function takes last element as pivot, places
 the pivot element at its correct position in sorted
 array, and places all smaller (smaller than pivot)
