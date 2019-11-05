@@ -21,7 +21,7 @@ namespace MatchFinder
             // front
             front.LoadMainLabel(MainLabel);
             // api
-            LoadLocation();
+           // LoadLocation();
         }
 
         public async Task LoadLocation()
