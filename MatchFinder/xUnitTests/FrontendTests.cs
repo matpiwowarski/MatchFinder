@@ -37,5 +37,18 @@ namespace xUnitTests
             Assert.Equal(label, front.MainLabel);
             Assert.Equal(label.Text, front.MainLabel.Text);
         }
+
+        [Fact]
+        public void ChangeMainLabelTest()
+        {
+            Frontend front = Frontend.Instance;
+
+            front.ChangeMainLabelText("test");
+
+            string expected = "test";
+            string actual = front.MainLabel.Text;
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
