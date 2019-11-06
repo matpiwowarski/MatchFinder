@@ -14,6 +14,7 @@ namespace MatchFinder
     {
         Frontend front = Frontend.Instance;
         Locationer locationer = new Locationer();
+        GoogleAPI api = new GoogleAPI();
 
         public MainPage()
         {
