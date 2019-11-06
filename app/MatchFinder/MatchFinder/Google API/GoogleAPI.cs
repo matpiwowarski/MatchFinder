@@ -15,11 +15,25 @@ namespace MatchFinder
             LoadAPIkeyAsync();
         }
 
+        public string getAPIkeyString() => APIkeyString;
+
         public async Task SaveAPIkeyAsync()
         {
             try
             {
                 await SecureStorage.SetAsync("APIkey", "put API key here");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public async Task SecureSaveAsync(string saveName, string saveValue)
+        {
+            try
+            {
+                await SecureStorage.SetAsync(saveName, saveValue);
             }
             catch (Exception ex)
             {
@@ -39,5 +53,18 @@ namespace MatchFinder
                 Console.WriteLine(ex.Message);
             }
         }
-    }
+        public async Task SecureLoadAsync(string saveName)
+        {
+            try
+            {
+                var oauthToken = await SecureStorage.GetAsync(saveName);
+                this.APIkeyString = oauthToken.ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+    }   
 }

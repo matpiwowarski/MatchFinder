@@ -9,7 +9,7 @@ using Xamarin.Essentials.Interfaces;
 
 namespace xUnitTests
 {
-    public class LocationTests
+    public class LocationerTests
     {
         [Fact]
         public void LocationNotNullTest()
@@ -23,7 +23,7 @@ namespace xUnitTests
         }
 
         [Fact]
-        public void LocationTest()
+        public void GetLocationAsyncTest()
         {
             //Locationer locationer = new Locationer();
             //var actual = locationer.GetLocationAsync();
@@ -32,8 +32,6 @@ namespace xUnitTests
             //var mockGeo = new Mock<IGeolocation>();
             //mockGeo.Setup(x => x.GetLocationAsync())
             //   .ReturnsAsync(() => new Location());
-
-
         }
     }
 }
