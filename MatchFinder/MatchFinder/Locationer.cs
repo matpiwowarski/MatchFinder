@@ -29,6 +29,7 @@ namespace MatchFinder
             {
                 // Unable to get location
                 Console.WriteLine(ex.Message);
+                return ex.Message;
             }
 
             return locationString;
