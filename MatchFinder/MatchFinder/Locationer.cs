@@ -22,7 +22,8 @@ namespace MatchFinder
 
                 if (location != null)
                 {
-                locationString = $"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}";                }
+                    locationString = $"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}";
+                }
             }
             catch (Exception ex)
             {

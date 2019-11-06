@@ -8,7 +8,7 @@ namespace MatchFinder
     {
         private static readonly Frontend instance = new Frontend();
 
-        private Label mainLabel;
+        private Label mainLabel = new Label();
         public Label MainLabel { get => mainLabel; set => mainLabel = value; }
 
         static Frontend() { }
