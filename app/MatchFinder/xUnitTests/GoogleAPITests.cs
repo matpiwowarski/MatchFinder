@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Autofac;
 using MatchFinder;
 using Plugin.Geolocator;
 using Xamarin.Essentials;
+using Xamarin.Essentials.Implementation;
+using Xamarin.Essentials.Interfaces;
 using Xunit;
 
 namespace xUnitTests
@@ -41,6 +44,11 @@ namespace xUnitTests
         [Fact]
         public async Task TestAsync() // TO BE DELETED
         {
+            //var builder = new ContainerBuilder();
+            //builder.RegisterType<GeolocationImplementation>().As<IGeolocation>();
+
+            //var mockGeo = new Mock<IGeolocation>();
+
             string actual = "";
             try
             {
