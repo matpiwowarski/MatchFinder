@@ -17,7 +17,7 @@ namespace MatchFinder
                 return false;
             }
 
-            Regex regex = new Regex(@"^(?=[A-Z0-9@._%+-]{6,254}$)[A-Z0-9._%+-]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,8}[A-Z]{2,63}$");
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
             if (match.Success)
                 return true;
