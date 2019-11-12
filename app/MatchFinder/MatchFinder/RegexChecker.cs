@@ -7,11 +7,17 @@ namespace MatchFinder
 {
     public class RegexChecker
     {
+        string input;
         public string ErrorMessage;
 
         public bool IsValidEmail(string email)
         {
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return false;
+            }
+
+            Regex regex = new Regex(@"^(?=[A-Z0-9@._%+-]{6,254}$)[A-Z0-9._%+-]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,8}[A-Z]{2,63}$");
             Match match = regex.Match(email);
             if (match.Success)
                 return true;
