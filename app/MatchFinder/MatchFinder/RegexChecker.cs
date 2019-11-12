@@ -25,7 +25,7 @@ namespace MatchFinder
 
             if (string.IsNullOrWhiteSpace(input))
             {
-                throw new Exception("Password should not be empty");
+                return false;
             }
 
             var hasNumber = new Regex(@"[0-9]+");
