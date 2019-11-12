@@ -44,7 +44,7 @@ namespace xUnitTests
              RegexChecker checker = new RegexChecker();
 
             Assert.False(checker.IsValidEmail(incorrect1));
-            //Assert.False(checker.IsValidEmail(incorrect2));
+            Assert.False(checker.IsValidEmail(incorrect2));
             Assert.False(checker.IsValidEmail(incorrect3));
             Assert.False(checker.IsValidEmail(incorrect4));
             Assert.False(checker.IsValidEmail(incorrect5));
@@ -65,13 +65,23 @@ namespace xUnitTests
 
             RegexChecker checker = new RegexChecker();
 
-            //Assert.False(checker.IsValidPassword(incorrect1));
+            Assert.False(checker.IsValidPassword(incorrect1));
             Assert.False(checker.IsValidPassword(incorrect2));
             Assert.False(checker.IsValidPassword(incorrect3));
             Assert.False(checker.IsValidPassword(incorrect4));
             Assert.False(checker.IsValidPassword(incorrect5));
             Assert.False(checker.IsValidPassword(incorrect6));
             Assert.False(checker.IsValidPassword(incorrect7));
+        }
+        [Fact]
+        public void isValidPasswordCorrectTest()
+        {
+            // correct password example
+            string correct = "Test123456789";
+
+            RegexChecker checker = new RegexChecker();
+
+            Assert.True(checker.IsValidPassword(correct));
         }
     }
 }
