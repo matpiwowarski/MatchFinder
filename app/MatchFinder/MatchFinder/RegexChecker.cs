@@ -16,7 +16,10 @@ namespace MatchFinder
             {
                 return false;
             }
-
+            if(email.Length > 254)
+            {
+                return false;
+            }
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
             if (match.Success)

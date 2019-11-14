@@ -35,7 +35,14 @@ namespace xUnitTests
         {
             // incorrect emails
             string incorrect1 = string.Empty; // empty
-            string incorrect2 = "skdanskdmksakdmksamdkamkdaskmdksamkdmasmdksadmskasdamkdaskdsakadsmdkadmk@gmail.com"; // too long
+            string incorrect2 = "skdanskdmksakdmksamdkamkdaskmdksamkdmasmdksadmskasdamkdaskdsakadsmdka" +
+                "danskdmksakdmksamdkamkdaskmdksamkdmasmdksadmskasdamkdaskdsakadsmdkadm" +
+                "danskdmksakdmksamdkamkdaskmdksamkdmasmdksadmskasdamkdaskdsakadsmdkadm" +
+                "danskdmksakdmksamdkamkdaskmdksamkdmasmdksadmskasdamkdaskdsakadsmdkadm" +
+                "danskdmksakdmksamdkamkdaskmdksamkdmasmdksadmskasdamkdaskdsakadsmdkadm" +
+                "danskdmksakdmksamdkamkdaskmdksamkdmasmdksadmskasdamkdaskdsakadsmdkadm" +
+                "danskdmksakdmksamdkamkdaskmdksamkdmasmdksadmskasdamkdaskdsakadsmdkadm" +
+                "danskdmksakdmksamdkamkdaskmdksamkdmasmdksadmskasdamkdaskdsakadsmdkadmdmk@gmail.com"; // too long
             string incorrect3 = "test.com"; // without @
             string incorrect4 = "test@gmail"; // without .com
             string incorrect5 = "#@%^%#$@#$@#.com";
@@ -77,7 +84,7 @@ namespace xUnitTests
         public void isValidPasswordCorrectTest()
         {
             // correct password example
-            string correct = "Test123456789";
+            string correct = "Test123456789%";
 
             RegexChecker checker = new RegexChecker();
 
