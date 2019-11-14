@@ -1,5 +1,5 @@
 ﻿using System;
-namespace MatchFinder.Controller
+namespace MatchFinder
 {
     // singleton pattern
     public class Controller
@@ -20,11 +20,12 @@ namespace MatchFinder.Controller
         // functions
         public void loadView(Frontend view)
         {
-            //
+            this.view = view;
         }
         public void changeMainLabel(string text)
         {
-            //
+            this.view.ChangeMainLabelText(text);
+
         }
 
 

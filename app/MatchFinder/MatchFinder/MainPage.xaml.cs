@@ -15,12 +15,15 @@ namespace MatchFinder
         Frontend front = Frontend.Instance;
         Locationer locationer = new Locationer();
         GoogleAPI api = new GoogleAPI();
+        Controller controller = Controller.Instance;
 
         public MainPage()
         {
             InitializeComponent();
             // front
             front.LoadMainLabel(MainLabel);
+            // controller 
+            controller.loadView(front);
             // api
             LoadLocation();
             RegexChecker regex = new RegexChecker();
@@ -31,7 +34,7 @@ namespace MatchFinder
         {
             var location = await locationer.GetLocationAsync(); // get location
             // change label
-            front.ChangeMainLabelText(location);
+            controller.changeMainLabel(location);
         }
     }
 }
