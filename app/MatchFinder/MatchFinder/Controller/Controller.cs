@@ -25,7 +25,6 @@ namespace MatchFinder
         public void changeMainLabel(string text)
         {
             this.view.ChangeMainLabelText(text);
-
         }
 
 

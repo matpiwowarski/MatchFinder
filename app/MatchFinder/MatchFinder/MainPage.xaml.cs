@@ -24,17 +24,15 @@ namespace MatchFinder
             front.LoadMainLabel(MainLabel);
             // controller 
             controller.loadView(front);
-            // api
+            // main:
             LoadLocation();
-            RegexChecker regex = new RegexChecker();
-            bool check = regex.IsValidEmail("correct@gmail.com");
         }
 
         public async Task LoadLocation()
         {
             var location = await locationer.GetLocationAsync(); // get location
             // change label
-            controller.changeMainLabel(location);
+            controller.changeMainLabel(location.ToString());
         }
     }
 }
