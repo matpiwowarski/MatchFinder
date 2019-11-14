@@ -15,5 +15,6 @@
   <ItemGroup>
     <Folder Include="Google API\" />
     <Folder Include="Front\" />
+    <Folder Include="Controller\" />
   </ItemGroup>
 </Project>

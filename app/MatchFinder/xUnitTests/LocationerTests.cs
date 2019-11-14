@@ -7,7 +7,7 @@ using Xunit;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 
-namespace xUnitTests
+namespace xUnitTestsAPI
 {
     public class LocationerTests
     {
@@ -25,9 +25,9 @@ namespace xUnitTests
         [Fact]
         public void GetLocationAsyncTest()
         {
-            //Locationer locationer = new Locationer();
-            //var actual = locationer.GetLocationAsync();
-            //Assert.Equal("test", actual.Result);
+            Locationer locationer = new Locationer();
+            var actual = locationer.GetLocationAsync();
+            Assert.Equal("test", actual.Result);
 
             //var mockGeo = new Mock<IGeolocation>();
             //mockGeo.Setup(x => x.GetLocationAsync())

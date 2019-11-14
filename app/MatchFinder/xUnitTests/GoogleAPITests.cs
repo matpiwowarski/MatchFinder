@@ -8,7 +8,7 @@ using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xunit;
 
-namespace xUnitTests
+namespace xUnitTestsAPI
 {
     public class GoogleAPITests
     {
