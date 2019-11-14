@@ -23,6 +23,8 @@ namespace MatchFinder
             front.LoadMainLabel(MainLabel);
             // api
             LoadLocation();
+            RegexChecker regex = new RegexChecker();
+            bool check = regex.IsValidEmail("correct@gmail.com");
         }
 
         public async Task LoadLocation()

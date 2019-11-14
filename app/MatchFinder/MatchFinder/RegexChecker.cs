@@ -7,12 +7,12 @@ namespace MatchFinder
 {
     public class RegexChecker
     {
-        string input;
+        
         public string ErrorMessage;
 
         public bool IsValidEmail(string email)
         {
-            if (string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrWhiteSpace(email))
             {
                 return false;
             }
@@ -27,9 +27,9 @@ namespace MatchFinder
         
         public bool IsValidPassword(string password)
         {
-            var input = password;
+           
 
-            if (string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrWhiteSpace(password))
             {
                 return false;
             }
@@ -40,28 +40,28 @@ namespace MatchFinder
             var hasLowerChar = new Regex(@"[a-z]+");
             var hasSymbols = new Regex(@"[!@#$%^&*()_+=\[{\]};:<>|./?,-]");
 
-            if (!hasLowerChar.IsMatch(input))
+            if (!hasLowerChar.IsMatch(password))
             {
                 ErrorMessage = "Password should contain At least one lower case letter";
                 return false;
             }
-            else if (!hasUpperChar.IsMatch(input))
+            else if (!hasUpperChar.IsMatch(password))
             {
                 ErrorMessage = "Password should contain At least one upper case letter";
                 return false;
             }
-            else if (!hasMiniMaxChars.IsMatch(input))
+            else if (!hasMiniMaxChars.IsMatch(password))
             {
                 ErrorMessage = "Password should not be less than or greater than 12 characters";
                 return false;
             }
-            else if (!hasNumber.IsMatch(input))
+            else if (!hasNumber.IsMatch(password))
             {
                 ErrorMessage = "Password should contain At least one numeric value";
                 return false;
             }
 
-            else if (!hasSymbols.IsMatch(input))
+            else if (!hasSymbols.IsMatch(password))
             {
                 ErrorMessage = "Password should contain At least one special case characters";
                 return false;
