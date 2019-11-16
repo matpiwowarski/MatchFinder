@@ -12,11 +12,12 @@ namespace MatchFinder
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        // front 
-        Button displayButton;
-        TextView addressText, nameText, coordinateText;
-
+        // front
+        private Button searchButton;
+        private TextView addressText, nameText, coordinateText;
         // other
+        Frontend front = Frontend.Instance;
+        Controller controller = Controller.Instance;
         GoogleAPI googleApi = new GoogleAPI();
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -26,20 +27,22 @@ namespace MatchFinder
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            // code here
-
-
-
-            displayButton = (Button)FindViewById(Resource.Id.displayButton);
+            // front initialization + load
+            searchButton = (Button)FindViewById(Resource.Id.displayButton);
             addressText = (TextView)FindViewById(Resource.Id.addressText);
             nameText = (TextView)FindViewById(Resource.Id.nameText);
             coordinateText = (TextView)FindViewById(Resource.Id.coordinateText);
 
-            displayButton.Click += DisplayButton_Click;
+            front.LoadSearchButton(searchButton);
+            front.LoadCityInfoTextViews(addressText, nameText, coordinateText);
+            // controller
+            controller.LoadView(front);
+
+            searchButton.Click += DisplayButton_Click;
 
             if(!PlacesApi.IsInitialized)
             {
-                PlacesApi.Initialize(this, "API KEY HERE");
+                PlacesApi.Initialize(this, googleApi.getAPIkeyString());
             }
         }
 
@@ -63,10 +66,7 @@ namespace MatchFinder
             base.OnActivityResult(requestCode, resultCode, data);
 
             var place = Autocomplete.GetPlaceFromIntent(data);
-            addressText.Text = place.Address;
-            nameText.Text = place.Name;
-            coordinateText.Text = "Latitude = " + place.LatLng.Latitude.ToString() +
-                ", Longitude = " + place.LatLng.Longitude.ToString();
+            controller.UpdateCityInfo(place);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

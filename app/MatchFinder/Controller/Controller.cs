@@ -1,4 +1,6 @@
 ﻿using System;
+using Google.Places;
+
 namespace MatchFinder
 {
     // singleton pattern
@@ -18,15 +20,15 @@ namespace MatchFinder
             }
         }
         // functions
-        public void loadView(Frontend view)
+        public void LoadView(Frontend view)
         {
             this.view = view;
         }
-        public void changeMainLabel(string text)
+        // using front
+        public void UpdateCityInfo(Place place)
         {
-            this.view.ChangeMainLabelText(text);
+            this.view.UpdateCityInfo(place);
         }
-
 
     }
 }

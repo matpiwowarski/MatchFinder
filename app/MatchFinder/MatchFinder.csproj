@@ -64,9 +64,9 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexChecker.cs" />
-    <Compile Include="GoogleAPI.cs" />
-    <Compile Include="Frontend.cs" />
-    <Compile Include="Controller.cs" />
+    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="API\GoogleAPI.cs" />
+    <Compile Include="View\Frontend.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -101,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
+    <Folder Include="Controller\" />
+    <Folder Include="API\" />
+    <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />

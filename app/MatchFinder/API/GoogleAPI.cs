@@ -11,7 +11,7 @@ namespace MatchFinder
 
         public GoogleAPI()
         {
-            // SaveAPIkeyAsync(); // use it to save new API key
+            //SaveAPIkeyAsync(); // use it to save new API key
             LoadAPIkeyAsync();
         }
 
@@ -21,7 +21,7 @@ namespace MatchFinder
         {
             try
             {
-                await SecureStorage.SetAsync("APIkey", "put API key here");
+                await SecureStorage.SetAsync("APIkey", "API key here");
             }
             catch (Exception ex)
             {
