@@ -12,8 +12,12 @@ namespace MatchFinder
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
+        // front 
         Button displayButton;
         TextView addressText, nameText, coordinateText;
+
+        // other
+        GoogleAPI googleApi = new GoogleAPI();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -23,6 +27,8 @@ namespace MatchFinder
             SetContentView(Resource.Layout.activity_main);
 
             // code here
+
+
 
             displayButton = (Button)FindViewById(Resource.Id.displayButton);
             addressText = (TextView)FindViewById(Resource.Id.addressText);
