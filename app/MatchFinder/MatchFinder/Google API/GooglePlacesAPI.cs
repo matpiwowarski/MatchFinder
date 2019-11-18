@@ -1,28 +1,45 @@
 ﻿using System;
-using GooglePlacesApi;
-using GooglePlacesApi.Models;
+using GoogleApi;
+using GoogleApi.Entities.Places.Details.Request;
+using GoogleApi.Entities.Places.Search.Find.Request;
+using GoogleApi.Entities.Places.Search.Find.Response;
 
 namespace MatchFinder.GoogleAPI
 {
     public class GooglePlacesAPI: GoogleAPI
     {
-        GoogleApiSettings settings;
+        string placeId = "ChIJyWEHuEmuEmsRm9hTkapTCrk";
 
         public GooglePlacesAPI()
         {
-            settings = GoogleApiSettings.Builder
-                                            .WithApiKey(this.APIkeyString)
-                                            .WithDetailLevel(DetailLevel.Basic)
-                                            .AddCountry("si")
-                                            .AddCountry("pl")
-                                            .AddCountry("en")
-                                            .Build();
+            
         }
 
-        public async System.Threading.Tasks.Task GetAddressAsync(string placeName)
+        public async System.Threading.Tasks.Task getPlaceDetails(string placeName)
         {
-            var service = new GooglePlacesApiService(settings);
-            var result = await service.GetPredictionsAsync(placeName).ConfigureAwait(false);
+            // request for place
+            PlacesFindSearchRequest request = new PlacesFindSearchRequest();
+            request.Key = this.APIkeyString;
+            request.Input = placeName;
+
+            // response for place
+            PlacesFindSearchResponse response = await GooglePlaces.FindSearch.QueryAsync(request);
+
+            System.Collections.Generic.IEnumerable<Candidate> list = response.Candidates;
+            this.placeId = list.GetEnumerator().Current.PlaceId;
+            //await this.loadDetailsAsync();
+        }
+
+        public async System.Threading.Tasks.Task loadDetailsAsync()
+        {
+            // request for details
+            PlacesDetailsRequest detailsRequest = new PlacesDetailsRequest();
+            detailsRequest.Key = this.APIkeyString;
+            detailsRequest.PlaceId = this.placeId;
+
+            // response for details
+            var detailsResponse = await GooglePlaces.Details.QueryAsync(detailsRequest);
+            var detailsJSON = detailsResponse.RawJson;
         }
     }
 }
