@@ -3,19 +3,17 @@ using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
-namespace MatchFinder
+namespace MatchFinder.GoogleAPI
 {
     public class GoogleAPI
     {
-        private string APIkeyString;
+        protected string APIkeyString;
 
         public GoogleAPI()
         {
             // SaveAPIkeyAsync(); // use it to save new API key
             LoadAPIkeyAsync();
         }
-
-        public string getAPIkeyString() => APIkeyString;
 
         public async Task SaveAPIkeyAsync()
         {

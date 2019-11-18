@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using MatchFinder.GoogleAPI;
 
 namespace MatchFinder
 {
@@ -14,7 +15,7 @@ namespace MatchFinder
     {
         Frontend front = Frontend.Instance;
         Locationer locationer = new Locationer();
-        GoogleAPI api = new GoogleAPI();
+        GooglePlacesAPI PlacesAPI = new GooglePlacesAPI();
         Controller controller = Controller.Instance;
 
         public MainPage()
@@ -26,6 +27,8 @@ namespace MatchFinder
             controller.loadView(front);
             // main:
             LoadLocation();
+            // API test
+            PlacesAPI.GetAddressAsync("Maribor");
         }
 
         public async Task LoadLocation()
