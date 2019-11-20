@@ -28,8 +28,7 @@ namespace MatchFinder
             // main:
             LoadLocation();
             // API test
-            //PlacesAPI.getPlaceDetails("Stadion Maribor");
-            PlacesAPI.loadDetailsAsync();
+            PlacesAPI.GetPlaceID("Maribor");
         }
 
         public async Task LoadLocation()

@@ -13,7 +13,7 @@ namespace MatchFinder.GoogleAPI
         public GoogleAPI()
         {
             ApiKeyManager = new APIKeyManager();
-            GoogleAPIKey = ApiKeyManager.GetSavedValueAsync("APIkey").ToString(); // load API key
+            GoogleAPIKey = ApiKeyManager.GetSavedValueAsync("APIkey").Result; // load API key
         }
 
     }   

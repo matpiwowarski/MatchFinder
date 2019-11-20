@@ -8,15 +8,14 @@ namespace MatchFinder.GoogleAPI
 {
     public class GooglePlacesAPI: GoogleAPI
     {
-        string placeId = "ChIJyWEHuEmuEmsRm9hTkapTCrk";
-
         public GooglePlacesAPI()
         {
             
         }
 
-        public async System.Threading.Tasks.Task getPlaceDetails(string placeName)
+        public async System.Threading.Tasks.Task<string> GetPlaceID(string placeName)
         {
+            string placeID = String.Empty;
             // request for place
             PlacesFindSearchRequest request = new PlacesFindSearchRequest();
             request.Key = this.GoogleAPIKey;
@@ -26,20 +25,24 @@ namespace MatchFinder.GoogleAPI
             PlacesFindSearchResponse response = await GooglePlaces.FindSearch.QueryAsync(request);
 
             System.Collections.Generic.IEnumerable<Candidate> list = response.Candidates;
-            this.placeId = list.GetEnumerator().Current.PlaceId;
-            //await this.loadDetailsAsync();
+            //placeID = list.GetEnumerator().Current.PlaceId;
+            int x = 0;
+
+            return placeID;
         }
 
-        public async System.Threading.Tasks.Task loadDetailsAsync()
+        public async System.Threading.Tasks.Task<string> GetPlaceDetails(string id)
         {
+            string details = String.Empty;
             // request for details
             PlacesDetailsRequest detailsRequest = new PlacesDetailsRequest();
             detailsRequest.Key = this.GoogleAPIKey;
-            detailsRequest.PlaceId = this.placeId;
+            detailsRequest.PlaceId = id;
 
             // response for details
             var detailsResponse = await GooglePlaces.Details.QueryAsync(detailsRequest);
-            var detailsJSON = detailsResponse.RawJson;
+            details = detailsResponse.RawJson;
+            return details;
         }
     }
 }
