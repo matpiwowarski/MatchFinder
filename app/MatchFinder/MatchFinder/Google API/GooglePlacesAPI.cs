@@ -19,7 +19,7 @@ namespace MatchFinder.GoogleAPI
         {
             // request for place
             PlacesFindSearchRequest request = new PlacesFindSearchRequest();
-            request.Key = this.APIkeyString;
+            request.Key = this.GoogleAPIKey;
             request.Input = placeName;
 
             // response for place
@@ -34,7 +34,7 @@ namespace MatchFinder.GoogleAPI
         {
             // request for details
             PlacesDetailsRequest detailsRequest = new PlacesDetailsRequest();
-            detailsRequest.Key = this.APIkeyString;
+            detailsRequest.Key = this.GoogleAPIKey;
             detailsRequest.PlaceId = this.placeId;
 
             // response for details
