@@ -24,9 +24,20 @@ namespace MatchFinder.GoogleAPI
             // response for place
             PlacesFindSearchResponse response = await GooglePlaces.FindSearch.QueryAsync(request);
 
-            System.Collections.Generic.IEnumerable<Candidate> list = response.Candidates;
-            //placeID = list.GetEnumerator().Current.PlaceId;
-            int x = 0;
+            try
+            {
+                System.Collections.Generic.IEnumerable<Candidate> list = response.Candidates;
+                System.Collections.Generic.IEnumerator<Candidate> Enumerator = list.GetEnumerator();
+                Candidate candidate = new Candidate();
+                if (Enumerator.MoveNext())
+                    candidate = Enumerator.Current;
+
+                placeID = candidate.PlaceId;
+            }
+            catch(Exception e)
+            {
+                string message = e.Message;
+            }
 
             return placeID;
         }
