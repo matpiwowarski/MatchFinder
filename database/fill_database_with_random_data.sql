@@ -244,248 +244,106 @@ DECLARE last_game ENUM('w','d','l');
 END //
 delimiter ;
 
-call fill_teamStats(100);
-
-select * from teamStats;
-
 
 delimiter //
-CREATE PROCEDURE fill_owner(
+CREATE PROCEDURE fill_team_achievements(
 IN num INT)
 BEGIN
-DECLARE TeamID INT;
-DECLARE name VARCHAR(45);
-DECLARE surname VARCHAR(45);
-DECLARE date_of_birth DATETIME;
-DECLARE value INT;
+DECLARE nr_of_championship INT;
+DECLARE years_of_championship varchar(45);
+DECLARE nr_of_cup_wins INT;
+DECLARE years_of_cup_wins varchar(45);
+DECLARE nr_of_lesser_cups_win INT;
+DECLARE years_of_leser_cups_win varchar(45);
+DECLARE nr_of_club_wc_win INT;
+DECLARE years_of_club_wc_win varchar(45);
+DECLARE nr_of_champions_league_win INT;
+DECLARE years_of_champions_league_win varchar(45);
+DECLARE nr_of_lesser_international_wins INT;
+DECLARE years_of_lesser_international_wins varchar(45);
 
-DECLARE done INT;
-DECLARE OwnerCursor CURSOR FOR SELECT id FROM team;
-DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-SET done = false;
-OPEN OwnerCursor;
 
-
-SET @MIN = '1960-01-01 00:00:00';
-SET @MAX = '2001-12-30 00:00:00';
-
-Owner_Loop: LOOP
-    IF done THEN
-      LEAVE Owner_Loop;
-    END IF;
     WHILE num > 0 DO
     
-	FETCH OwnerCursor INTO TeamID;
-    Set name = CONCAT('name',num);
-    Set surname = CONCAT('surname',num);
-    SET date_of_birth  = TIMESTAMPADD(SECOND, FLOOR(RAND() * TIMESTAMPDIFF(SECOND, @MIN, @MAX)), @MIN);
-	SET value = FLOOR(100 + (RAND() * 50000000));
+	SET nr_of_championship = FLOOR(0 + (RAND() * 5));
+	SET nr_of_cup_wins = FLOOR(0 + (RAND() * 5));
+	SET nr_of_lesser_cups_win = FLOOR(0 + (RAND() * 5));
+	SET nr_of_club_wc_win = FLOOR(0 + (RAND() * 5));
+	SET nr_of_champions_league_win = FLOOR(0 + (RAND() * 5));
+	SET nr_of_lesser_international_wins = FLOOR(0 + (RAND() * 5));
     
     
-    INSERT INTO owner(Team_id, name, surname, date_of_birth, value)
-    VALUES (TeamID, name, surname, date_of_birth, value);
+    INSERT INTO team_achievements (nr_of_championship,nr_of_cup_wins,nr_of_lesser_cups_win,nr_of_club_wc_win,nr_of_champions_league_win,nr_of_lesser_international_wins)
+    VALUES (nr_of_championship,nr_of_cup_wins,nr_of_lesser_cups_win,nr_of_club_wc_win,nr_of_champions_league_win,nr_of_lesser_international_wins);
     SET num = num - 1;
     
 	END WHILE;
-END LOOP;
 
-CLOSE OwnerCursor;
 
 END //
 delimiter ;
 
-call fill_owner(100);
 
-select * from owner;
-
--- drop procedure fill_coach;
+-- drop procedure fill_city;
 
 delimiter //
-CREATE PROCEDURE fill_coach(
+CREATE PROCEDURE fill_city(
 IN num INT)
 BEGIN
-DECLARE TeamID INT;
+DECLARE Country_id INT;
 DECLARE name VARCHAR(45);
-DECLARE surname VARCHAR(45);
-DECLARE role VARCHAR(45);
-DECLARE date_of_birth DATETIME;
-DECLARE salary INT;
-DECLARE contractLength DATETIME;
 DECLARE rememberNum INT;
 
 DECLARE done INT;
-DECLARE CoachCursor CURSOR FOR SELECT id FROM team;
+DECLARE CountryCursor CURSOR FOR SELECT id FROM country;
 DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 SET done = false;
-OPEN CoachCursor;
+OPEN CountryCursor;
 
-
-SET @MIN1 = '1960-01-01 00:00:00';
-SET @MAX1 = '1996-12-30 00:00:00';
-
-SET @MIN2 = '2020-01-01 00:00:00';
-SET @MAX2 = '2025-12-30 00:00:00';
 
 SET rememberNum=num;
-Coach_Loop: LOOP
-	FETCH CoachCursor INTO TeamID;
+
+Country_loop: LOOP
+	FETCH CountryCursor INTO Country_id;
     IF done THEN
-      LEAVE Coach_Loop;
+      LEAVE Country_Loop;
     END IF;
     SET num=rememberNum;
     WHILE num > 0 DO
     
     Set name = CONCAT('name',num);
-    Set surname = CONCAT('surname',num);
-    SET date_of_birth  = TIMESTAMPADD(SECOND, FLOOR(RAND() * TIMESTAMPDIFF(SECOND, @MIN1, @MAX1)), @MIN1);
-	SET salary = FLOOR(100 + (RAND() * 200000));
-    SET contractLength  = TIMESTAMPADD(SECOND, FLOOR(RAND() * TIMESTAMPDIFF(SECOND, @MIN2, @MAX2)), @MIN2);
     
-    IF MOD (num, 3)=2 THEN
-        SET role= 'Main coach';
-	END IF; 
-    IF MOD (num, 3)=1 THEN
-        SET role= 'Assistant coach';
-	END IF; 
-    IF MOD (num, 3)=0 THEN
-        SET role= 'Goalkeeper coach';
-	END IF;
-    
-    INSERT INTO coach (Team_id, name, surname, role, date_of_birth, salary, contractLength)
-    VALUES (TeamID, name, surname, role, date_of_birth, salary, contractLength);
+    INSERT INTO city(Country_id, name)
+    VALUES (Country_id, name);
     SET num = num - 1;
     
 	END WHILE;
 END LOOP;
 
-CLOSE CoachCursor;
+CLOSE CountryCursor;
 
 END //
 delimiter ;
 
-call fill_coach(3);
-
-select * from coach;
-
--- drop procedure fill_player;
-
 delimiter //
-CREATE PROCEDURE fill_player(
+CREATE PROCEDURE fill_country(
 IN num INT)
 BEGIN
 DECLARE name VARCHAR(45);
-DECLARE surname VARCHAR(45);
-DECLARE date_of_birth DATETIME;
-DECLARE number INT;
-DECLARE salary INT;
-DECLARE rememberNum INT;
-DECLARE Team_id INT;
-DECLARE nr INT;
 
-DECLARE done INT;
-DECLARE PlayerCursor CURSOR FOR SELECT id FROM team;
-DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-SET done = false;
-OPEN PlayerCursor;
-
-SET @MIN = '1979-01-01 00:00:00';
-SET @MAX = '2002-12-30 00:00:00';
-
-SET RememberNum=num;
-
-Player_Loop: LOOP
-	FETCH PlayerCursor INTO Team_ID;
-    IF done THEN
-      LEAVE Player_Loop;
-    END IF;
-    
-    SET num=RememberNum;
     WHILE num > 0 DO
     
-    SET nr = FLOOR(1 + (RAND() * 10000));
-    Set name = CONCAT('name',nr);
-    Set surname = CONCAT('surname',nr);
-    SET date_of_birth  = TIMESTAMPADD(SECOND, FLOOR(RAND() * TIMESTAMPDIFF(SECOND, @MIN, @MAX)), @MIN);
-	SET salary = FLOOR(100 + (RAND() * 500000));
-    SET number= FLOOR(1 + (RAND() * 99));
+    Set name = CONCAT('name',num);
     
-	INSERT INTO player(Team_id, name, surname, date_of_birth, number, salary)
-	VALUES (Team_id, name, surname, date_of_birth, number, salary);
-
+    INSERT INTO country(name)
+    VALUES (name);
     SET num = num - 1;
     
 	END WHILE;
-END LOOP;
 
-CLOSE PlayerCursor;
 
 END //
 delimiter ;
-
-call fill_player(20);
-
-select * from player;
-
--- drop procedure fill_playerStats;
-
-delimiter //
-CREATE PROCEDURE fill_playerStats(
-IN num INT)
-BEGIN
-DECLARE PlayerID INT;
-DECLARE contractLenght DATETIME;
-DECLARE apperances INT;
-DECLARE minutesPlayed INT;
-DECLARE goals INT;
-DECLARE assists INT;
-DECLARE yellowCards INT;
-DECLARE redCards INT;
-DECLARE minutesInGame INT;
-DECLARE RememberNum INT;
-
-
-DECLARE done INT;
-DECLARE PlayerStatsCursor CURSOR FOR SELECT id FROM player;
-DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-SET done = false;
-OPEN PlayerStatsCursor;
-
-SET @MIN = '2020-06-30 00:00:00';
-SET @MAX = '2025-12-30 00:00:00';
-
-PlayerStats_Loop: LOOP
-    IF done THEN
-      LEAVE PlayerStats_Loop;
-    END IF;
-    WHILE num > 0 DO
-    
-	FETCH PlayerStatsCursor INTO PlayerID;
-    SET contractLenght  = TIMESTAMPADD(SECOND, FLOOR(RAND() * TIMESTAMPDIFF(SECOND, @MIN, @MAX)), @MIN);
-	SET goals = FLOOR(0 + (RAND() * 30));
-    SET assists= FLOOR(0 + (RAND() * 20));
-	SET apperances = FLOOR(0 + (RAND() * 38));
-    SET minutesInGame= FLOOR(60 + (RAND() * 90));
-    SET minutesPlayed= apperances*minutesInGame;
-	SET yellowCards = FLOOR(0 + (RAND() * 20));
-    SET redCards= FLOOR(0 + (RAND() * 10));
-    
-    
-    
-    INSERT INTO playerstats(Player_id, apperances, minutesPlayed, goals, assists, contractLenght, yellowCards, redCards)
-    VALUES (PlayerID, apperances, minutesPlayed, goals, assists, contractLenght, yellowCards, redCards);
-    SET num = num - 1;
-    
-	END WHILE;
-END LOOP;
-
-CLOSE PlayerStatsCursor;
-
-END //
-delimiter ;
-
-call fill_playerStats(20);
-
-select * from playerStats;
 
 
 -- drop procedure fill_game;
@@ -497,14 +355,15 @@ BEGIN
 DECLARE Team_home_id INT;
 DECLARE Team_away_id INT;
 DECLARE League_id INT;
-DECLARE homeGoals INT;
-DECLARE awayGoals INT;
-DECLARE date DATETIME;
+DECLARE Stadium_id INT;
+DECLARE home_score INT;
+DECLARE away_score INT;
+DECLARE game_date DATETIME;
 DECLARE rememberNum INT;
-
 
 DECLARE done INT;
 DECLARE LeagueCursor CURSOR FOR SELECT id FROM league;
+DECLARE StadiumCursor CURSOR FOR SELECT id FROM stadium;
 DECLARE HomeTeamCursor CURSOR FOR SELECT id FROM team where mod(id,2)=1;
 DECLARE AwayTeamCursor CURSOR FOR SELECT id FROM team where mod(id,1)=0;
 DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
@@ -512,6 +371,7 @@ SET done = false;
 OPEN LeagueCursor;
 OPEN HomeTeamCursor;
 OPEN AwayTeamCursor;
+OPEN StadiumCursor;
 
 
 SET @MIN = '2019-08-08 00:00:00';
@@ -526,21 +386,22 @@ game_Loop: LOOP
     END IF;
 	SET num=rememberNum;
     WHILE num > 0 DO
-		
+	FETCH StadiumCursor INTO Stadium_id;	
 	FETCH HomeTeamCursor INTO Team_home_id;
 	FETCH AwayTeamCursor INTO Team_away_id;
 
-	SET homeGoals = FLOOR(0 + (RAND() * 4));
-	SET awayGoals = FLOOR(0 + (RAND() * 4));
-    SET date  = TIMESTAMPADD(SECOND, FLOOR(RAND() * TIMESTAMPDIFF(SECOND, @MIN, @MAX)), @MIN);
+	SET home_score = FLOOR(0 + (RAND() * 4));
+	SET away_score = FLOOR(0 + (RAND() * 4));
+    SET game_date  = TIMESTAMPADD(SECOND, FLOOR(RAND() * TIMESTAMPDIFF(SECOND, @MIN, @MAX)), @MIN);
     
-    INSERT INTO game(Team_home_id, Team_away_id, League_id, homeGoals, awayGoals, date)
-    VALUES (Team_home_id, Team_away_id, League_id, homeGoals, awayGoals, date);
+    INSERT INTO game(Stadium_id, Team_home_id, Team_away_id, League_id, home_score, away_score, game_date)
+    VALUES (Team_home_id, Team_away_id, League_id, home_score, away_score, game_date);
     SET num = num - 1;
     
 	END WHILE;
 END LOOP;
 
+CLOSE StadiumCursor;
 CLOSE LeagueCursor;
 CLOSE HomeTeamCursor;
 CLOSE AwayTeamCursor;
@@ -548,85 +409,66 @@ CLOSE AwayTeamCursor;
 END //
 delimiter ;
 
-call fill_game(100);
 
-select * from game;
-
--- drop procedure fill_gameevent;
 
 delimiter //
-CREATE PROCEDURE fill_gameevent(
+CREATE PROCEDURE fill_user(
 IN num INT)
 BEGIN
-DECLARE Game_id INT;
-DECLARE Player_id INT;
+DECLARE email VARCHAR(255);
+DECLARE upassword VARCHAR(32);
+DECLARE nr_of_games INT;
+DECLARE username VARCHAR(16);
 DECLARE name VARCHAR(45);
-DECLARE minute INT;
-DECLARE min INT;
+DECLARE surname VARCHAR(45);
+DECLARE street VARCHAR(45);
+DECLARE house_nr INT;
+DECLARE create_time TIMESTAMP;
+DECLARE City_id INT;
+DECLARE Country_id INT;
 DECLARE rememberNum INT;
 
 DECLARE done INT;
-DECLARE GameCursor CURSOR FOR SELECT id FROM game;
-DECLARE PlayerCursor CURSOR FOR SELECT id FROM player;
+DECLARE CityCursor CURSOR FOR SELECT id FROM city;
+DECLARE CountryCursor CURSOR FOR SELECT id FROM country;
 DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
 SET done = false;
-OPEN GameCursor;
-OPEN PlayerCursor;
+OPEN CityCursor;
+OPEN CountryCursor;
 
 SET rememberNum=num;
-    match_Loop: LOOP
-	FETCH GameCursor INTO Game_id;
+    user_Loop: LOOP
     IF done THEN
-      LEAVE match_Loop;
+      LEAVE user_Loop;
     END IF;
 	SET num=rememberNum;
     WHILE num > 0 DO
-	FETCH PlayerCursor INTO Player_id;
-
-	IF MOD (num, 5)=2 THEN
-	SET name= 'Goal scored';
-	END IF; 
-    IF MOD (num, 5)=1 THEN
-        SET name= 'Yellow card';
-	END IF; 
-    IF MOD (num, 5)=0 THEN
-        SET name= 'Red card';
-	END IF;
-    IF MOD (num, 5)=4 THEN
-        SET name= 'Substitution on';
-	END IF;
-    IF MOD (num, 5)=3 THEN
-        SET name= 'Substitution off';
-	END IF;
-    
-	SET minute = FLOOR(0 + (RAND() * 90));
+	FETCH CityCursor INTO City_id;
+	FETCH CountryCursor INTO Country_id;
+	
+	SET email = CONCAT('email',num,'@gmail.com');
+	SET name = CONCAT('name',num);
+	SET surname = CONCAT('surname',num);
+	SET username = CONCAT('username',num);
+	SET upassword = CONCAT('password',num);
+	SET street = CONCAT('street',num);
+    SET house_nr = FLOOR(0 + (RAND() * 99));
+    SET nr_of_games = FLOOR(0 + (RAND() * 99));
     
     
     
     
     
-    INSERT INTO gameevent(Game_id, Player_id, name, minute)
-    VALUES (Game_id, Player_id, name, minute);
+    INSERT INTO user(email, password, nr_of_games, username, name, surname, City_id, Country_id, street, house_nr)
+    VALUES (email, password, nr_of_games, username, name, surname, City_id, Country_id, street, house_nr);
     SET num = num - 1;
     
 	END WHILE;
 END LOOP;
 
-CLOSE GameCursor;
-CLOSE PlayerCursor;
+CLOSE CityCursor;
+CLOSE CountryCursor;
 
 END //
 delimiter ;
 
-call fill_gameevent(7);
-
-select * from coach;
-select * from game;
-select * from league;
-select * from owner;
-select * from player;
-select * from gameevent;
-select * from playerstats;
-select * from team;
-select * from teamstats;
-select * from stadium;
