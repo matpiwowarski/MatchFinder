@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using MatchFinder.GoogleAPI;
 
 namespace MatchFinder
 {
@@ -14,22 +15,27 @@ namespace MatchFinder
     {
         Frontend front = Frontend.Instance;
         Locationer locationer = new Locationer();
-        GoogleAPI api = new GoogleAPI();
+        GooglePlacesAPI PlacesAPI = new GooglePlacesAPI();
+        Controller controller = Controller.Instance;
 
         public MainPage()
         {
             InitializeComponent();
             // front
             front.LoadMainLabel(MainLabel);
-            // api
+            // controller 
+            controller.loadView(front);
+            // main:
             LoadLocation();
+            // API test
+            PlacesAPI.GetPlaceID("Maribor");
         }
 
         public async Task LoadLocation()
         {
             var location = await locationer.GetLocationAsync(); // get location
             // change label
-            front.ChangeMainLabelText(location);
+            controller.changeMainLabel(location.ToString());
         }
     }
 }
