@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema mfdb
 -- -----------------------------------------------------
+-- drop database mfdb;
+-- -----------------------------------------------------
+-- Schema mfdb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mfdb` DEFAULT CHARACTER SET utf8 ;
+USE `mfdb` ;
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Table `mfdb`.`Country`
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
-
--- -----------------------------------------------------
--- Table `mydb`.`Country`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Country` (
+CREATE TABLE IF NOT EXISTS `mfdb`.`Country` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -48,9 +48,9 @@ CREATE TRIGGER ucheckCountryName BEFORE update ON Country
 delimiter ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`City`
+-- Table `mfdb`.`City`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`City` (
+CREATE TABLE IF NOT EXISTS `mfdb`.`City` (
   `id` INT NOT NULL,
   `Country_id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
@@ -58,10 +58,13 @@ CREATE TABLE IF NOT EXISTS `mydb`.`City` (
   INDEX `fk_City_Country1_idx` (`Country_id` ASC) VISIBLE,
   CONSTRAINT `fk_City_Country1`
     FOREIGN KEY (`Country_id`)
-    REFERENCES `mydb`.`Country` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`Country` (`id`)
+    ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+INSERT into country(id, name) values (1, 'elo');
+INSERT into city(id, country_id, name) values (1, 1, 'elo');
 
 
 delimiter //
@@ -85,9 +88,9 @@ CREATE TRIGGER ucheckCityName BEFORE update ON City
 delimiter ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Stadium`
+-- Table `mfdb`.`Stadium`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Stadium` (
+CREATE TABLE IF NOT EXISTS `mfdb`.`Stadium` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `City_id` INT NOT NULL,
   `street` VARCHAR(45) NOT NULL,
@@ -99,8 +102,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Stadium` (
   INDEX `fk_Stadium_City_idx` (`City_id` ASC) VISIBLE,
   CONSTRAINT `fk_Stadium_City`
     FOREIGN KEY (`City_id`)
-    REFERENCES `mydb`.`City` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`City` (`id`)
+    ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -126,6 +129,7 @@ CREATE TRIGGER ucheckStadiumNr BEFORE Update ON Stadium
        END;//
 delimiter ;
 
+
 delimiter //
 CREATE TRIGGER checkStadiumCapacity BEFORE Insert ON Stadium
        FOR EACH ROW
@@ -150,21 +154,24 @@ CREATE TRIGGER ucheckStadiumCapacity BEFORE Update ON Stadium
        END;//
 delimiter ;
 -- -----------------------------------------------------
--- Table `mydb`.`Team_currentForm`
+-- Table `mfdb`.`Team_currentForm`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Team_currentForm` (
+CREATE TABLE IF NOT EXISTS `mfdb`.`Team_currentForm` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `position` INT NULL,
-  `rank` INT NULL,
+  `ranking` INT NULL,
   `5th_last_game` ENUM('W', 'D', 'L') NULL,
   `4th_last_game` ENUM('W', 'D', 'L') NULL,
   `3rd_last_game` ENUM('W', 'D', 'L') NULL,
   `2nd_last_game` ENUM('W', 'D', 'L') NULL,
   `last_game` ENUM('W', 'D', 'L') NULL,
+  `points` INT NULL,
+  `goalsScored` INT NULL,
+  `goalsAgainst` INT NULL,
+  `goalsDifference` INT NULL,
+  `cleanSheets` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-
-drop trigger ucheckTeamRank;
 
 delimiter //
 CREATE TRIGGER checkTeamPosition BEFORE insert ON Team_currentform
@@ -217,9 +224,9 @@ delimiter ;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Team_achievements`
+-- Table `mfdb`.`Team_achievements`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Team_achievements` (
+CREATE TABLE IF NOT EXISTS `mfdb`.`Team_achievements` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nr_of_championship` INT NULL,
   `years_of_championship` VARCHAR(45) NULL,
@@ -276,27 +283,6 @@ CREATE TRIGGER ucheckCupsNr BEFORE Update ON Team_achievements
            END IF;
        END;//
 delimiter ;
-
-delimiter //
-CREATE TRIGGER checkLesserCupsNr BEFORE Insert ON Team_achievements
-       FOR EACH ROW
-       BEGIN
-           IF NEW.nr_of_lesser_cups_win < 0 THEN
-               SET NEW.nr_of_lesser_cups_win = 0;
-           END IF;
-       END;//
-delimiter ;
-
-delimiter //
-CREATE TRIGGER ucheckLesserCupsNr BEFORE Update ON Team_achievements
-       FOR EACH ROW
-       BEGIN
-           IF NEW.nr_of_lesser_cups_win < 0 THEN
-               SET NEW.nr_of_lesser_cups_win = 0;
-           END IF;
-       END;//
-delimiter ;
-
 
 delimiter //
 CREATE TRIGGER checkLesserCupsNr BEFORE Insert ON Team_achievements
@@ -379,9 +365,9 @@ CREATE TRIGGER ucheckELNr BEFORE Update ON Team_achievements
        END;//
 delimiter ;
 -- -----------------------------------------------------
--- Table `mydb`.`League`
+-- Table `mfdb`.`League`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`League` (
+CREATE TABLE IF NOT EXISTS `mfdb`.`League` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Country_id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
@@ -390,8 +376,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`League` (
   INDEX `fk_League_Country1_idx` (`Country_id` ASC) VISIBLE,
   CONSTRAINT `fk_League_Country1`
     FOREIGN KEY (`Country_id`)
-    REFERENCES `mydb`.`Country` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`Country` (`id`)
+    ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -441,15 +427,16 @@ CREATE TRIGGER ucheckLeagueName BEFORE update ON League
 delimiter ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Team`
+-- Table `mfdb`.`Team`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Team` (
+CREATE TABLE IF NOT EXISTS `mfdb`.`Team` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Stadium_id` INT NOT NULL,
   `League_id` INT NOT NULL,
   `Team_currentForm_id` INT NULL,
   `Team_achievements_id` INT NULL,
   `name` VARCHAR(45) NOT NULL,
+  `coach_name` VARCHAR(45) NULL,
   `logo_image` LONGBLOB NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Team_Team_currentForm1_idx` (`Team_currentForm_id` ASC) VISIBLE,
@@ -458,23 +445,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Team` (
   INDEX `fk_Team_League1_idx` (`League_id` ASC) VISIBLE,
   CONSTRAINT `fk_Team_Team_currentForm1`
     FOREIGN KEY (`Team_currentForm_id`)
-    REFERENCES `mydb`.`Team_currentForm` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`Team_currentForm` (`id`)
+    ON DELETE SET NULL
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Team_Stadium1`
     FOREIGN KEY (`Stadium_id`)
-    REFERENCES `mydb`.`Stadium` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`Stadium` (`id`)
+    ON DELETE RESTRICT
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Team_Team_achievements1`
     FOREIGN KEY (`Team_achievements_id`)
-    REFERENCES `mydb`.`Team_achievements` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`Team_achievements` (`id`)
+    ON DELETE SET NULL
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Team_League1`
     FOREIGN KEY (`League_id`)
-    REFERENCES `mydb`.`League` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`League` (`id`)
+    ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -499,9 +486,9 @@ CREATE TRIGGER ucheckTeamName BEFORE update ON Team
 delimiter ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Game`
+-- Table `mfdb`.`Game`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Game` (
+CREATE TABLE IF NOT EXISTS `mfdb`.`Game` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Stadium_id` INT NOT NULL,
   `League_id` INT NOT NULL,
@@ -517,30 +504,30 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Game` (
   INDEX `fk_Game_Stadium1_idx` (`Stadium_id` ASC) VISIBLE,
   CONSTRAINT `fk_Game_League1`
     FOREIGN KEY (`League_id`)
-    REFERENCES `mydb`.`League` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`League` (`id`)
+    ON DELETE RESTRICT
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Game_Team1`
     FOREIGN KEY (`Team_home_id`)
-    REFERENCES `mydb`.`Team` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`Team` (`id`)
+    ON DELETE RESTRICT
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Game_Team2`
     FOREIGN KEY (`Team_away_id`)
-    REFERENCES `mydb`.`Team` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`Team` (`id`)
+    ON DELETE RESTRICT
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Game_Stadium1`
     FOREIGN KEY (`Stadium_id`)
-    REFERENCES `mydb`.`Stadium` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`Stadium` (`id`)
+    ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `mydb`.`User`
+-- Table `mfdb`.`User`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`User` (
+CREATE TABLE IF NOT EXISTS `mfdb`.`User` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(32) NOT NULL,
@@ -558,17 +545,17 @@ CREATE TABLE IF NOT EXISTS `mydb`.`User` (
   INDEX `fk_User_Country1_idx` (`Country_id` ASC) VISIBLE,
   CONSTRAINT `fk_User_City1`
     FOREIGN KEY (`City_id`)
-    REFERENCES `mydb`.`City` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`City` (`id`)
+    ON DELETE SET NULL
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_User_Country1`
     FOREIGN KEY (`Country_id`)
-    REFERENCES `mydb`.`Country` (`id`)
-    ON DELETE NO ACTION
+    REFERENCES `mfdb`.`Country` (`id`)
+    ON DELETE SET NULL
     ON UPDATE NO ACTION);
 
 delimiter //
-CREATE TRIGGER checkUserEmail BEFORE insert ON Email
+CREATE TRIGGER checkUserEmail BEFORE insert ON User
        FOR EACH ROW
        BEGIN
            IF NEW.email is Null THEN
@@ -630,9 +617,9 @@ CREATE TRIGGER ucheckUserNrOfGames BEFORE Update ON User
        END;//
 delimiter ;
 -- -----------------------------------------------------
--- Table `mydb`.`Users_games`
+-- Table `mfdb`.`Users_games`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Users_games` (
+CREATE TABLE IF NOT EXISTS `mfdb`.`Users_games` (
   `User_id` INT NOT NULL,
   `Game_id` INT NOT NULL,
   PRIMARY KEY (`User_id`, `Game_id`),
@@ -640,14 +627,17 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Users_games` (
   INDEX `fk_User_has_Game_User1_idx` (`User_id` ASC) VISIBLE,
   CONSTRAINT `fk_User_has_Game_User1`
     FOREIGN KEY (`User_id`)
-    REFERENCES `mydb`.`User` (`id`)
+    REFERENCES `mfdb`.`User` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_User_has_Game_Game1`
     FOREIGN KEY (`Game_id`)
-    REFERENCES `mydb`.`Game` (`id`)
+    REFERENCES `mfdb`.`Game` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
