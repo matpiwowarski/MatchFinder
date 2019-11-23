@@ -10,19 +10,59 @@ namespace xUnitTests
     public class ControllerTests
     {
         [Fact]
-        public void changeMainLabelTest()
+        public void SingletonTest()
         {
-            Frontend view = Frontend.Instance;
-            view.MainLabel.Text = "before";
-            string expected = "after";
+            Controller first = Controller.Instance;
 
-            Controller controller = Controller.Instance;
-            controller.loadView(view);
+            Controller second = Controller.Instance;
 
-            controller.changeMainLabel("after");
-            string actual = view.MainLabel.Text.ToString();
-
-            Assert.Equal(expected, actual);
+            Assert.Equal(first, second);
+            Assert.Same(first, second);
         }
+        [Fact]
+        public void LoadViewTest()
+        {
+            Controller controller = Controller.Instance;
+            Frontend frontend = Frontend.Instance;
+
+            controller.LoadView(frontend);
+
+            Assert.NotNull(frontend);
+        }
+        [Fact]
+        public void CheckViewWithoutLoadingTest()
+        {
+            Controller controller = Controller.Instance;
+            Frontend frontend = Frontend.Instance;
+
+            Assert.NotNull(frontend);
+        }
+        [Fact]
+        public void ChangeMainLabelWithoutLoadingTest()
+        {
+            Controller controller = Controller.Instance;
+            Frontend frontend = Frontend.Instance; // won't be loaded but it's singleton
+
+            controller.ChangeMainLabel("test");
+
+            string expected = "test";
+
+            Assert.Equal(expected, frontend.MainLabel.Text.ToString());
+        }
+        [Fact]
+        public void ChangeMainLabelWithLoadingTest()
+        {
+            Controller controller = Controller.Instance;
+            Frontend frontend = Frontend.Instance;
+
+            controller.LoadView(frontend); // load frontend
+
+            controller.ChangeMainLabel("test");
+
+            string expected = "test";
+
+            Assert.Equal(expected, frontend.MainLabel.Text.ToString());
+        }
+
     }
 }

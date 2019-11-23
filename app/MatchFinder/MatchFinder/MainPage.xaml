@@ -5,8 +5,11 @@ Put colors here
 
 -->
 
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="MatchFinder.MainPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="MatchFinder.MainPage"
+              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
     <StackLayout>
         <Label x:Name="MainLabel" Text="Welcome to MatchFinder" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+        <maps:Map x:Name="map" />
+
     </StackLayout>
 </ContentPage>
