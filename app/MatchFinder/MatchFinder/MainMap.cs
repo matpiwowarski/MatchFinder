@@ -8,8 +8,8 @@ namespace MatchFinder
     {
         public MainMap()
         {
-            Map map = new Map();
-            Content = map;
+            //Map map = new Map();
+            //Content = map;
         }
     }
 }
