@@ -3,7 +3,7 @@
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
 	<application android:label="MatchFinder.Android">
 	
-	<meta-data android:name="com.google.android.geo.API_KEY" android:value="API KEY"/>
+	<meta-data android:name="com.google.android.geo.API_KEY" android:value="{x:Static local:APIKeyManager.APIkeyString}"/>
 	<uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
 	</application>

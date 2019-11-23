@@ -6,7 +6,7 @@ namespace MatchFinder.GoogleAPI
 {
     public class APIKeyManager
     {
-        private string APIkeyString;
+        public static string APIkeyString;
 
         public APIKeyManager()
         {
@@ -56,7 +56,7 @@ namespace MatchFinder.GoogleAPI
             try
             {
                 var oauthToken = await SecureStorage.GetAsync(key);
-                this.APIkeyString = oauthToken.ToString();
+                APIkeyString = oauthToken.ToString();
             }
             catch (Exception ex)
             {
