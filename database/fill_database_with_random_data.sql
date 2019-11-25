@@ -1,5 +1,27 @@
 -- drop database mydb;
 
+delimiter //
+CREATE PROCEDURE fill_country(
+IN num INT)
+BEGIN
+DECLARE name VARCHAR(45);
+
+START TRANSACTION;
+    WHILE num > 0 DO
+    
+    Set name = CONCAT('name',num);
+    
+    INSERT INTO country(name)
+    VALUES (name);
+    SET num = num - 1;
+    
+	END WHILE;
+COMMIT;
+
+END //
+delimiter ;
+
+call fill_country(100);
 
 -- drop procedure fill_league;
 
@@ -325,25 +347,6 @@ CLOSE CountryCursor;
 END //
 delimiter ;
 
-delimiter //
-CREATE PROCEDURE fill_country(
-IN num INT)
-BEGIN
-DECLARE name VARCHAR(45);
-
-    WHILE num > 0 DO
-    
-    Set name = CONCAT('name',num);
-    
-    INSERT INTO country(name)
-    VALUES (name);
-    SET num = num - 1;
-    
-	END WHILE;
-
-
-END //
-delimiter ;
 
 
 -- drop procedure fill_game;

@@ -202,9 +202,9 @@ delimiter //
 CREATE TRIGGER checkTeamRank BEFORE insert ON Team_currentform
        FOR EACH ROW
        BEGIN
-           IF NEW.rank < 1 THEN
+           IF NEW.ranking < 1 THEN
                	SIGNAL sqlstate '45001' set message_text = "You can't do it!";
-               ELSEIF new.rank>10000000 THEN
+               ELSEIF new.ranking>10000000 THEN
 					SIGNAL sqlstate '45001' set message_text = "You can't do it!";
            END IF;
        END;//
@@ -214,9 +214,9 @@ delimiter //
 CREATE TRIGGER ucheckTeamRank BEFORE Update ON Team_currentform
        FOR EACH ROW
        BEGIN
-           IF NEW.rank < 1 THEN
+           IF NEW.ranking < 1 THEN
                	SIGNAL sqlstate '45001' set message_text = "You can't do it!";
-               ELSEIF new.rank>10000000 THEN
+               ELSEIF new.ranking>10000000 THEN
 					SIGNAL sqlstate '45001' set message_text = "You can't do it!";
            END IF;
        END;//
