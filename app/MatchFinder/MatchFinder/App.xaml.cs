@@ -1,4 +1,4 @@
-﻿using MatchFinder.views;
+﻿using MatchFinder.RegLogin;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,7 +12,7 @@ namespace MatchFinder
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new RegistrationPage() ;
         }
 
         protected override void OnStart()

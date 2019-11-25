@@ -31,7 +31,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="4">
-                        <Button Text="Register" HorizontalOptions="CenterAndExpand" WidthRequest="100" TextColor="White" BackgroundColor="AliceBlue"Clicked="Button_Clicked"/>
+                        <Button Text="Register" HorizontalOptions="CenterAndExpand" WidthRequest="100" TextColor="White" BackgroundColor="AliceBlue" Clicked="Button_Clicked"/>
 
                     </StackLayout>
 
