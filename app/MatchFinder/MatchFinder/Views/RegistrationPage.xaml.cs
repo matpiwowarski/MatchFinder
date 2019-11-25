@@ -1,4 +1,5 @@
 ﻿using MatchFinder.Tables;
+using MatchFinder.Views;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -40,8 +41,6 @@ namespace MatchFinder.RegLogin
 
                 if (result)
                     await Navigation.PushAsync(new LoginPage());
-            
-            
             });
             
 
