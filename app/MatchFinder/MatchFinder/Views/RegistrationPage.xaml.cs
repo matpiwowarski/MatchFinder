@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using MatchFinder.Tables;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,8 +21,25 @@ namespace MatchFinder.RegLogin
         void Button_Clicked(object sender, EventArgs e)
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
-            var db = new SqliteConnection(dbpath);
-            db.CreateTable<>();
+            var db = new SQLiteConnection(dbpath);
+            db.CreateTable<RegUserTable>();
+
+            var item = new RegUserTable()
+            {
+
+                UserName = EntryUserName.Text,
+                Password = EntryUserPassword.Text,
+                Email = EntryUserEmail.Text,
+                PhoneNumber = EntryUserPhoneNumber.Text,
+            };
+
+            db.Insert(item);
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("Congratulation", "User Registration Succesfull", "Yes", "Cancel");
+            });
+            
+
         }
     }
 }
