@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MatchFinder;
-using MatchFinder.Controller;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xunit;
