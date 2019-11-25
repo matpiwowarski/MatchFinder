@@ -37,6 +37,11 @@ namespace MatchFinder.RegLogin
             Device.BeginInvokeOnMainThread(async () =>
             {
                 var result = await this.DisplayAlert("Congratulation", "User Registration Succesfull", "Yes", "Cancel");
+
+                if (result)
+                    await Navigation.PushAsync(new LoginPage());
+            
+            
             });
             
 
