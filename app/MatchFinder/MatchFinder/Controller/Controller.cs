@@ -2,6 +2,7 @@
 namespace MatchFinder
 {
     // singleton pattern
+    //Adding controller and Frontend Instance
     public class Controller
     {
         private static readonly Controller instance = new Controller();

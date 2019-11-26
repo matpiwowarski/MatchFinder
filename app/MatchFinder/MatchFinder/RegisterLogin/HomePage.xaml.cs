@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace MatchFinder.Views
+//Initializing the Home page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage

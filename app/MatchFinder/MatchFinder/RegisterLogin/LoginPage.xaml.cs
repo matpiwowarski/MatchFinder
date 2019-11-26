@@ -13,6 +13,8 @@ using Xamarin.Forms.Xaml;
 
 namespace MatchFinder.Views
 {
+    //Making new folder RegPage
+    //initilazing the RegPage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
@@ -20,12 +22,12 @@ namespace MatchFinder.Views
         {
             InitializeComponent();
         }
-
+        //Navigating the Page
         async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegistrationPage());
         }
-
+        //Connecting the database
         async void Button_Clicked_1(object sender, EventArgs e)
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");

@@ -24,10 +24,10 @@
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Views\HomePage.xaml">
+    <EmbeddedResource Update="RegisterLogin\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RegistrationPage.xaml">
+    <EmbeddedResource Update="RegisterLogin\RegistrationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

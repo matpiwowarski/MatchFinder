@@ -5,6 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="MatchFinder.Views.LoginPage">
+
+
+    //    //designing the LoginPage with views
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
@@ -26,3 +29,4 @@
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+    

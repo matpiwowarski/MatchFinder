@@ -10,6 +10,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace MatchFinder.RegLogin
+//Making new folder RegPage
+//initilazing the RegPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegistrationPage : ContentPage
@@ -18,7 +20,7 @@ namespace MatchFinder.RegLogin
         {
             InitializeComponent();
         }
-
+        //Adding new Database and input everything there
         void Button_Clicked(object sender, EventArgs e)
         {
             var dbpath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "UserDatabase.db");
