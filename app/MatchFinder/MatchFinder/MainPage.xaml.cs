@@ -21,9 +21,14 @@ namespace MatchFinder
         Controller controller = Controller.Instance;
 
         public MainPage()
-        {
+        { 
+            // API test
+            //CheckPlaceIDAsync("Maribor");
+            //CheckPlaceDetailsAsync("ChIJUSBA6qZ3b0cRIqoNvJCvUxA");
+
             InitializeComponent();
 
+            /*
             Button button = new Button
             {
                 Text = "Register/Login!",
@@ -37,7 +42,7 @@ namespace MatchFinder
             };
 
             Content = button;
-
+            */
 
             // front
             //front.LoadMainLabel(MainLabel);
@@ -46,6 +51,16 @@ namespace MatchFinder
             // API test
             // PlacesAPI.GetPlaceID("Maribor");
             // 
+        }
+
+        private async Task CheckPlaceDetailsAsync(string PlaceID)
+        {
+            var PlaceDetails = await PlacesAPI.GetPlaceDetails(PlaceID);
+        }
+
+        public async Task CheckPlaceIDAsync(string placeName)
+        {
+            var PlaceID = await PlacesAPI.GetPlaceID(placeName);
         }
 
         public async Task LoadLocation()
