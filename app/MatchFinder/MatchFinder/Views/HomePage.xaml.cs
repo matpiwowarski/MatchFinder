@@ -17,11 +17,6 @@ namespace MatchFinder.Views
             InitializeComponent();
         }
 
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
-
         async void Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LoginPage());

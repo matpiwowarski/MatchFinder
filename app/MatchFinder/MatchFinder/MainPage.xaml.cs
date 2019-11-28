@@ -28,6 +28,7 @@ namespace MatchFinder
 
             InitializeComponent();
 
+            /*
             Button button = new Button
             {
                 Text = "Register/Login!",
@@ -41,7 +42,7 @@ namespace MatchFinder
             };
 
             Content = button;
-
+            */
 
             // front
             //front.LoadMainLabel(MainLabel);
