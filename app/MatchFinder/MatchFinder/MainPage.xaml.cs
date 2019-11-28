@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using MatchFinder.GoogleAPI;
 using Xamarin.Forms.Maps;
+using MatchFinder.RegLogin;
 
 namespace MatchFinder
 {
@@ -27,10 +28,28 @@ namespace MatchFinder
 
             InitializeComponent();
 
+            Button button = new Button
+            {
+                Text = "Register/Login!",
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Center
+            };
+
+            button.Clicked += async (sender, args) =>
+            {
+                await Navigation.PushAsync(new RegistrationPage());
+            };
+
+            Content = button;
+
+
             // front
             //front.LoadMainLabel(MainLabel);
             // main:
-            LoadLocation();
+            //LoadLocation();
+            // API test
+            // PlacesAPI.GetPlaceID("Maribor");
+            // 
         }
 
         private async Task CheckPlaceDetailsAsync(string PlaceID)
