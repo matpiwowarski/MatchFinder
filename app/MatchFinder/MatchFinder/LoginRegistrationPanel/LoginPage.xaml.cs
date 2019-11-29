@@ -34,7 +34,7 @@ namespace MatchFinder.Views
 
             if (myquery != null)
             {
-                App.Current.MainPage = new NavigationPage(new HomePage());
+                App.Current.MainPage = new NavigationPage(new MainPage());
             }
             else
             {

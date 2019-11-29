@@ -17,7 +17,7 @@ namespace MatchFinder
     {
         Frontend front = Frontend.Instance;
         Locationer locationer = new Locationer();
-        GooglePlacesAPI PlacesAPI = new GooglePlacesAPI();
+        GooglePlacesAPI placesAPI = new GooglePlacesAPI();
         Controller controller = Controller.Instance;
 
         public MainPage()
@@ -55,12 +55,12 @@ namespace MatchFinder
 
         private async Task CheckPlaceDetailsAsync(string PlaceID)
         {
-            var PlaceDetails = await PlacesAPI.GetPlaceDetails(PlaceID);
+            var PlaceDetails = await placesAPI.GetPlaceDetails(PlaceID);
         }
 
         public async Task CheckPlaceIDAsync(string placeName)
         {
-            var PlaceID = await PlacesAPI.GetPlaceID(placeName);
+            var PlaceID = await placesAPI.GetPlaceID(placeName);
         }
 
         public async Task LoadLocation()
