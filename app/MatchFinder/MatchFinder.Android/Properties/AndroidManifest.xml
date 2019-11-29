@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="mariborstudents.matchfinder">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
-	<application android:label="MatchFinder.Android"></application>
+	<application android:label="MatchFinder.Android">
+		
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="{x:Static local:APIKeyManager.APIkeyString}" />
+		<uses-library android:name="org.apache.http.legacy" android:required="false" />
+		
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+	
+	
+	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+ 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 </manifest>

@@ -18,11 +18,11 @@ namespace MatchFinder
             }
         }
         // functions
-        public void loadView(Frontend view)
+        public void LoadView(Frontend view)
         {
             this.view = view;
         }
-        public void changeMainLabel(string text)
+        public void ChangeMainLabel(string text)
         {
             this.view.ChangeMainLabelText(text);
         }
