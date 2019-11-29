@@ -8,7 +8,6 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using MatchFinder.GoogleAPI;
 using Xamarin.Forms.Maps;
-using MatchFinder.RegLogin;
 
 namespace MatchFinder
 {

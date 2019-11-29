@@ -1,5 +1,4 @@
-﻿using MatchFinder.RegLogin;
-using MatchFinder.Tables;
+﻿using MatchFinder.LoginRegistrationPanel;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MatchFinder.Views
+namespace MatchFinder.LoginRegistrationPanel
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage

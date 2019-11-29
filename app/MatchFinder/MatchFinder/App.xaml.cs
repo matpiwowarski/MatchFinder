@@ -1,6 +1,4 @@
-﻿using MatchFinder.RegLogin;
-using MatchFinder.Views;
-using System;
+﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

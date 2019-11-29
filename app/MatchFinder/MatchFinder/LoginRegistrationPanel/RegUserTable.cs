@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MatchFinder.Tables
+namespace MatchFinder.LoginRegistrationPanel
 {
   public class RegUserTable
     {
