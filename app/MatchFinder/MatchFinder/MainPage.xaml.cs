@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using MatchFinder.GoogleAPI;
-using Xamarin.Forms.Maps;
 
 namespace MatchFinder
 {
@@ -15,7 +10,6 @@ namespace MatchFinder
     public partial class MainPage : ContentPage
     {
         Frontend front = Frontend.Instance;
-        Locationer locationer = new Locationer();
         GooglePlacesAPI placesAPI = new GooglePlacesAPI();
         Controller controller = Controller.Instance;
 
@@ -26,30 +20,28 @@ namespace MatchFinder
             //CheckPlaceDetailsAsync("ChIJUSBA6qZ3b0cRIqoNvJCvUxA");
 
             InitializeComponent();
-
-            /*
-            Button button = new Button
-            {
-                Text = "Register/Login!",
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center
-            };
-
-            button.Clicked += async (sender, args) =>
-            {
-                await Navigation.PushAsync(new RegistrationPage());
-            };
-
-            Content = button;
-            */
-
+            //Navigate();
             // front
             //front.LoadMainLabel(MainLabel);
             // main:
             //LoadLocation();
             // API test
             // PlacesAPI.GetPlaceID("Maribor");
-            // 
+            //
+            
+        }
+
+        protected override void OnAppearing()
+        {
+            MainMap mainMap = new MainMap();
+            mainMap.CreateMainMapAsync();
+            Navigation.PushAsync(mainMap);
+        }
+
+        private async Task Navigate()
+        {
+            Navigation navigation = new Navigation();
+            await navigation.NavigateToBuilding25b();
         }
 
         private async Task CheckPlaceDetailsAsync(string PlaceID)
@@ -60,13 +52,6 @@ namespace MatchFinder
         public async Task CheckPlaceIDAsync(string placeName)
         {
             var PlaceID = await placesAPI.GetPlaceID(placeName);
-        }
-
-        public async Task LoadLocation()
-        {
-            var location = await locationer.GetLocationAsync(); // get location
-            // change label
-            controller.ChangeMainLabel(location.ToString());
         }
     }
 }

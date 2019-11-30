@@ -11,8 +11,8 @@ namespace MatchFinder
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
-            //MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
