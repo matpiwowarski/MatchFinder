@@ -15,22 +15,5 @@ Put colors here
     <StackLayout>
         <Label x:Name="MainLabel" Text="Welcome to MatchFinder" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
 
-        <maps:Map>
-    <x:Arguments>
-        <maps:MapSpan>
-            <x:Arguments>
-                <maps:Position>
-                    <x:Arguments>
-                        <x:Double>36.9628066</x:Double>
-                        <x:Double>-122.0194722</x:Double>
-                    </x:Arguments>
-                </maps:Position>
-                <x:Double>0.01</x:Double>
-                <x:Double>0.01</x:Double>
-            </x:Arguments>
-        </maps:MapSpan>
-    </x:Arguments>
-</maps:Map>
-
     </StackLayout>
 </ContentPage>

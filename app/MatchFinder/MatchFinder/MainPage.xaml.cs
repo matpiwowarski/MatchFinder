@@ -10,7 +10,6 @@ namespace MatchFinder
     public partial class MainPage : ContentPage
     {
         Frontend front = Frontend.Instance;
-        Locationer locationer = new Locationer();
         GooglePlacesAPI placesAPI = new GooglePlacesAPI();
         Controller controller = Controller.Instance;
 
@@ -29,12 +28,14 @@ namespace MatchFinder
             // API test
             // PlacesAPI.GetPlaceID("Maribor");
             //
-            //await Navigation.PushAsync(new MainMap());
+            
         }
 
         protected override void OnAppearing()
         {
-           //
+            MainMap mainMap = new MainMap();
+            mainMap.CreateMainMapAsync();
+            Navigation.PushAsync(mainMap);
         }
 
         private async Task Navigate()
@@ -51,13 +52,6 @@ namespace MatchFinder
         public async Task CheckPlaceIDAsync(string placeName)
         {
             var PlaceID = await placesAPI.GetPlaceID(placeName);
-        }
-
-        public async Task LoadLocation()
-        {
-            var location = await locationer.GetLocationAsync(); // get location
-            // change label
-            controller.ChangeMainLabel(location.ToString());
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
-namespace MatchFinder
+namespace MatchFinder.GoogleAPI
 {
     public class Navigation
     {
