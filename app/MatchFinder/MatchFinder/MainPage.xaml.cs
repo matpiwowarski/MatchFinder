@@ -27,29 +27,24 @@ namespace MatchFinder
 
             InitializeComponent();
 
-            /*
-            Button button = new Button
-            {
-                Text = "Register/Login!",
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center
-            };
-
-            button.Clicked += async (sender, args) =>
-            {
-                await Navigation.PushAsync(new RegistrationPage());
-            };
-
-            Content = button;
-            */
-
             // front
             //front.LoadMainLabel(MainLabel);
             // main:
             //LoadLocation();
             // API test
             // PlacesAPI.GetPlaceID("Maribor");
-            // 
+            //
+
+        }
+
+        protected override void OnAppearing()
+        {
+            //await loadMapAsync();
+        }
+
+        private async Task loadMapAsync()
+        {
+            //await Navigation.PushAsync(new MainMap());
         }
 
         private async Task CheckPlaceDetailsAsync(string PlaceID)
