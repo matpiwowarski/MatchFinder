@@ -18,24 +18,34 @@ namespace MatchFinder.GoogleAPI
         {
             await locationer.LoadCurrentPositionAsync();
 
+            double latitude = locationer.getCurrentLatitude();
+            double longitude = locationer.getCurrentLongitude();
+
+            // map
             mainMap = new Map(
                 MapSpan.FromCenterAndRadius
                 (
-                    new Position(
-                        locationer.getCurrentLatitude(),
-                        locationer.getCurrentLongitude()),
+                    new Position(latitude, longitude),
                     Distance.FromKilometers(50))
                 );
+
+            // pin 
+            var pin = new Pin()
+            {
+                Position = new Position(latitude, longitude),
+                Label = "You are here!"
+            };
+            mainMap.Pins.Add(pin);
 
             this.Content = mainMap;
         }
 
-        public void AddPin()
+        public void AddPin(double latitude, double longitude, string pinLabel)
         {
             var pin = new Pin()
             {
-                Position = new Position(37, -122),
-                Label = "Some Pin!"
+                Position = new Position(latitude, longitude),
+                Label = pinLabel
             };
             mainMap.Pins.Add(pin);
 
