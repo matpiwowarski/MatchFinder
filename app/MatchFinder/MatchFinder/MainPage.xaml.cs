@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using MatchFinder.GoogleAPI;
-using Xamarin.Forms.Maps;
 
 namespace MatchFinder
 {
@@ -26,7 +21,7 @@ namespace MatchFinder
             //CheckPlaceDetailsAsync("ChIJUSBA6qZ3b0cRIqoNvJCvUxA");
 
             InitializeComponent();
-
+            Navigate();
             // front
             //front.LoadMainLabel(MainLabel);
             // main:
@@ -34,17 +29,18 @@ namespace MatchFinder
             // API test
             // PlacesAPI.GetPlaceID("Maribor");
             //
-
+            //await Navigation.PushAsync(new MainMap());
         }
 
         protected override void OnAppearing()
         {
-            //await loadMapAsync();
+           //
         }
 
-        private async Task loadMapAsync()
+        private async Task Navigate()
         {
-            //await Navigation.PushAsync(new MainMap());
+            Navigation navigation = new Navigation();
+            await navigation.NavigateToBuilding25b();
         }
 
         private async Task CheckPlaceDetailsAsync(string PlaceID)
