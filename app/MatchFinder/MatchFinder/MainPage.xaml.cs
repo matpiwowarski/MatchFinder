@@ -21,7 +21,7 @@ namespace MatchFinder
             //CheckPlaceDetailsAsync("ChIJUSBA6qZ3b0cRIqoNvJCvUxA");
 
             InitializeComponent();
-            Navigate();
+            //Navigate();
             // front
             //front.LoadMainLabel(MainLabel);
             // main:
