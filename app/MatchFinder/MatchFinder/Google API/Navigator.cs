@@ -4,9 +4,9 @@ using Xamarin.Essentials;
 
 namespace MatchFinder.GoogleAPI
 {
-    public class Navigation
+    public class Navigator
     {
-        public Navigation()
+        public Navigator()
         {
 
         }

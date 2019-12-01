@@ -34,13 +34,12 @@ namespace MatchFinder
         protected override void OnAppearing()
         {
             MainMap mainMap = new MainMap();
-            mainMap.CreateMainMapAsync();
-            Navigation.PushAsync(mainMap);
+            Navigation.PushAsync(mainMap); 
         }
 
         private async Task Navigate()
         {
-            Navigation navigation = new Navigation();
+            Navigator navigation = new Navigator();
             await navigation.NavigateToBuilding25b();
         }
 

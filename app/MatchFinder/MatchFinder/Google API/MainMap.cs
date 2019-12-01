@@ -12,7 +12,7 @@ namespace MatchFinder.GoogleAPI
 
         public MainMap()
         {
-
+            CreateMainMapAsync(); // map with current location
         }
 
         public async System.Threading.Tasks.Task CreateMainMapAsync()
@@ -27,10 +27,10 @@ namespace MatchFinder.GoogleAPI
                 MapSpan.FromCenterAndRadius
                 (
                     new Position(latitude, longitude),
-                    Distance.FromKilometers(50))
+                    Distance.FromKilometers(150)) // map scale
                 );
 
-            // pin 
+            // current location pin 
             var pin = new Pin()
             {
                 Position = new Position(latitude, longitude),
@@ -39,6 +39,8 @@ namespace MatchFinder.GoogleAPI
             mainMap.Pins.Add(pin);
 
             this.Content = mainMap;
+            // ADD PINS WITH STADIUMS:
+            LoadPinsFromPinManager();
         }
 
         public void AddPin(double latitude, double longitude, string pinLabel)
@@ -59,8 +61,10 @@ namespace MatchFinder.GoogleAPI
             this.Content = mainMap;
         }
 
-        public void LoadPinsFromPinManager()
+        private void LoadPinsFromPinManager()
         {
+            this.pinManager.LoadMainMapPins();
+
             foreach (var pin in pinManager.pinList)
             {
                 mainMap.Pins.Add(pin);
