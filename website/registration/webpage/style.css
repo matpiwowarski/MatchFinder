@@ -17,8 +17,12 @@
   padding: 15px; /* Some padding */
   border-radius: 10px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
+  scroll-behavior: smooth;
 }
 
 #myBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
+}
+html {
+  scroll-behavior: smooth;
 }

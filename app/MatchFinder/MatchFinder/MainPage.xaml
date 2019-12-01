@@ -11,9 +11,9 @@ Put colors here
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d" x:Class="MatchFinder.MainPage">
+
     <StackLayout>
         <Label x:Name="MainLabel" Text="Welcome to MatchFinder" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-        <maps:Map x:Name="map" />
 
     </StackLayout>
 </ContentPage>
