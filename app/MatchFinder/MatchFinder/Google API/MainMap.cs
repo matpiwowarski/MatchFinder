@@ -6,8 +6,9 @@ namespace MatchFinder.GoogleAPI
 {
     public class MainMap: ContentPage
     {
-        Locationer locationer = new Locationer();
-        Map mainMap = new Map();
+        private Locationer locationer = new Locationer();
+        private PinManager pinManager = new PinManager();
+        private Map mainMap = new Map();
 
         public MainMap()
         {
@@ -45,10 +46,25 @@ namespace MatchFinder.GoogleAPI
             var pin = new Pin()
             {
                 Position = new Position(latitude, longitude),
-                Label = pinLabel
+                Label = pinLabel,
+                Type = PinType.Place
             };
-            mainMap.Pins.Add(pin);
 
+            this.AddPin(pin);
+        }
+
+        public void AddPin(Pin pin)
+        {
+            mainMap.Pins.Add(pin);
+            this.Content = mainMap;
+        }
+
+        public void LoadPinsFromPinManager()
+        {
+            foreach (var pin in pinManager.pinList)
+            {
+                mainMap.Pins.Add(pin);
+            }
             this.Content = mainMap;
         }
     }
