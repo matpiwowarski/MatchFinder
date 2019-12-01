@@ -17,11 +17,18 @@ if (isset($_POST['reg_user'])) {
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
+
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) { array_push($errors, "Username is required"); }
+  // \w is responsible for 'word character'
+  else if (!preg_match('/^[\w]{3,19}$/', $username)){ array_push($errors, "Username must have number of characters beetwen
+     4 and 20 and can contain only numbers, letters and '_' symbol"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
-  if (empty($password_1)) { array_push($errors, "Password is required"); }
+  if (empty($password_1)) { array_push($errors, "Password is required"); }  
+  // \S is responsible for no space character
+  if (!preg_match('/^[\S]{5,19}$/', $password_1)){ array_push($errors, "Password must have number of characters beetwen
+    6 and 20 and can not contain spaces"); }
   if ($password_1 != $password_2) {
 	array_push($errors, "The two passwords do not match");
   }
