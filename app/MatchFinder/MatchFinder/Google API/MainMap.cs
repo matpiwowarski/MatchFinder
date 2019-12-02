@@ -27,7 +27,7 @@ namespace MatchFinder.GoogleAPI
                 MapSpan.FromCenterAndRadius
                 (
                     new Position(latitude, longitude),
-                    Distance.FromKilometers(150)) // map scale
+                    Distance.FromKilometers(50)) // map scale
                 );
 
             // current location pin 
