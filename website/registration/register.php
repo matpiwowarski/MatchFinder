@@ -2,14 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Registration system PHP and MySQL</title>
+  <title>Match Finder</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <div class="header">
   	<h2>Register</h2>
   </div>
-	
   <form method="post" action="register.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">

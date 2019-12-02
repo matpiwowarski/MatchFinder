@@ -7,7 +7,7 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('serwer1971603.home.pl', '31778368_registration', '73EYVbu1R', '31778368_registration');
+$db = mysqli_connect('serwer1971603.home.pl', '31778368_registration', 'tooeasyteam', '31778368_registration');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -20,19 +20,19 @@ if (isset($_POST['reg_user'])) {
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
-  if (empty($username)) { array_push($errors, "Username is required"); }
+  if (empty($username)) { array_push($errors, "Username is required."); }
   // \w is responsible for 'word character'
   else if (!preg_match('/^[\w]{3,19}$/', $username)){ array_push($errors, "Username must have number of characters beetwen
-     4 and 20 and can contain only numbers, letters and '_' symbol"); }
+     4 and 20 and can contain only numbers, letters and '_' symbol."); }
   if (empty($email)) { array_push($errors, "Email is required"); }
   else if (!preg_match('/^([\S]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/', $email))
-  { array_push($errors, "Email address is incorrect"); }
-  if (empty($password_1)) { array_push($errors, "Password is required"); }  
+  { array_push($errors, "Email address is incorrect."); }
+  if (empty($password_1)) { array_push($errors, "Password is required."); }  
   // \S is responsible for no space character
   else if (!preg_match('/^[\S]{5,19}$/', $password_1)){ array_push($errors, "Password must have number of characters beetwen
-    6 and 20 and can not contain spaces"); }
+    6 and 20 and can not contain spaces."); }
   if ($password_1 != $password_2) {
-	array_push($errors, "The two passwords do not match");
+	array_push($errors, "The two passwords do not match.");
   }
 
   // first check the database to make sure 
@@ -43,11 +43,11 @@ if (isset($_POST['reg_user'])) {
   
   if ($user) { // if user exists
     if ($user['username'] === $username) {
-      array_push($errors, "Username already exists");
+      array_push($errors, "Username already exists.");
     }
 
     if ($user['email'] === $email) {
-      array_push($errors, "email already exists");
+      array_push($errors, "Email already exists.");
     }
   }
 
@@ -59,7 +59,7 @@ if (isset($_POST['reg_user'])) {
   			  VALUES('$username', '$email', '$password')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
-  	$_SESSION['success'] = "You are now logged in";
+  	$_SESSION['success'] = "You are now logged in.";
   	header('location: index.php');
   }
 }
@@ -70,10 +70,10 @@ if (isset($_POST['login_user'])) {
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
   if (empty($username)) {
-  	array_push($errors, "Username is required");
+  	array_push($errors, "Username is required.");
   }
   if (empty($password)) {
-  	array_push($errors, "Password is required");
+  	array_push($errors, "Password is required.");
   }
 
   if (count($errors) == 0) {
@@ -82,10 +82,10 @@ if (isset($_POST['login_user'])) {
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['username'] = $username;
-  	  $_SESSION['success'] = "You are now logged in";
+  	  $_SESSION['success'] = "You are now logged in.";
   	  header('location: index.php');
   	}else {
-  		array_push($errors, "Wrong username/password combination");
+  		array_push($errors, "Wrong username/password combination.");
   	}
   }
 }
