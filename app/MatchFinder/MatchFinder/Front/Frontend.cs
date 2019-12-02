@@ -1,4 +1,5 @@
 ﻿using System;
+using MatchFinder.GoogleAPI;
 using Xamarin.Forms;
 
 namespace MatchFinder
@@ -10,6 +11,7 @@ namespace MatchFinder
 
         private Label mainLabel = new Label();
         public Label MainLabel { get => mainLabel; set => mainLabel = value; }
+        public MainMap mainMap = new MainMap();
 
         static Frontend() { }
         private Frontend() { }

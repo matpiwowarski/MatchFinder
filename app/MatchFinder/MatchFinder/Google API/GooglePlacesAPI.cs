@@ -21,11 +21,11 @@ namespace MatchFinder.GoogleAPI
             request.Key = this.GoogleAPIKey;
             request.Input = placeName;
 
-            // response for place
-            PlacesFindSearchResponse response = await GooglePlaces.FindSearch.QueryAsync(request);
-
             try
             {
+                // response for place
+                PlacesFindSearchResponse response = await GooglePlaces.FindSearch.QueryAsync(request);
+
                 System.Collections.Generic.IEnumerable<Candidate> list = response.Candidates;
                 System.Collections.Generic.IEnumerator<Candidate> Enumerator = list.GetEnumerator();
                 Candidate candidate = new Candidate();
@@ -45,14 +45,24 @@ namespace MatchFinder.GoogleAPI
         public async System.Threading.Tasks.Task<string> GetPlaceDetails(string id)
         {
             string details = String.Empty;
+
             // request for details
             PlacesDetailsRequest detailsRequest = new PlacesDetailsRequest();
             detailsRequest.Key = this.GoogleAPIKey;
             detailsRequest.PlaceId = id;
 
-            // response for details
-            var detailsResponse = await GooglePlaces.Details.QueryAsync(detailsRequest);
-            details = detailsResponse.RawJson;
+            try
+            {
+                // response for details
+                var detailsResponse = await GooglePlaces.Details.QueryAsync(detailsRequest);
+                details = detailsResponse.RawJson;
+            }
+            catch(Exception e)
+            {
+                string message = e.Message;
+            }
+
+
             return details;
         }
     }
