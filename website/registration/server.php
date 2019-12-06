@@ -7,7 +7,7 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('serwer1971603.home.pl', '31778368_registration', 'tooeasyteam', '31778368_registration');
+$db = mysqli_connect('serwer1971603.home.pl', '31778368_matchfinderdb', 'tooeasyteam', '31778368_matchfinderdb');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -37,7 +37,7 @@ if (isset($_POST['reg_user'])) {
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
+  $user_check_query = "SELECT * FROM User WHERE username='$username' OR email='$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
@@ -55,8 +55,8 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO users (username, email, password) 
-  			  VALUES('$username', '$email', '$password')";
+  	$query = "INSERT INTO `User` (`id`, `email`, `password`, `nr_of_games`, `username`, `name`, `surname`, `City_id`, `Country_id`, `street`, `house_nr`, `create_time`)
+     VALUES (NULL, '$email', '$password', '0', '$username', NULL, NULL, NULL, NULL, NULL, NULL, CURRENT_TIMESTAMP);";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in.";
@@ -78,7 +78,7 @@ if (isset($_POST['login_user'])) {
 
   if (count($errors) == 0) {
   	$password = md5($password);
-  	$query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+  	$query = "SELECT * FROM User WHERE username='$username' AND password='$password'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['username'] = $username;

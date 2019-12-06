@@ -7,20 +7,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
--- Schema mfdb
--- -----------------------------------------------------
--- drop database mfdb;
--- -----------------------------------------------------
--- Schema mfdb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mfdb` DEFAULT CHARACTER SET utf8 ;
-USE `mfdb` ;
+CREATE database  `31778368_matchfinderdb` DEFAULT CHARACTER SET utf8 ;
+USE `31778368_matchfinderdb` ;
 
 -- -----------------------------------------------------
--- Table `mfdb`.`Country`
+-- Table `31778368_matchfinderdb`.`Country`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mfdb`.`Country` (
+CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Country` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -48,24 +41,20 @@ CREATE TRIGGER ucheckCountryName BEFORE update ON Country
 delimiter ;
 
 -- -----------------------------------------------------
--- Table `mfdb`.`City`
+-- Table `31778368_matchfinderdb`.`City`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mfdb`.`City` (
+CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`City` (
   `id` INT NOT NULL,
   `Country_id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_City_Country1_idx` (`Country_id` ASC) VISIBLE,
+  INDEX `fk_City_Country1_idx` (`Country_id` ASC) ,
   CONSTRAINT `fk_City_Country1`
     FOREIGN KEY (`Country_id`)
-    REFERENCES `mfdb`.`Country` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`Country` (`id`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-INSERT into country(id, name) values (1, 'elo');
-INSERT into city(id, country_id, name) values (1, 1, 'elo');
-
 
 delimiter //
 CREATE TRIGGER checkCityName BEFORE insert ON City
@@ -88,9 +77,9 @@ CREATE TRIGGER ucheckCityName BEFORE update ON City
 delimiter ;
 
 -- -----------------------------------------------------
--- Table `mfdb`.`Stadium`
+-- Table `31778368_matchfinderdb`.`Stadium`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mfdb`.`Stadium` (
+CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Stadium` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `City_id` INT NOT NULL,
   `street` VARCHAR(45) NOT NULL,
@@ -98,11 +87,11 @@ CREATE TABLE IF NOT EXISTS `mfdb`.`Stadium` (
   `name` VARCHAR(45) NULL,
   `capacity` INT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `fk_Stadium_City_idx` (`City_id` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
+  INDEX `fk_Stadium_City_idx` (`City_id` ASC) ,
   CONSTRAINT `fk_Stadium_City`
     FOREIGN KEY (`City_id`)
-    REFERENCES `mfdb`.`City` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`City` (`id`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -154,9 +143,9 @@ CREATE TRIGGER ucheckStadiumCapacity BEFORE Update ON Stadium
        END;//
 delimiter ;
 -- -----------------------------------------------------
--- Table `mfdb`.`Team_currentForm`
+-- Table `31778368_matchfinderdb`.`Team_currentForm`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mfdb`.`Team_currentForm` (
+CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Team_currentForm` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `position` INT NULL,
   `ranking` INT NULL,
@@ -174,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `mfdb`.`Team_currentForm` (
 ENGINE = InnoDB;
 
 delimiter //
-CREATE TRIGGER checkTeamPosition BEFORE insert ON Team_currentform
+CREATE TRIGGER checkTeamPosition BEFORE insert ON Team_currentForm
        FOR EACH ROW
        BEGIN
            IF NEW.position < 1 THEN
@@ -186,7 +175,7 @@ CREATE TRIGGER checkTeamPosition BEFORE insert ON Team_currentform
 delimiter ;
 
 delimiter //
-CREATE TRIGGER ucheckTeamPosition BEFORE Update ON Team_currentform
+CREATE TRIGGER ucheckTeamPosition BEFORE Update ON Team_currentForm
        FOR EACH ROW
        BEGIN
            IF NEW.position < 1 THEN
@@ -199,7 +188,7 @@ delimiter ;
 
 
 delimiter //
-CREATE TRIGGER checkTeamRank BEFORE insert ON Team_currentform
+CREATE TRIGGER checkTeamRank BEFORE insert ON Team_currentForm
        FOR EACH ROW
        BEGIN
            IF NEW.ranking < 1 THEN
@@ -211,7 +200,7 @@ CREATE TRIGGER checkTeamRank BEFORE insert ON Team_currentform
 delimiter ;
 
 delimiter //
-CREATE TRIGGER ucheckTeamRank BEFORE Update ON Team_currentform
+CREATE TRIGGER ucheckTeamRank BEFORE Update ON Team_currentForm
        FOR EACH ROW
        BEGIN
            IF NEW.ranking < 1 THEN
@@ -224,9 +213,9 @@ delimiter ;
 
 
 -- -----------------------------------------------------
--- Table `mfdb`.`Team_achievements`
+-- Table `31778368_matchfinderdb`.`Team_achievements`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mfdb`.`Team_achievements` (
+CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Team_achievements` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nr_of_championship` INT NULL,
   `years_of_championship` VARCHAR(45) NULL,
@@ -365,18 +354,18 @@ CREATE TRIGGER ucheckELNr BEFORE Update ON Team_achievements
        END;//
 delimiter ;
 -- -----------------------------------------------------
--- Table `mfdb`.`League`
+-- Table `31778368_matchfinderdb`.`League`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mfdb`.`League` (
+CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`League` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Country_id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `tier` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_League_Country1_idx` (`Country_id` ASC) VISIBLE,
+  INDEX `fk_League_Country1_idx` (`Country_id` ASC) ,
   CONSTRAINT `fk_League_Country1`
     FOREIGN KEY (`Country_id`)
-    REFERENCES `mfdb`.`Country` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`Country` (`id`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -427,9 +416,9 @@ CREATE TRIGGER ucheckLeagueName BEFORE update ON League
 delimiter ;
 
 -- -----------------------------------------------------
--- Table `mfdb`.`Team`
+-- Table `31778368_matchfinderdb`.`Team`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mfdb`.`Team` (
+CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Team` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Stadium_id` INT NOT NULL,
   `League_id` INT NOT NULL,
@@ -439,28 +428,28 @@ CREATE TABLE IF NOT EXISTS `mfdb`.`Team` (
   `coach_name` VARCHAR(45) NULL,
   `logo_image` LONGBLOB NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Team_Team_currentForm1_idx` (`Team_currentForm_id` ASC) VISIBLE,
-  INDEX `fk_Team_Stadium1_idx` (`Stadium_id` ASC) VISIBLE,
-  INDEX `fk_Team_Team_achievements1_idx` (`Team_achievements_id` ASC) VISIBLE,
-  INDEX `fk_Team_League1_idx` (`League_id` ASC) VISIBLE,
+  INDEX `fk_Team_Team_currentForm1_idx` (`Team_currentForm_id` ASC) ,
+  INDEX `fk_Team_Stadium1_idx` (`Stadium_id` ASC) ,
+  INDEX `fk_Team_Team_achievements1_idx` (`Team_achievements_id` ASC) ,
+  INDEX `fk_Team_League1_idx` (`League_id` ASC) ,
   CONSTRAINT `fk_Team_Team_currentForm1`
     FOREIGN KEY (`Team_currentForm_id`)
-    REFERENCES `mfdb`.`Team_currentForm` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`Team_currentForm` (`id`)
     ON DELETE SET NULL
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Team_Stadium1`
     FOREIGN KEY (`Stadium_id`)
-    REFERENCES `mfdb`.`Stadium` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`Stadium` (`id`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Team_Team_achievements1`
     FOREIGN KEY (`Team_achievements_id`)
-    REFERENCES `mfdb`.`Team_achievements` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`Team_achievements` (`id`)
     ON DELETE SET NULL
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Team_League1`
     FOREIGN KEY (`League_id`)
-    REFERENCES `mfdb`.`League` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`League` (`id`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -486,9 +475,9 @@ CREATE TRIGGER ucheckTeamName BEFORE update ON Team
 delimiter ;
 
 -- -----------------------------------------------------
--- Table `mfdb`.`Game`
+-- Table `31778368_matchfinderdb`.`Game`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mfdb`.`Game` (
+CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Game` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Stadium_id` INT NOT NULL,
   `League_id` INT NOT NULL,
@@ -498,36 +487,36 @@ CREATE TABLE IF NOT EXISTS `mfdb`.`Game` (
   `home_score` INT NULL DEFAULT 0,
   `away_score` INT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
-  INDEX `fk_Game_League1_idx` (`League_id` ASC) VISIBLE,
-  INDEX `fk_Game_Team1_idx` (`Team_home_id` ASC) VISIBLE,
-  INDEX `fk_Game_Team2_idx` (`Team_away_id` ASC) VISIBLE,
-  INDEX `fk_Game_Stadium1_idx` (`Stadium_id` ASC) VISIBLE,
+  INDEX `fk_Game_League1_idx` (`League_id` ASC) ,
+  INDEX `fk_Game_Team1_idx` (`Team_home_id` ASC) ,
+  INDEX `fk_Game_Team2_idx` (`Team_away_id` ASC) ,
+  INDEX `fk_Game_Stadium1_idx` (`Stadium_id` ASC) ,
   CONSTRAINT `fk_Game_League1`
     FOREIGN KEY (`League_id`)
-    REFERENCES `mfdb`.`League` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`League` (`id`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Game_Team1`
     FOREIGN KEY (`Team_home_id`)
-    REFERENCES `mfdb`.`Team` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`Team` (`id`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Game_Team2`
     FOREIGN KEY (`Team_away_id`)
-    REFERENCES `mfdb`.`Team` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`Team` (`id`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Game_Stadium1`
     FOREIGN KEY (`Stadium_id`)
-    REFERENCES `mfdb`.`Stadium` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`Stadium` (`id`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `mfdb`.`User`
+-- Table `31778368_matchfinderdb`.`User`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mfdb`.`User` (
+CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`User` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(32) NOT NULL,
@@ -541,16 +530,16 @@ CREATE TABLE IF NOT EXISTS `mfdb`.`User` (
   `house_nr` INT NULL,
   `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  INDEX `fk_User_City1_idx` (`City_id` ASC) VISIBLE,
-  INDEX `fk_User_Country1_idx` (`Country_id` ASC) VISIBLE,
+  INDEX `fk_User_City1_idx` (`City_id` ASC) ,
+  INDEX `fk_User_Country1_idx` (`Country_id` ASC) ,
   CONSTRAINT `fk_User_City1`
     FOREIGN KEY (`City_id`)
-    REFERENCES `mfdb`.`City` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`City` (`id`)
     ON DELETE SET NULL
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_User_Country1`
     FOREIGN KEY (`Country_id`)
-    REFERENCES `mfdb`.`Country` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`Country` (`id`)
     ON DELETE SET NULL
     ON UPDATE NO ACTION);
 
@@ -617,22 +606,22 @@ CREATE TRIGGER ucheckUserNrOfGames BEFORE Update ON User
        END;//
 delimiter ;
 -- -----------------------------------------------------
--- Table `mfdb`.`Users_games`
+-- Table `31778368_matchfinderdb`.`Users_games`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mfdb`.`Users_games` (
+CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Users_games` (
   `User_id` INT NOT NULL,
   `Game_id` INT NOT NULL,
   PRIMARY KEY (`User_id`, `Game_id`),
-  INDEX `fk_User_has_Game_Game1_idx` (`Game_id` ASC) VISIBLE,
-  INDEX `fk_User_has_Game_User1_idx` (`User_id` ASC) VISIBLE,
+  INDEX `fk_User_has_Game_Game1_idx` (`Game_id` ASC) ,
+  INDEX `fk_User_has_Game_User1_idx` (`User_id` ASC) ,
   CONSTRAINT `fk_User_has_Game_User1`
     FOREIGN KEY (`User_id`)
-    REFERENCES `mfdb`.`User` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`User` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_User_has_Game_Game1`
     FOREIGN KEY (`Game_id`)
-    REFERENCES `mfdb`.`Game` (`id`)
+    REFERENCES `31778368_matchfinderdb`.`Game` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
