@@ -1,11 +1,4 @@
-﻿
-<!--Carolina
-
-Put colors here
-
--->
-
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -13,7 +6,67 @@ Put colors here
              mc:Ignorable="d" x:Class="MatchFinder.MainPage">
 
     <StackLayout>
-        <Label x:Name="MainLabel" Text="Welcome to MatchFinder" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            <Image Source="Logo_Name.png" HeightRequest="94" WidthRequest="274"/>
+        
+            <Label Text="TEAM 1" 
+                TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" TranslationX="0" ScaleX="1" ScaleY="1" RotationX="0" Margin="30,0,0,0" AnchorX="0"/>
+            <Label Text="TEAM 2"
+                    TextColor="#3487CB" Margin="240,-48,0,0" FontAttributes="Bold" FontFamily="Lato" FontSize="30"/>
+            <Label Text="VS"
+                    TextColor="#F95F62" FontFamily="Lato" FontSize="30" FontAttributes="Bold" Margin="175,-48,0,0"/>
+            <Label Text="xth Place"
+                    TextColor="#343F4B" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Margin="49,0,0,0"/>
+            <Label Text="yth Place"
+                    TextColor="#343F4B" Margin="259,-26,0,0" FontAttributes="Bold" FontFamily="Lato" FontSize="15"/>
+            <!--LEFT SIDE-->
+            <BoxView Color="#5B8813"
+                WidthRequest="15"
+                HeightRequest="15"
+                 HorizontalOptions="Center" Margin="0,0,300,0"/>
+            <BoxView Color="#5B8813"
+                WidthRequest="15"
+                HeightRequest="15"
+                 HorizontalOptions="Center" Margin="0,-21,260,0"/>
+            <BoxView Color="#6E6E6D"
+                WidthRequest="15"
+                HeightRequest="15"
+                 HorizontalOptions="Center" Margin="0,-21,220,0"/>
+            <BoxView Color="#6E6E6D"
+                WidthRequest="15"
+                HeightRequest="15"
+                HorizontalOptions="Center" Margin="0,-21,180,0"/>
+            <BoxView Color="#F6543B"
+                WidthRequest="15"
+                HeightRequest="15"
+                 HorizontalOptions="Center" Margin="0,-21,140,0"/>
+            <!--RIGHT SIDE-->
+            <BoxView Color="#5B8813"
+                WidthRequest="15"
+                HeightRequest="15"
+                 HorizontalOptions="Center" Margin="130,-21,0,0"/>
+            <BoxView Color="#5B8813"
+                WidthRequest="15"
+                HeightRequest="15"
+                 HorizontalOptions="Center" Margin="170,-21,0,0"/>
+            <BoxView Color="#6E6E6D"
+                WidthRequest="15"
+                HeightRequest="15"
+                 HorizontalOptions="Center" Margin="210,-21,0,0"/>
+            <BoxView Color="#6E6E6D"
+                WidthRequest="15"
+                HeightRequest="15"
+                HorizontalOptions="Center" Margin="250,-21,0,0"/>
+            <BoxView Color="#F6543B"
+                WidthRequest="15"
+                HeightRequest="15"
+                 HorizontalOptions="Center" Margin="290,-21,0,0"/>
+            <Label Text="Last 5 matchs"
+                   TextColor="#5A6978" FontFamily="Lato" FontSize="Default" Margin="43,0,0,0"/>
+            <Label Text="Last 5 matchs"
+                   TextColor="#5A6978" FontFamily="Lato" FontSize="Default" Margin="260,-22,0,0"/>
 
+            <!-- MARGIN: LEFT, TOP, RIGHT, BOTTOM -->
+            <Grid x:Name="MapGrid" HeightRequest="400" Margin="5, 0, 5, 5"> </Grid> 
     </StackLayout>
+
 </ContentPage>
