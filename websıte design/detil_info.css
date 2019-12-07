@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cabin', sans-serif;
+}
+
+/* HEADER STYLE */
+
+header {
+    background-color: grey;
+    width: 100%;
+    height: 50px;
+}
+
+#nav {
+    height: 100%;
+}
+
+header ul {
+    height: 100%;
+
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.nav-li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-li:hover {
+    background-color:#3383FF;
+}
+
+.nav-li:hover a {
+    color: white;
+}
+
+header ul a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+.header {
+    padding: 10px;
+    text-align: center;
+    background:#42A5F5;
+    color:  rgb(34, 32, 32);
+    font-size: 20px;
+}
+    /* body */
+ .boxe1 {
+     text-align: center;
+width: 1250px;
+height: 200px;
+margin-top: 100px;
+margin-left:50px;
+ margin-right:50px;
+ border:5px solid black;
+    }
+    .boxe2 {
+        text-align: center;
+   width: 1250px;
+   height: 200px;
+   margin-top: 90px;
+   margin-left:50px;
+    margin-right:50px;
+    border:5px solid black;
+       }
+       
+       footer {
+        display: flex;
+        align-items: center;
+    
+    
+    }
+    footer ul {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    footer .nav-li{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin: 5px;
+    }
+    .instagram{
+        width: 60px;
+        margin-left: 20px;
+    
+    }
+    .facebook{
+        width: 60px;
+        margin-left: 20px;
+    
+    }
+    .gmail{
+        width: 90px;
+        margin-left: 10px;
+        margin-right: 150px
+    }
+  
