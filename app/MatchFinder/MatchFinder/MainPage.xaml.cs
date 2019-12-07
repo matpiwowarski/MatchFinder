@@ -16,9 +16,9 @@ namespace MatchFinder
         {
             InitializeComponent();
             // LOAD TOOLS TO FRONTEND OBJECT
-            frontend.LoadMainLabel(MainLabel);
+            //frontend.LoadMainLabel(MainLabel);
             // CHANGE FRONTEND
-            controller.ChangeMainLabel("MATCHFINDER");
+            //controller.ChangeMainLabel("MATCHFINDER");
             // GOOGLE PLACES
             //controller.CheckPlaceIDAsync("Maribor");
             //controller.CheckPlaceDetailsAsync("ChIJUSBA6qZ3b0cRIqoNvJCvUxA");
@@ -28,7 +28,7 @@ namespace MatchFinder
 
         protected override void OnAppearing()
         {
-            Navigation.PushAsync(controller.GetMainMap());
+            this.MapGrid.Children.Add(controller.GetMainMap().Content);
         }
     }
 }
