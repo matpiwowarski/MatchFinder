@@ -7,7 +7,14 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-CREATE database  `31778368_matchfinderdb` DEFAULT CHARACTER SET utf8 ;
+-- -----------------------------------------------------
+-- Schema 31778368_matchfinderdb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema 31778368_matchfinderdb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `31778368_matchfinderdb` DEFAULT CHARACTER SET utf8 ;
 USE `31778368_matchfinderdb` ;
 
 -- -----------------------------------------------------
@@ -52,9 +59,10 @@ CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`City` (
   CONSTRAINT `fk_City_Country1`
     FOREIGN KEY (`Country_id`)
     REFERENCES `31778368_matchfinderdb`.`Country` (`id`)
-    ON DELETE RESTRICT
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
 
 delimiter //
 CREATE TRIGGER checkCityName BEFORE insert ON City
@@ -92,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Stadium` (
   CONSTRAINT `fk_Stadium_City`
     FOREIGN KEY (`City_id`)
     REFERENCES `31778368_matchfinderdb`.`City` (`id`)
-    ON DELETE RESTRICT
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -117,7 +125,6 @@ CREATE TRIGGER ucheckStadiumNr BEFORE Update ON Stadium
            END IF;
        END;//
 delimiter ;
-
 
 delimiter //
 CREATE TRIGGER checkStadiumCapacity BEFORE Insert ON Stadium
@@ -148,22 +155,19 @@ delimiter ;
 CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Team_currentForm` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `position` INT NULL,
-  `ranking` INT NULL,
+  `rank` INT NULL,
   `5th_last_game` ENUM('W', 'D', 'L') NULL,
   `4th_last_game` ENUM('W', 'D', 'L') NULL,
   `3rd_last_game` ENUM('W', 'D', 'L') NULL,
   `2nd_last_game` ENUM('W', 'D', 'L') NULL,
   `last_game` ENUM('W', 'D', 'L') NULL,
-  `points` INT NULL,
-  `goalsScored` INT NULL,
-  `goalsAgainst` INT NULL,
-  `goalsDifference` INT NULL,
-  `cleanSheets` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+drop trigger ucheckTeamRank;
+
 delimiter //
-CREATE TRIGGER checkTeamPosition BEFORE insert ON Team_currentForm
+CREATE TRIGGER checkTeamPosition BEFORE insert ON Team_currentform
        FOR EACH ROW
        BEGIN
            IF NEW.position < 1 THEN
@@ -175,7 +179,7 @@ CREATE TRIGGER checkTeamPosition BEFORE insert ON Team_currentForm
 delimiter ;
 
 delimiter //
-CREATE TRIGGER ucheckTeamPosition BEFORE Update ON Team_currentForm
+CREATE TRIGGER ucheckTeamPosition BEFORE Update ON Team_currentform
        FOR EACH ROW
        BEGIN
            IF NEW.position < 1 THEN
@@ -188,24 +192,24 @@ delimiter ;
 
 
 delimiter //
-CREATE TRIGGER checkTeamRank BEFORE insert ON Team_currentForm
+CREATE TRIGGER checkTeamRank BEFORE insert ON Team_currentform
        FOR EACH ROW
        BEGIN
-           IF NEW.ranking < 1 THEN
+           IF NEW.rank < 1 THEN
                	SIGNAL sqlstate '45001' set message_text = "You can't do it!";
-               ELSEIF new.ranking>10000000 THEN
+               ELSEIF new.rank>10000000 THEN
 					SIGNAL sqlstate '45001' set message_text = "You can't do it!";
            END IF;
        END;//
 delimiter ;
 
 delimiter //
-CREATE TRIGGER ucheckTeamRank BEFORE Update ON Team_currentForm
+CREATE TRIGGER ucheckTeamRank BEFORE Update ON Team_currentform
        FOR EACH ROW
        BEGIN
-           IF NEW.ranking < 1 THEN
+           IF NEW.rank < 1 THEN
                	SIGNAL sqlstate '45001' set message_text = "You can't do it!";
-               ELSEIF new.ranking>10000000 THEN
+               ELSEIF new.rank>10000000 THEN
 					SIGNAL sqlstate '45001' set message_text = "You can't do it!";
            END IF;
        END;//
@@ -272,6 +276,27 @@ CREATE TRIGGER ucheckCupsNr BEFORE Update ON Team_achievements
            END IF;
        END;//
 delimiter ;
+
+delimiter //
+CREATE TRIGGER checkLesserCupsNr BEFORE Insert ON Team_achievements
+       FOR EACH ROW
+       BEGIN
+           IF NEW.nr_of_lesser_cups_win < 0 THEN
+               SET NEW.nr_of_lesser_cups_win = 0;
+           END IF;
+       END;//
+delimiter ;
+
+delimiter //
+CREATE TRIGGER ucheckLesserCupsNr BEFORE Update ON Team_achievements
+       FOR EACH ROW
+       BEGIN
+           IF NEW.nr_of_lesser_cups_win < 0 THEN
+               SET NEW.nr_of_lesser_cups_win = 0;
+           END IF;
+       END;//
+delimiter ;
+
 
 delimiter //
 CREATE TRIGGER checkLesserCupsNr BEFORE Insert ON Team_achievements
@@ -366,7 +391,7 @@ CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`League` (
   CONSTRAINT `fk_League_Country1`
     FOREIGN KEY (`Country_id`)
     REFERENCES `31778368_matchfinderdb`.`Country` (`id`)
-    ON DELETE RESTRICT
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -425,7 +450,6 @@ CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Team` (
   `Team_currentForm_id` INT NULL,
   `Team_achievements_id` INT NULL,
   `name` VARCHAR(45) NOT NULL,
-  `coach_name` VARCHAR(45) NULL,
   `logo_image` LONGBLOB NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Team_Team_currentForm1_idx` (`Team_currentForm_id` ASC) ,
@@ -435,22 +459,22 @@ CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Team` (
   CONSTRAINT `fk_Team_Team_currentForm1`
     FOREIGN KEY (`Team_currentForm_id`)
     REFERENCES `31778368_matchfinderdb`.`Team_currentForm` (`id`)
-    ON DELETE SET NULL
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Team_Stadium1`
     FOREIGN KEY (`Stadium_id`)
     REFERENCES `31778368_matchfinderdb`.`Stadium` (`id`)
-    ON DELETE RESTRICT
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Team_Team_achievements1`
     FOREIGN KEY (`Team_achievements_id`)
     REFERENCES `31778368_matchfinderdb`.`Team_achievements` (`id`)
-    ON DELETE SET NULL
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Team_League1`
     FOREIGN KEY (`League_id`)
     REFERENCES `31778368_matchfinderdb`.`League` (`id`)
-    ON DELETE RESTRICT
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -494,22 +518,22 @@ CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Game` (
   CONSTRAINT `fk_Game_League1`
     FOREIGN KEY (`League_id`)
     REFERENCES `31778368_matchfinderdb`.`League` (`id`)
-    ON DELETE RESTRICT
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Game_Team1`
     FOREIGN KEY (`Team_home_id`)
     REFERENCES `31778368_matchfinderdb`.`Team` (`id`)
-    ON DELETE RESTRICT
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Game_Team2`
     FOREIGN KEY (`Team_away_id`)
     REFERENCES `31778368_matchfinderdb`.`Team` (`id`)
-    ON DELETE RESTRICT
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Game_Stadium1`
     FOREIGN KEY (`Stadium_id`)
     REFERENCES `31778368_matchfinderdb`.`Stadium` (`id`)
-    ON DELETE RESTRICT
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
@@ -535,16 +559,16 @@ CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`User` (
   CONSTRAINT `fk_User_City1`
     FOREIGN KEY (`City_id`)
     REFERENCES `31778368_matchfinderdb`.`City` (`id`)
-    ON DELETE SET NULL
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_User_Country1`
     FOREIGN KEY (`Country_id`)
     REFERENCES `31778368_matchfinderdb`.`Country` (`id`)
-    ON DELETE SET NULL
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 delimiter //
-CREATE TRIGGER checkUserEmail BEFORE insert ON User
+CREATE TRIGGER checkUserEmail BEFORE insert ON Email
        FOR EACH ROW
        BEGIN
            IF NEW.email is Null THEN
@@ -624,9 +648,6 @@ CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Users_games` (
     REFERENCES `31778368_matchfinderdb`.`Game` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
-
-
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

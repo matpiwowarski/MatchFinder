@@ -1,53 +1,34 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using MatchFinder.GoogleAPI;
-using Xamarin.Forms.Maps;
 
 namespace MatchFinder
 {
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        Frontend front = Frontend.Instance;
-        Locationer locationer = new Locationer();
-        GooglePlacesAPI PlacesAPI = new GooglePlacesAPI();
         Controller controller = Controller.Instance;
+        Frontend frontend = Frontend.Instance;
 
         public MainPage()
-        { 
-            // API test
-            //CheckPlaceIDAsync("Maribor");
-            //CheckPlaceDetailsAsync("ChIJUSBA6qZ3b0cRIqoNvJCvUxA");
-
+        {
             InitializeComponent();
-
-            // front
-            //front.LoadMainLabel(MainLabel);
-            // main:
-            LoadLocation();
+            // LOAD TOOLS TO FRONTEND OBJECT
+            frontend.LoadMainLabel(MainLabel);
+            // CHANGE FRONTEND
+            controller.ChangeMainLabel("MATCHFINDER");
+            // GOOGLE PLACES
+            //controller.CheckPlaceIDAsync("Maribor");
+            //controller.CheckPlaceDetailsAsync("ChIJUSBA6qZ3b0cRIqoNvJCvUxA");
+            // NAVIGATOR
+            //controller.TestNavigate();
         }
 
-        private async Task CheckPlaceDetailsAsync(string PlaceID)
+        protected override void OnAppearing()
         {
-            var PlaceDetails = await PlacesAPI.GetPlaceDetails(PlaceID);
-        }
-
-        public async Task CheckPlaceIDAsync(string placeName)
-        {
-            var PlaceID = await PlacesAPI.GetPlaceID(placeName);
-        }
-
-        public async Task LoadLocation()
-        {
-            var location = await locationer.GetLocationAsync(); // get location
-            // change label
-            controller.ChangeMainLabel(location.ToString());
+            Navigation.PushAsync(controller.GetMainMap());
         }
     }
 }
