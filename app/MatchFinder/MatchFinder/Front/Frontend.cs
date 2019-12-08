@@ -11,12 +11,19 @@ namespace MatchFinder
         private static readonly Frontend instance = new Frontend();
 
         // MainPage
+        private Label VSLabel = new Label();
         private Label team1 = new Label();
         private Label team2 = new Label();
         private Label teamPlace1 = new Label();
         private Label teamPlace2 = new Label();
-        private List<BoxView> teamForm1 = new List<BoxView>(5);
-        private List<BoxView> teamForm2 = new List<BoxView>(5);
+        private List<BoxView> teamForm1 = new List<BoxView>()
+        {
+            new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
+        };
+        private List<BoxView> teamForm2 = new List<BoxView>()
+        {
+            new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
+        };
 
         public MainMap MainMap = new MainMap();
         // Constructors
@@ -32,6 +39,10 @@ namespace MatchFinder
 
         // Load Methods
 
+        public void LoadVSLabel(Label VS)
+        {
+            this.VSLabel = VS;
+        }
         public void LoadTeamsLabels(Label team1, Label team2)
         {
             this.team1 = team1;
@@ -70,10 +81,24 @@ namespace MatchFinder
             if(teamNumber == 1)
             {
                 this.team1.Text = text;
+
+                int maxLenght = 0;
+                if (this.team1.Text.Length > this.team2.Text.Length)
+                    maxLenght = this.team1.Text.Length;
+                else maxLenght = this.team2.Text.Length;
+
+                CheckLenghtRescaleLabels(this.team1, this.team2, maxLenght);
             }
             else if(teamNumber == 2)
             {
                 this.team2.Text = text;
+
+                int maxLenght = 0;
+                if (this.team1.Text.Length > this.team2.Text.Length)
+                    maxLenght = this.team1.Text.Length;
+                else maxLenght = this.team2.Text.Length;
+
+                CheckLenghtRescaleLabels(this.team1, this.team2, maxLenght);
             }
             else
             {
@@ -84,16 +109,23 @@ namespace MatchFinder
         {
             ChangeTeamLabelText(text1, 1);
             ChangeTeamLabelText(text2, 2);
+
+            int maxLenght = 0;
+            if (text1.Length > text2.Length)
+                maxLenght = text1.Length;
+            else maxLenght = text2.Length;
+
+            CheckLenghtRescaleLabels(this.team1, this.team2, maxLenght);
         }
         public void ChangeTeamPlace(int place, int teamNumber)
         {
             if (teamNumber == 1)
             {
-                this.teamPlace1.Text = CardinalToOrdinalNumber(place) + "Place";
+                this.teamPlace1.Text = CardinalToOrdinalNumber(place) + " Place";
             }
             else if (teamNumber == 2)
             {
-                this.team2.Text = CardinalToOrdinalNumber(place) + "Place";
+                this.teamPlace2.Text = CardinalToOrdinalNumber(place) + " Place";
             }
             else
             {
@@ -124,11 +156,11 @@ namespace MatchFinder
         {
             if (teamNumber == 1)
             {
-                teamForm1[matchIndex] = GetMatchResultBoxView(result);
+                GetMatchResultBoxView(result, teamForm1[matchIndex]);
             }
             else if (teamNumber == 2)
             {
-                teamForm2[matchIndex] = GetMatchResultBoxView(result);
+                GetMatchResultBoxView(result, teamForm2[matchIndex]);
             }
             else
             {
@@ -174,7 +206,10 @@ namespace MatchFinder
 
             int lastDigit = number % (10);
 
-            if(lastDigit == 1)
+            if(number >= 10 && number <= 20) // 11 -> 11th not 11st etc.
+                return  number + "th";
+
+            if (lastDigit == 1)
             {
                 ordinalNumber = number + "st";
             }
@@ -195,31 +230,62 @@ namespace MatchFinder
         }
 
 
-        BoxView GetMatchResultBoxView(char result)
+        void GetMatchResultBoxView(char result, BoxView matchResult)
         {
             // #5B8813 GREEN - WIN (W)
             // #6E6E6D GREY - DRAW (D)
             // #F6543B RED - LOSE (L)
-            BoxView MatchResult = new BoxView();
 
             if(result == 'W')
             {
-                MatchResult.Color = Color.FromHex("#5B8813");
+                matchResult.Color = Color.FromHex("#5B8813");
             }
             else if(result == 'D')
             {
-                MatchResult.Color = Color.FromHex("#6E6E6D");
+                matchResult.Color = Color.FromHex("#6E6E6D");
             }
             else if (result == 'L')
             {
-                MatchResult.Color = Color.FromHex("#F6543B");
+                matchResult.Color = Color.FromHex("#F6543B");
             }
             else
             {
                 throw new Exception("result should be 'W', 'D' or 'L' ");
             }
+        }
 
-            return MatchResult;
+        void CheckLenghtRescaleLabels(Label label1, Label label2, int lenght)
+        {
+            if (lenght > 25)
+            {
+                label1.FontSize = 5;
+                label2.FontSize = 5;
+                VSLabel.FontSize = 5;
+            }
+            else if (lenght > 20)
+            {
+                label1.FontSize = 10;
+                label2.FontSize = 10;
+                VSLabel.FontSize = 10;
+            }
+            else if (lenght > 15)
+            {
+                label1.FontSize = 15;
+                label2.FontSize = 15;
+                VSLabel.FontSize = 15;
+            }
+            else if (lenght > 10)
+            {
+                label1.FontSize = 20;
+                label2.FontSize = 20;
+                VSLabel.FontSize = 20;
+            }
+            else if (lenght > 5)
+            {
+                label1.FontSize = 25;
+                label2.FontSize = 25;
+                VSLabel.FontSize = 25;
+            }
         }
     }   
 
