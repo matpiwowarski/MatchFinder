@@ -26,10 +26,6 @@ namespace MatchFinder
         {
             this.view = view;
         }
-        public void ChangeMainLabel(string text)
-        {
-            this.view.ChangeMainLabelText(text);
-        }
 
         // GOOGLE PLACES
         public async Task CheckPlaceDetailsAsync(string PlaceID)
@@ -50,7 +46,7 @@ namespace MatchFinder
         // MAP
         public MainMap GetMainMap()
         {
-            return view.mainMap;
+            return view.MainMap;
         }
     }
 }
