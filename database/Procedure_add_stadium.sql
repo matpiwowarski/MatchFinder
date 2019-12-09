@@ -36,9 +36,9 @@ Open CityCursor;
 FETCH CityCursor INTO CityID;
 
 INSERT into Stadium(City_id, latitude, longitude, street, number) 
-SELECT City_id, latitude, longitude, street, number
-from city
-where city.name=ciName;
+SELECT CityID, latitude, longitude, street, number
+from City
+where City.name=ciName;
 
 CLOSE CountryCursor;
 CLOSE CityCursor;
