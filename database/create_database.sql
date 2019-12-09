@@ -44,7 +44,7 @@ delimiter ;
 -- Table `31778368_matchfinderdb`.`City`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`City` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL Auto_increment,
   `Country_id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
@@ -95,6 +95,8 @@ CREATE TABLE IF NOT EXISTS `31778368_matchfinderdb`.`Stadium` (
     ON DELETE RESTRICT
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+ALTER TABLE `Stadium` ADD `latitude` DOUBLE NULL DEFAULT NULL AFTER `capacity`, ADD `longitude` DOUBLE NULL DEFAULT NULL AFTER `latitude`;
 
 
 delimiter //
