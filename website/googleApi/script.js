@@ -44,8 +44,21 @@ function createMap () {
       markers.push(new google.maps.Marker({
         map: map,
         title: p.name,
-        position: p.geometry.location
+        position: p.geometry.location,
+        draggable: true,
+        animation: google.maps.Animation.DROP
       }));
+      markers[0].addListener('click', toggleBounce);
+
+      function toggleBounce() {
+        if (markers[0].getAnimation() !== null) {
+          markers[0].setAnimation(null);
+        } else {
+          markers[0].setAnimation(google.maps.Animation.BOUNCE);
+        }
+      }
+
+     
 
       if (p.geometry.viewport)
         bounds.union(p.geometry.viewport);
@@ -54,6 +67,6 @@ function createMap () {
     });
     
     map.fitBounds(bounds);
-    document.getElementById("demo").innerHTML = map.lng();
+    
   });
 }  
