@@ -31,18 +31,5 @@ namespace UITests
         {
             app.Screenshot("First screen.");
         }
-
-        // First test
-        [Test]
-        public void ChangeTeam1LabelTest()
-        {
-            Controller controller = Controller.Instance;
-
-            controller.ChangeTeam1Text("Team1");
-
-            var appResult = app.Query("Team1Label").First(result => result.Text == "Team1");
-
-            Assert.IsTrue(appResult != null, "ChangeTeam1Text doesn't work");
-        }
     }
 }

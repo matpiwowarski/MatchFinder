@@ -21,54 +21,54 @@
         </Grid.ColumnDefinitions>
 
         <Label x:Name="Team1Label" AutomationId="Team1Label" Text="TEAM 1" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
-        <Label x:Name="Team2Label" Text="TEAM 2" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
+        <Label x:Name="Team2Label" AutomationId="Team2Label" Text="TEAM 2" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
         <Label x:Name="VS" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
 
             </Grid>
 
-            <Label x:Name="Team1PlaceLabel" Text="xth Place"
+            <Label x:Name="Team1PlaceLabel" AutomationId="Team1PlaceLabel" Text="xth Place"
                     TextColor="#343F4B" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Margin="49,0,0,0"/>
-            <Label x:Name="Team2PlaceLabel" Text="yth Place"
+            <Label x:Name="Team2PlaceLabel" AutomationId="Team2PlaceLabel" Text="yth Place"
                     TextColor="#343F4B" Margin="259,-26,0,0" FontAttributes="Bold" FontFamily="Lato" FontSize="15"/>
             <!--LEFT SIDE-->
-            <BoxView x:Name="Team1Match1" Color="#5B8813"
+            <BoxView x:Name="Team1Match1" AutomationId="Team1Match1" Color="#5B8813"
                 WidthRequest="15"
                 HeightRequest="15"
                  HorizontalOptions="Center" Margin="0,0,300,0"/>
-            <BoxView x:Name="Team1Match2" Color="#5B8813"
+            <BoxView x:Name="Team1Match2" AutomationId="Team1Match2" Color="#5B8813"
                 WidthRequest="15"
                 HeightRequest="15"
-                 HorizontalOptions="Center" Margin="0,-21,260,0"/>
-            <BoxView x:Name="Team1Match3"  Color="#6E6E6D"
+                 HorizontalOptions="Center"  Margin="0,-21,260,0"/>
+            <BoxView x:Name="Team1Match3" AutomationId="Team1Match3"  Color="#6E6E6D"
                 WidthRequest="15"
                 HeightRequest="15"
                  HorizontalOptions="Center" Margin="0,-21,220,0"/>
-            <BoxView x:Name="Team1Match4" Color="#6E6E6D"
+            <BoxView x:Name="Team1Match4" AutomationId="Team1Match4"  Color="#6E6E6D"
                 WidthRequest="15"
                 HeightRequest="15"
                 HorizontalOptions="Center" Margin="0,-21,180,0"/>
-            <BoxView x:Name="Team1Match5"  Color="#F6543B"
+            <BoxView x:Name="Team1Match5" AutomationId="Team1Match5"  Color="#F6543B"
                 WidthRequest="15"
                 HeightRequest="15"
                  HorizontalOptions="Center" Margin="0,-21,140,0"/>
             <!--RIGHT SIDE-->
-            <BoxView x:Name="Team2Match1" Color="#5B8813"
+            <BoxView x:Name="Team2Match1" AutomationId="Team2Match1"  Color="#5B8813"
                 WidthRequest="15"
                 HeightRequest="15"
                  HorizontalOptions="Center" Margin="130,-21,0,0"/>
-            <BoxView x:Name="Team2Match2" Color="#5B8813"
+            <BoxView x:Name="Team2Match2" AutomationId="Team2Match2" Color="#5B8813"
                 WidthRequest="15"
                 HeightRequest="15"
                  HorizontalOptions="Center" Margin="170,-21,0,0"/>
-            <BoxView x:Name="Team2Match3" Color="#6E6E6D"
+            <BoxView x:Name="Team2Match3" AutomationId="Team2Match3" Color="#6E6E6D"
                 WidthRequest="15"
                 HeightRequest="15"
                  HorizontalOptions="Center" Margin="210,-21,0,0"/>
-            <BoxView x:Name="Team2Match4" Color="#6E6E6D"
+            <BoxView x:Name="Team2Match4" AutomationId="Team2Match4"  Color="#6E6E6D"
                 WidthRequest="15"
                 HeightRequest="15"
                 HorizontalOptions="Center" Margin="250,-21,0,0"/>
-            <BoxView x:Name="Team2Match5" Color="#F6543B"
+            <BoxView x:Name="Team2Match5" AutomationId="Team2Match5"  Color="#F6543B"
                 WidthRequest="15"
                 HeightRequest="15"
                  HorizontalOptions="Center" Margin="290,-21,0,0"/>

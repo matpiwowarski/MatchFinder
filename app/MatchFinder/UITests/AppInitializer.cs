@@ -21,22 +21,24 @@ namespace UITests
             //    #if ENABLE_TEST_CLOUD
             //    Xamarin.Calabash.Start();
             //    #endif
-            if (platform == Platform.Android)
-            {
+            //if (platform == Platform.Android)
+            //{
                 return ConfigureApp
                     .Android
                     // TODO: Update this path to point to your Android app and uncomment the
                     // code if the app is not included in the solution.
-                    //.ApkFile ("../../../Droid/bin/Debug/xamarinforms.apk")
+                    .ApkFile ("../../../Droid/bin/Debug/xamarinforms.apk")
                     .StartApp();
-            }
+ //           }
 
+            /*
             return ConfigureApp
                 .iOS
                 // TODO: Update this path to point to your iOS app and uncomment the
                 // code if the app is not included in the solution.
                 //.AppBundle ("../../../iOS/bin/iPhoneSimulator/Debug/XamarinForms.iOS.app")
                 .StartApp();
+            */
         }
     }
 }
