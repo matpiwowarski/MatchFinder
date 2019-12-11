@@ -21,12 +21,12 @@ namespace MatchFinder
             }
         }
 
-        // FRONT
+        // LOAD FRONT
         public void LoadView(Frontend view)
         {
             this.view = view;
         }
-
+        // CHANGE FRONT
         public void ChangeTeam1Text(string text)
         {
             view.ChangeTeamLabelText(text, 1);

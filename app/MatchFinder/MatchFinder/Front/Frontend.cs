@@ -230,7 +230,7 @@ namespace MatchFinder
         }
 
 
-        void GetMatchResultBoxView(char result, BoxView matchResult)
+        private void GetMatchResultBoxView(char result, BoxView matchResult)
         {
             // #5B8813 GREEN - WIN (W)
             // #6E6E6D GREY - DRAW (D)
@@ -254,7 +254,7 @@ namespace MatchFinder
             }
         }
 
-        void CheckLenghtRescaleLabels(Label label1, Label label2, int lenght)
+        private void CheckLenghtRescaleLabels(Label label1, Label label2, int lenght)
         {
             if (lenght > 25)
             {

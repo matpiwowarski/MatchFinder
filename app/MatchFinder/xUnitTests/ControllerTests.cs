@@ -37,7 +37,7 @@ namespace xUnitTests
 
             Assert.NotNull(frontend);
         }
-        [Fact]
+        /*[Fact]
         public void ChangeMainLabelWithoutLoadingTest()
         {
             Controller controller = Controller.Instance;
@@ -63,6 +63,6 @@ namespace xUnitTests
 
             Assert.Equal(expected, frontend.MainLabel.Text.ToString());
         }
-
+        */
     }
 }
