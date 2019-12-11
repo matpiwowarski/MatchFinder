@@ -20,7 +20,7 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <Label x:Name="Team1Label" Text="TEAM 1" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
+        <Label x:Name="Team1Label" AutomationId="Team1Label" Text="TEAM 1" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
         <Label x:Name="Team2Label" Text="TEAM 2" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
         <Label x:Name="VS" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
 
