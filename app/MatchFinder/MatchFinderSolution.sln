@@ -8,6 +8,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchFinder", "MatchFinder\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnitTests", "xUnitTests\xUnitTests.csproj", "{29E646F1-30A3-4C4E-A41E-775925E5D38A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITests", "UITests\UITests.csproj", "{AD89EC1E-E9AB-465E-AC7B-FFC38A10AC01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{29E646F1-30A3-4C4E-A41E-775925E5D38A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29E646F1-30A3-4C4E-A41E-775925E5D38A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29E646F1-30A3-4C4E-A41E-775925E5D38A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD89EC1E-E9AB-465E-AC7B-FFC38A10AC01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD89EC1E-E9AB-465E-AC7B-FFC38A10AC01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD89EC1E-E9AB-465E-AC7B-FFC38A10AC01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD89EC1E-E9AB-465E-AC7B-FFC38A10AC01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
