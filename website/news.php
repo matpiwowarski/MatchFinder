@@ -6,12 +6,13 @@
     <title>MatchFinder</title>
 
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/styleAPI.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Cabin&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
+
+        
         
         <nav id="nav">
             <ul>
@@ -31,6 +32,7 @@
             <img src="pictures/matchlogo.png" alt="logo">
         </div>
 
+        
         <div class="scoreboard">
             <div class="team">
 
@@ -39,6 +41,15 @@
                     <h3>1st place</h3>
                     <img src="pictures/pozitif.png" alt="pozitif">
                 </div>
+
+<!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- The form -->
+<form class="example" action="action_page.php">
+  <input type="text" placeholder="Search.." name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
 
                 <div class="versus">
                     <h2>VS</h2>
@@ -57,12 +68,10 @@
             </div>
         </div>
 
-      
-         <!-- Google maps -->
-         <input id="search" type+"text" placeholder="Search place..."/>
-         <div id="map"></div>
-         <!-- Top click -->
-         <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> 
+        <div class="map"> 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d21946.386247329257!2d15.6130871!3d46.56156645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssl!2ssi!4v1574666828319!5m2!1ssl!2ssi" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="">
+            </iframe>
+        </div>
 
     </main>
 
@@ -87,13 +96,5 @@
 
 
     </footer>
-
-  <!-- -----------------------  SOURCES  --------------------- -->  
-  <!-- Google Maps scripts. -->
-  <script src="js/script.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=IzaSyDLvth24crhg6AXpC-C2P1-buCS1s4l1oE&callback=createMap&libraries=places" async defer></script>
-  <!-- scroll button script -->
-  <script src="js/scrollButton.js"></script>
-
 </body>
 </html>
