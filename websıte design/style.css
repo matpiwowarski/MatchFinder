@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     font-family: 'Cabin', sans-serif;
+    font-size: large;
+    font-weight: bold;
 }
 
 /* HEADER STYLE */
@@ -9,7 +11,7 @@
 header {
     background-color: grey;
     width: 100%;
-    height: 50px;
+    height: 60px;
 }
 
 #nav {
@@ -35,7 +37,7 @@ header ul {
 }
 
 .nav-li:hover {
-    background-color:#3383FF;
+    background-color:#B0C4DE;
 }
 
 .nav-li:hover a {
@@ -60,8 +62,10 @@ header ul a {
 .scoreboard {
     display: flex;
     flex-direction: column;
-    margin: 0 20%;
+    margin: 0 30%;
     color: blue;
+    font-size: large;
+    font-weight: bold;
 }
 
 .team {
@@ -101,22 +105,124 @@ footer ul {
 footer .nav-li{
     height: 100%;
     display: flex;
+    align-items: right;
+    margin-right: 20px;
+    margin-left: 100px ;
+    margin-top: 30px;
+    
+    
+
+}
+.languages h3{
+    font-size: large;
+    position: relative;
+    
+    left:350px;
+
+}
+.social-buttons a{
+    display: inline-flex;
+    text-decoration: none;
+    font-size: 18px;
+    width: 60px;
+    height: 60px;
+    
+    color: #fff;
+    justify-content: center;
     align-items: center;
-    margin: 5px;
-}
-.instagram{
-    width: 60px;
-    margin-left: 20px;
+    position: relative;
+    margin: 0 8px;
+
 
 }
-.facebook{
+.social-buttons a::before{
+    content: "";
+    position: absolute;
     width: 60px;
-    margin-left: 20px;
+    height: 60px;
+    background: linear-gradient(45deg,#22a6b3,#30336b);
+   border-radius: 80%;
+   z-index: -1;
+   transition:0.3s ease-in;
 
 }
-.gmail{
-    width: 90px;
-    margin-left: 10px;
-    margin-right: 150px
+.social-buttons a:hover::before{
+    transform: scale(0);
+
+}
+.social-buttons a i{
+    transition: 0.3s ease-in;
+
+}
+.social-buttons a:hover i{
+    background: linear-gradient(45deg,#22a6b3,#30336b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: scale(2,2);
+
+*{
+    font-family:Nunito;
+    
+
+
+
+}
+
+}
+.container{
+margin: 250px auto;
+height:100px;
+max-width: 550px;
+border-radius: 20px;
+background-color:#fff;
+box-shadow: 0 0 30px 4px #22a6b3;
+
+
+}
+h1{
+    font-size: 18px;
+    padding-top: 8px;
+}
+a{
+    text-decoration: none;
+    color:#22a6b3;
+
+}
+.button{
+    width: 10px;
+    border:1px solid #000000;
+    padding: 5px 20px 5px 20px;
+    border-radius: 50px;
+    float: right;
+    margin: -15px 8px 0 0;
+    margin-top: 10px;
+    cursor: pointer;
+
+
+}
+
+.button:hover{
+color: #fff;
+background-color:#22a6b3;
+border: 1px solid #fff;
+
+}
+
+.arrow{
+    font-size:20px;
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width: 45px;
+    height:45px;
+    background: #22a6b3;
+    border-radius:50%;
+    color: #fff;
+    text-decoration:none;
+    cursor: pointer;
+    text-align: center;
+    line-height: 45px;
+
+
 }
 
