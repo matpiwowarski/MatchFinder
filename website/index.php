@@ -35,9 +35,13 @@
             <div class="team">
 
                 <div class="team1">
-                    <h1>TEAM 1</h1>
+                    <h1>NK Maribor</h1>
                     <h3>1st place</h3>
-                    <img src="pictures/pozitif.png" alt="pozitif">
+                    <img src="pictures/form/won.png" alt="W">
+                    <img src="pictures/form/won.png" alt="W">
+                    <img src="pictures/form/draw.png" alt="D">
+                    <img src="pictures/form/won.png" alt="W">
+                    <img src="pictures/form/lost.png" alt="L">
                 </div>
 
                 <div class="versus">
@@ -45,9 +49,13 @@
                 </div>
 
                 <div class="team2">
-                    <h1>TEAM 2</h1>
+                    <h1>Manchester United</h1>
                     <h3>5th place</h3>
-                    <img src="pictures/negatif.png" alt="negatif">
+                    <img src="pictures/form/draw.png" alt="D">
+                    <img src="pictures/form/draw.png" alt="D">
+                    <img src="pictures/form/won.png" alt="W">
+                    <img src="pictures/form/lost.png" alt="L">                  
+                    <img src="pictures/form/won.png" alt="W">
                 </div>
             </div>
         
