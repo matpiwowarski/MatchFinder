@@ -73,6 +73,9 @@
     <PackageReference Include="GoogleApi">
       <Version>3.9.3</Version>
     </PackageReference>
+    <PackageReference Include="MySql.Data">
+      <Version>8.0.18</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

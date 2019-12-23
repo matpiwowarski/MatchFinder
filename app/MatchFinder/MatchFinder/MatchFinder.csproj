@@ -16,6 +16,7 @@
     <PackageReference Include="GoogleApi" Version="3.9.3" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.3.0.991221" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
+    <PackageReference Include="MySql.Data" Version="8.0.18" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Google API\" />

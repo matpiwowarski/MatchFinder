@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using MatchFinder.GoogleAPI;
+using MatchFinder.Database;
 
 namespace MatchFinder
 {
@@ -41,6 +42,12 @@ namespace MatchFinder
 
             DrivingDistanceCalculator drivingCaluclatior = new DrivingDistanceCalculator();
             double drivingDistance = drivingCaluclatior.GetDrivingDistance(46.562222, 15.640278, 46.0804442, 14.524306); // from Maribor to Ljubljana
+
+            // DATABASE
+            DatabaseConnector databaseConn = new DatabaseConnector();
+            databaseConn.Connect();
+            databaseConn.TestQuery();
+            databaseConn.CloseConnection();
         }
 
         protected override void OnAppearing()
