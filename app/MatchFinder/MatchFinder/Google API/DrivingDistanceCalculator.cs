@@ -15,13 +15,13 @@ namespace MatchFinder.GoogleAPI
 
         // driving distance
 
-        public double getDrivingDistance()
+        public double getDrivingDistance(Location start, Location end)
         {
             var request = new DistanceMatrixRequest();
 
             request.Key = this.GoogleAPIKey;
-            request.Origins = new[] { new Location(46.562222, 15.640278) }; // NK Maribor
-            request.Destinations = new[] { new Location(46.0804442, 14.524306) };
+            request.Origins = new[] { start };
+            request.Destinations = new[] { end };
 
             var response = GoogleMaps.DistanceMatrix.Query(request);
             var row = response.Rows.FirstOrDefault();
@@ -32,6 +32,25 @@ namespace MatchFinder.GoogleAPI
             double km = m / 1000;
 
             return km;
+        }
+
+        public double getDrivingDistance(Location start, double latitudeEnd, double longitudeEnd)
+        {
+            Location end = new Location(latitudeEnd, longitudeEnd);
+            return getDrivingDistance(start, end);
+        }
+        public double getDrivingDistance(double latitudeStart, double longitudeStart, Location end)
+        {
+            Location start = new Location(latitudeStart, longitudeStart);
+            return getDrivingDistance(start, end);
+        }
+
+        public double getDrivingDistance(double latitudeStart, double longitudeStart,
+            double latitudeEnd, double longitudeEnd)
+        {
+            Location start = new Location(latitudeStart, longitudeStart);
+            Location end = new Location(latitudeEnd, longitudeEnd);
+            return getDrivingDistance(start, end);
         }
     }
 }
