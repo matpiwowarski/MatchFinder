@@ -21,7 +21,6 @@
     <Folder Include="Google API\" />
     <Folder Include="Front\" />
     <Folder Include="Controller\" />
-    <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Views\RegistrationPage.xaml">
