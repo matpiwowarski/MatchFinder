@@ -15,7 +15,7 @@ namespace MatchFinder.GoogleAPI
 
         // driving distance
 
-        public double getDrivingDistance(Location start, Location end)
+        public double GetDrivingDistance(Location start, Location end)
         {
             var request = new DistanceMatrixRequest();
 
@@ -34,23 +34,23 @@ namespace MatchFinder.GoogleAPI
             return km;
         }
 
-        public double getDrivingDistance(Location start, double latitudeEnd, double longitudeEnd)
+        public double GetDrivingDistance(Location start, double latitudeEnd, double longitudeEnd)
         {
             Location end = new Location(latitudeEnd, longitudeEnd);
-            return getDrivingDistance(start, end);
+            return GetDrivingDistance(start, end);
         }
-        public double getDrivingDistance(double latitudeStart, double longitudeStart, Location end)
+        public double GetDrivingDistance(double latitudeStart, double longitudeStart, Location end)
         {
             Location start = new Location(latitudeStart, longitudeStart);
-            return getDrivingDistance(start, end);
+            return GetDrivingDistance(start, end);
         }
 
-        public double getDrivingDistance(double latitudeStart, double longitudeStart,
+        public double GetDrivingDistance(double latitudeStart, double longitudeStart,
             double latitudeEnd, double longitudeEnd)
         {
             Location start = new Location(latitudeStart, longitudeStart);
             Location end = new Location(latitudeEnd, longitudeEnd);
-            return getDrivingDistance(start, end);
+            return GetDrivingDistance(start, end);
         }
     }
 }

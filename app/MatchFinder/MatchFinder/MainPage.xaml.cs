@@ -37,10 +37,10 @@ namespace MatchFinder
 
             // DISTANCE
             DistanceCalculator distanceCalculator = new DistanceCalculator();
-            double distance = distanceCalculator.getDistance(46.562222, 15.640278, 46.0804442, 14.524306); // from Maribor to Ljubljana
+            double distance = distanceCalculator.GetDistance(46.562222, 15.640278, 46.0804442, 14.524306); // from Maribor to Ljubljana
 
             DrivingDistanceCalculator drivingCaluclatior = new DrivingDistanceCalculator();
-            double drivingDistance = drivingCaluclatior.getDrivingDistance(46.562222, 15.640278, 46.0804442, 14.524306); // from Maribor to Ljubljana
+            double drivingDistance = drivingCaluclatior.GetDrivingDistance(46.562222, 15.640278, 46.0804442, 14.524306); // from Maribor to Ljubljana
         }
 
         protected override void OnAppearing()

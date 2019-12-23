@@ -5,7 +5,7 @@ namespace MatchFinder.GoogleAPI
 {
     public class DistanceCalculator
     {
-        double lastDistance = 0;
+        public double lastDistance = 0;
 
         public DistanceCalculator()
         {
@@ -14,23 +14,23 @@ namespace MatchFinder.GoogleAPI
 
         // distance 
 
-        public double getDistance(double latitudeStart, double longitudeStart,
+        public double GetDistance(double latitudeStart, double longitudeStart,
             double latitudeEnd, double longitudeEnd)
         {
             return lastDistance = Location.CalculateDistance(latitudeStart, longitudeStart, latitudeEnd, longitudeEnd, DistanceUnits.Kilometers);
         }
 
-        public double getDistance(Location locationStart, Location locationEnd)
+        public double GetDistance(Location locationStart, Location locationEnd)
         {
             return lastDistance = Location.CalculateDistance(locationStart, locationEnd, DistanceUnits.Kilometers);
         }
 
-        public double getDistance(Location locationStart, double latitudeEnd, double longitudeEnd)
+        public double GetDistance(Location locationStart, double latitudeEnd, double longitudeEnd)
         {
             return lastDistance = Location.CalculateDistance(locationStart, latitudeEnd, longitudeEnd, DistanceUnits.Kilometers);
         }
 
-        public double getDistance(double latitudeEnd, double longitudeEnd, Location locationStart)
+        public double GetDistance(double latitudeEnd, double longitudeEnd, Location locationStart)
         {
             return lastDistance = Location.CalculateDistance(locationStart, latitudeEnd, longitudeEnd, DistanceUnits.Kilometers);
         }
