@@ -34,6 +34,13 @@ namespace MatchFinder
             //controller.CheckPlaceDetailsAsync("ChIJUSBA6qZ3b0cRIqoNvJCvUxA");
             // NAVIGATOR
             //controller.TestNavigate();
+
+            // DISTANCE
+            DistanceCalculator distanceCalculator = new DistanceCalculator();
+            double distance = distanceCalculator.GetDistance(46.562222, 15.640278, 46.0804442, 14.524306); // from Maribor to Ljubljana
+
+            DrivingDistanceCalculator drivingCaluclatior = new DrivingDistanceCalculator();
+            double drivingDistance = drivingCaluclatior.GetDrivingDistance(46.562222, 15.640278, 46.0804442, 14.524306); // from Maribor to Ljubljana
         }
 
         protected override void OnAppearing()
