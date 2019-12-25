@@ -48,7 +48,15 @@ $this->title = 'My Yii Application';
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
             </div>
         </div>
+
+                 <!-- Google maps -->
+                 <input id="search" type+"text" placeholder="Search place..."/>
+         <div id="map"></div>
         <!-- Top click -->
         <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
     </div>
 </div>
+
+
+  <!-- -----------------------  GOOGLE MAPS API  --------------------- -->  
+  <script src="https://maps.googleapis.com/maps/api/js?key=IzaSyDLvth24crhg6AXpC-C2P1-buCS1s4l1oE&callback=createMap&libraries=places" async defer></script>
