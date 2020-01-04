@@ -72,40 +72,56 @@ function createMap () {
   });
   
 
-document.getElementById("showAllStadiums").addEventListener("click", function(){
-
-  $.get('index.php?r=stadium/stadium-array-json&countryName=Austria&json=true)', function(data)
-    {
-        stadiumArray = JSON.parse(data);
-
-        var i;
-        for (i = 0; i < stadiumArray.length; i++) {
-      markers.push(new google.maps.Marker({
-      map: map,
-      title: stadiumArray[i].street,
-      position:{lat: parseFloat(stadiumArray[i].latitude), lng: parseFloat(stadiumArray[i].longitude)},
-    }));;
+  function displayStadiumsOnMap(country){
+    
+    $.get('index.php?r=stadium/stadium-array-json&countryName='+country+'&json=true)', function(data)
+      {
+          stadiumArray = JSON.parse(data);
+  
+          var i;
+          for (i = 0; i < stadiumArray.length; i++) {
+        markers.push(new google.maps.Marker({
+        map: map,
+        title: stadiumArray[i].street,
+        position:{lat: parseFloat(stadiumArray[i].latitude), lng: parseFloat(stadiumArray[i].longitude)},
+      }));;
+      }
+      markers=[];
+      var bounds = new google.maps.LatLngBounds();
+  
+     bounds.extend({lat: parseFloat(stadiumArray[1].latitude), lng: parseFloat(stadiumArray[1].longitude)});
+     
+     map.setCenter(bounds.getCenter());
+    //  map.fitBounds(bounds);
+    zoomChangeBoundsListener = 
+      google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
+          if ( this.getZoom() ){   // or set a minimum
+              this.setZoom(6);  // set zoom here
+          }
+  });
+  
+  setTimeout(function(){google.maps.event.removeListener(zoomChangeBoundsListener)}, 2000);
     }
-    var bounds = new google.maps.LatLngBounds();
+    )
+  };
 
-   bounds.extend({lat: parseFloat(stadiumArray[1].latitude), lng: parseFloat(stadiumArray[1].longitude)});
-   
-   map.setCenter(bounds.getCenter());
-  //  map.fitBounds(bounds);
-  zoomChangeBoundsListener = 
-    google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
-        if ( this.getZoom() ){   // or set a minimum
-            this.setZoom(6);  // set zoom here
-        }
-});
-
-setTimeout(function(){google.maps.event.removeListener(zoomChangeBoundsListener)}, 2000);
-  }
-  )
-});
-
+document.getElementById("showAllStadiums").addEventListener("click", function(){
+  displayStadiumsOnMap('Austria');
+  displayStadiumsOnMap('Slovenia');
 }
+);
+
+document.getElementById("showSloviniaStadiums").addEventListener("click", function(){
+  
+  displayStadiumsOnMap('Slovenia');
+}
+);
  
+document.getElementById("showAustrianStadiums").addEventListener("click", function(){
+  displayStadiumsOnMap('Austria');
+}
+);
+}
 
 // function getStadiumJson(countryName)
 // {
