@@ -126,10 +126,11 @@
 
             <Label Text="Last 5 matches" TextColor="#5A6978" FontFamily="Lato" FontSize="15" Grid.Row="0" Grid.Column="0" ></Label>
             <Label Text="Last 5 matches" TextColor="#5A6978" FontFamily="Lato" FontSize="15" Grid.Row="0" Grid.Column="1" ></Label>
-
             </Grid>
+            <Button x:Name="NavigateButton" Text="NAVIGATE" HeightRequest="50" BackgroundColor="#3487CB" Clicked="NavigateButtonClicked"/>
+
             <!-- MARGIN: LEFT, TOP, RIGHT, BOTTOM -->
-            <Grid x:Name="MapGrid" HeightRequest="400" Margin="5, 0, 5, 5"> </Grid> 
+            <Grid x:Name="MapGrid" HeightRequest="350" Margin="5, 0, 5, 5"> </Grid> 
     </StackLayout>
 
 </ContentPage>

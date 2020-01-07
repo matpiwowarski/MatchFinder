@@ -76,6 +76,13 @@ namespace MatchFinder
             Navigator navigation = new Navigator();
             await navigation.NavigateToBuilding25b();
         }
+
+        public async Task Navigate(double latitude, double longitude, string name)
+        {
+            Navigator navigation = new Navigator();
+            await navigation.Navigate(latitude, longitude, name);
+        }
+
         // MAP
         public MainMap GetMainMap()
         {

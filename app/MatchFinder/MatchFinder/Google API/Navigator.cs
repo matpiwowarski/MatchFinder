@@ -11,6 +11,14 @@ namespace MatchFinder.GoogleAPI
 
         }
 
+        public async Task Navigate(double latitude, double longitude, string name)
+        {
+            var location = new Location(latitude, longitude);
+            var options = new MapLaunchOptions { Name = name };
+
+            await Map.OpenAsync(location, options);
+        }
+
         public async Task NavigateToBuilding25a()
         {
             var location = new Location(47.645160, -122.1306032);
