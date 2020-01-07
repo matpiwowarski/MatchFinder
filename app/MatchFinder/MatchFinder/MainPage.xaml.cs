@@ -71,6 +71,14 @@ namespace MatchFinder
 
         }
 
+        void NavigateButtonClicked(object sender, EventArgs args)
+        {
+            double latitude = 46.562222;
+            double longitude = 15.640278;
+            string name = "NK Maribor"; // "Mladinska ulica 29, 2000 Maribor"
+            controller.Navigate(latitude, longitude, name);
+        }
+
         protected override void OnAppearing()
         {
             this.MapGrid.Children.Add(controller.GetMainMap().Content);
