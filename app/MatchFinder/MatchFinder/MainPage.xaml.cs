@@ -11,12 +11,19 @@ namespace MatchFinder
     [DesignTimeVisible(false)]
     public partial class MainPage : CarouselPage
     {
+        bool darkMode = false;
         Controller controller = Controller.Instance;
         Frontend frontend = Frontend.Instance;
 
-        public MainPage(bool displayRecommendation)
+        public MainPage(bool displayRecommendation, bool darkMode)
         {
             InitializeComponent();
+            this.darkMode = darkMode;
+            if(this.darkMode == true)
+            {
+                this.BackgroundColor = Color.FromHex("#232931");
+                this.switch1.IsToggled = true;
+            }
             // LOAD TOOLS TO FRONTEND OBJECT
             frontend.LoadVSLabel(VS);
             frontend.LoadTeamsLabels(Team1Label, Team2Label);
@@ -93,10 +100,12 @@ namespace MatchFinder
             if(e.Value == true)
             {
                 this.BackgroundColor = Color.FromHex("#232931");
+                this.darkMode = true;
             }
             else
             {
                 this.BackgroundColor = Color.White;
+                this.darkMode = false;
             }
         }
 
@@ -117,7 +126,7 @@ namespace MatchFinder
         {
             Button button = (Button)sender;
             string teamName = button.Text;
-            App.Current.MainPage = new TeamInfo(teamName);
+            App.Current.MainPage = new TeamInfo(teamName, this.darkMode);
         }
     }
 }

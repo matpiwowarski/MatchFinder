@@ -6,7 +6,7 @@
              x:Class="MatchFinder.TeamInfo">
     
     <StackLayout>
-        <Image Source="Teams.png" Scale="1" ScaleX="1" ScaleY="1"/>
+        <Image Source="TeamInfo.png" Scale="1" ScaleX="1" ScaleY="1"/>
         <Image Source="Logo_Name.png" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center"/>
         <Label x:Name="TeamNameLabel" Text="TEAM NAME" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="30" HorizontalOptions="Center"/>
 
