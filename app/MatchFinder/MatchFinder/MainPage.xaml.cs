@@ -14,7 +14,7 @@ namespace MatchFinder
         Controller controller = Controller.Instance;
         Frontend frontend = Frontend.Instance;
 
-        public MainPage()
+        public MainPage(bool displayRecommendation)
         {
             InitializeComponent();
             // LOAD TOOLS TO FRONTEND OBJECT
@@ -54,7 +54,10 @@ namespace MatchFinder
             //databaseConn.TestQuery();
             //databaseConn.CloseConnection();
 
-            OnAlertYesNoClickedAsync(team1, team2, stadiumAddress);
+            if(displayRecommendation)
+            {
+                OnAlertYesNoClickedAsync(team1, team2, stadiumAddress);
+            }
         }
 
         private async Task OnAlertYesNoClickedAsync(string team1, string team2, string stadiumAddress)
@@ -109,55 +112,12 @@ namespace MatchFinder
                  
             }
         }
-        // main window teams buttons
-        void ButtonTeam1Clicked(object sender, EventArgs args)
-        {
-            App.Current.MainPage = new TeamInfo();
-        }
-        void ButtonTeam2Clicked(object sender, EventArgs args)
-        {
 
-        }
-        // buttons window teams
-        void Button1Team1Clicked(object sender, EventArgs args)
+        void ButtonTeamInfoClicked(object sender, EventArgs args)
         {
-
-        }
-        void Button1Team2Clicked(object sender, EventArgs args)
-        {
-
-        }
-        void Button2Team1Clicked(object sender, EventArgs args)
-        {
-
-        }
-        void Button2Team2Clicked(object sender, EventArgs args)
-        {
-
-        }
-        void Button3Team1Clicked(object sender, EventArgs args)
-        {
-
-        }
-        void Button3Team2Clicked(object sender, EventArgs args)
-        {
-
-        }
-        void Button4Team1Clicked(object sender, EventArgs args)
-        {
-
-        }
-        void Button4Team2Clicked(object sender, EventArgs args)
-        {
-
-        }
-        void Button5Team1Clicked(object sender, EventArgs args)
-        {
-
-        }
-        void Button5Team2Clicked(object sender, EventArgs args)
-        {
-
+            Button button = (Button)sender;
+            string teamName = button.Text;
+            App.Current.MainPage = new TeamInfo(teamName);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace MatchFinder
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MainPage(true);
             //MainPage = new NavigationPage(new MainPage());
         }
 
