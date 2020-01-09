@@ -160,7 +160,7 @@
 
             <Button x:Name="Button1Team1" BackgroundColor="Transparent" Clicked="ButtonTeamInfoClicked" Text="Maribor" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
             <Label x:Name="VS1" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" />
-            <Button x:Name="Button1Team2" BackgroundColor="Transparent" Clicked="ButtonTeamInfoClicked" Text="Olimpija NK" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" />
+            <Button x:Name="Button1Team2" BackgroundColor="Transparent" Clicked="ButtonTeamInfoClicked" Text="Olimpija NK" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="17" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" />
             <Label x:Name="date1" Text="20/02/2020" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" />
             <Label x:Name="city1" Text="Maribor" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" />
             <Label x:Name="hour1" Text="21:00" TextColor="#969FAA" FontAttributes="Bold,Italic" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" />
@@ -188,7 +188,7 @@
 
             <Button x:Name="Button5Team1" Clicked="ButtonTeamInfoClicked" BackgroundColor="Transparent" Text="Triglav" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="8" Grid.Column="0" HorizontalOptions="Center" />
             <Label x:Name="VS5" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="8" Grid.Column="1" HorizontalOptions="Center" />
-            <Button x:Name="Button5Team2" Clicked="ButtonTeamInfoClicked" BackgroundColor="Transparent" Text="Rudar Velenje" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="8" Grid.Column="2" HorizontalOptions="Center" />
+            <Button x:Name="Button5Team2" Clicked="ButtonTeamInfoClicked" BackgroundColor="Transparent" Text="Rudar Velenje" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="14" Grid.Row="8" Grid.Column="2" HorizontalOptions="Center" />
             <Label x:Name="date5" Text="20/02/2020" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="9" Grid.Column="0" HorizontalOptions="Center" />
             <Label x:Name="city5" Text="Triglav" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="9" Grid.Column="1" HorizontalOptions="Center" />
             <Label x:Name="hour5" Text="13:30" TextColor="#969FAA" FontAttributes="Bold,Italic" FontFamily="Lato" FontSize="15" Grid.Row="9" Grid.Column="2" HorizontalOptions="Center" />
