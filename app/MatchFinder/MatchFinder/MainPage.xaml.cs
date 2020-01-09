@@ -9,7 +9,7 @@ using System;
 namespace MatchFinder
 {
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class MainPage : CarouselPage
     {
         Controller controller = Controller.Instance;
         Frontend frontend = Frontend.Instance;
@@ -82,6 +82,32 @@ namespace MatchFinder
         protected override void OnAppearing()
         {
             this.MapGrid.Children.Add(controller.GetMainMap().Content);
+        }
+
+        void OnToggledDarkMode(object sender, ToggledEventArgs e)
+        {
+            // Perform an action after examining e.Value
+            if(e.Value == true)
+            {
+                this.BackgroundColor = Color.FromHex("#232931");
+            }
+            else
+            {
+                this.BackgroundColor = Color.White;
+            }
+        }
+
+        void OnToggledSound(object sender, ToggledEventArgs e)
+        {
+            // Perform an action after examining e.Value
+            if (e.Value == true)
+            {
+                App.Current.Properties["Muted"] = true;
+            }
+            else
+            {
+                App.Current.Properties["Muted"] = false;
+            }
         }
     }
 }

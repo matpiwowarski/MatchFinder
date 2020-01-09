@@ -1,9 +1,12 @@
-﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿
+
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              mc:Ignorable="d" x:Class="MatchFinder.MainPage">
+    <ContentPage >
 
     <StackLayout>
 
@@ -26,10 +29,10 @@
             <Label x:Name="VS" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
 
             <Label x:Name="Team1PlaceLabel" AutomationId="Team1PlaceLabel" Text="xth Place"
-               TextColor="#343F4B" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
+               TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
 
             <Label x:Name="Team2PlaceLabel" AutomationId="Team2PlaceLabel" Text="yth Place"
-               TextColor="#343F4B" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center"/>
+               TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center"/>
         </Grid>
 
         
@@ -124,8 +127,8 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Label Text="Last 5 matches" TextColor="#5A6978" FontFamily="Lato" FontSize="15" Grid.Row="0" Grid.Column="0" ></Label>
-            <Label Text="Last 5 matches" TextColor="#5A6978" FontFamily="Lato" FontSize="15" Grid.Row="0" Grid.Column="1" ></Label>
+            <Label Text="Last 5 matches" TextColor="#969FAA" FontFamily="Lato" FontSize="15" Grid.Row="0" Grid.Column="0" ></Label>
+            <Label Text="Last 5 matches" TextColor="#969FAA" FontFamily="Lato" FontSize="15" Grid.Row="0" Grid.Column="1" ></Label>
             </Grid>
             <Button x:Name="NavigateButton" Text="NAVIGATE" HeightRequest="50" BackgroundColor="#3487CB" Clicked="NavigateButtonClicked"/>
 
@@ -133,4 +136,84 @@
             <Grid x:Name="MapGrid" HeightRequest="350" Margin="5, 0, 5, 5"> </Grid> 
     </StackLayout>
 
-</ContentPage>
+    </ContentPage>
+
+
+    <!-- 2ND WINDOW-->
+
+    <ContentPage>
+        <ScrollView>
+            <StackLayout>
+
+            <Image Source="Teams.png" Scale="1" ScaleX="1" ScaleY="1"/>
+
+            <Grid Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="Button1Team1" Text="Maribor" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
+            <Label x:Name="VS1" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" />
+            <Button x:Name="Button1Team2" Text="Olimpija NK" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" />
+            <Label x:Name="date1" Text="20/02/2020" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" />
+            <Label x:Name="city1" Text="Maribor" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" />
+            <Label x:Name="hour1" Text="21:00" TextColor="#969FAA" FontAttributes="Bold,Italic" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" />
+
+            <Button x:Name="Button2Team1" Text="Bravo" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" />
+            <Label x:Name="VS2" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" />
+            <Button x:Name="Button2Team2" Text="Tabor Sežana" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" />
+            <Label x:Name="date2" Text="20/02/2020" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" />
+            <Label x:Name="city2" Text="Ljubljana" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" />
+            <Label x:Name="hour2" Text="15:00" TextColor="#969FAA" FontAttributes="Bold,Italic" FontFamily="Lato" FontSize="15" Grid.Row="3" Grid.Column="2" HorizontalOptions="Center" />
+
+            <Button x:Name="Button3Team1" Text="Celje" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" />
+            <Label x:Name="VS3" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" />
+            <Button x:Name="Button3Team2" Text="Aluminij" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="4" Grid.Column="2" HorizontalOptions="Center" />
+            <Label x:Name="date3" Text="20/02/2020" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="5" Grid.Column="0" HorizontalOptions="Center" />
+            <Label x:Name="city3" Text="Celje" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="5" Grid.Column="1" HorizontalOptions="Center" />
+            <Label x:Name="hour3" Text="11:00" TextColor="#969FAA" FontAttributes="Bold,Italic" FontFamily="Lato" FontSize="15" Grid.Row="5" Grid.Column="2" HorizontalOptions="Center" />
+
+            <Button x:Name="Button4Team1" Text="Domzale" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="6" Grid.Column="0" HorizontalOptions="Center" />
+            <Label x:Name="VS4" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="6" Grid.Column="1" HorizontalOptions="Center" />
+            <Button x:Name="Button4Team2" Text="Mura" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="6" Grid.Column="2" HorizontalOptions="Center" />
+            <Label x:Name="date4" Text="20/02/2020" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" />
+            <Label x:Name="city4" Text="Domžale" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="7" Grid.Column="1" HorizontalOptions="Center" />
+            <Label x:Name="hour4" Text="17:30" TextColor="#969FAA" FontAttributes="Bold,Italic" FontFamily="Lato" FontSize="15" Grid.Row="7" Grid.Column="2" HorizontalOptions="Center" />
+
+            <Button x:Name="Button5Team1" Text="Triglav" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="8" Grid.Column="0" HorizontalOptions="Center" />
+            <Label x:Name="VS5" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="8" Grid.Column="1" HorizontalOptions="Center" />
+            <Button x:Name="Button5Team2" Text="Rudar Velenje" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="8" Grid.Column="2" HorizontalOptions="Center" />
+            <Label x:Name="date5" Text="20/02/2020" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="9" Grid.Column="0" HorizontalOptions="Center" />
+            <Label x:Name="city5" Text="Triglav" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="9" Grid.Column="1" HorizontalOptions="Center" />
+            <Label x:Name="hour5" Text="13:30" TextColor="#969FAA" FontAttributes="Bold,Italic" FontFamily="Lato" FontSize="15" Grid.Row="9" Grid.Column="2" HorizontalOptions="Center" />
+
+            </Grid>
+          
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+
+    <ContentPage>
+            <StackLayout Padding="9,5,5,5" Margin="0" Scale="1" Spacing="6" AnchorX="0" VerticalOptions="Start" FlowDirection="LeftToRight" Orientation="Vertical" HeightRequest="-1">
+            <Image Source="Settings.png" Scale="1" ScaleX="0.5" ScaleY="0.5" />
+            <StackLayout Orientation="Horizontal" Scale="1">
+            <Label Text="DARK MODE" FontFamily="Lato" FontSize="15" TextColor="#969FAA" Margin="0" Scale="1"/>
+            <Label Text="{Binding IsToggled,Source={x:Reference switch1}}" TextColor="#3487CB"/>
+            <Switch x:Name="switch1" VerticalOptions="Fill" HorizontalOptions="Start" Margin="150,0,0,0" Toggled="OnToggledDarkMode"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Scale="1">
+                <Label Text="SOUND ON/OFF" FontFamily="Lato" FontSize="15" TextColor="#969FAA" Margin="0"/>
+                <Label Text="{Binding IsToggled,Source={x:Reference switch2}}" TextColor="#3487CB"/>
+                <Switch x:Name="switch2" VerticalOptions="Fill" HorizontalOptions="Start" Margin="125,0,0,0" Toggled="OnToggledSound"/>
+            </StackLayout>
+                
+            </StackLayout>
+    </ContentPage>
+
+</CarouselPage>
