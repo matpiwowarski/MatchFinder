@@ -109,5 +109,47 @@ namespace MatchFinder
                 App.Current.Properties["Muted"] = false;
             }
         }
+
+        // buttons window teams
+        void Button1Team1Clicked(object sender, EventArgs args)
+        {
+
+        }
+        void Button1Team2Clicked(object sender, EventArgs args)
+        {
+
+        }
+        void Button2Team1Clicked(object sender, EventArgs args)
+        {
+
+        }
+        void Button2Team2Clicked(object sender, EventArgs args)
+        {
+
+        }
+        void Button3Team1Clicked(object sender, EventArgs args)
+        {
+
+        }
+        void Button3Team2Clicked(object sender, EventArgs args)
+        {
+
+        }
+        void Button4Team1Clicked(object sender, EventArgs args)
+        {
+
+        }
+        void Button4Team2Clicked(object sender, EventArgs args)
+        {
+
+        }
+        void Button5Team1Clicked(object sender, EventArgs args)
+        {
+
+        }
+        void Button5Team2Clicked(object sender, EventArgs args)
+        {
+
+        }
     }
 }
