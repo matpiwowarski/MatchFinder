@@ -13,7 +13,7 @@
         <Image Source="Logo_Name.png" HeightRequest="94" WidthRequest="274" HorizontalOptions="Center"/>
 
         <!-- TEAM LABELS, TEAM PLACE LABELS -->
-        <Grid Margin="20,0,20,0" HeightRequest="150">
+        <Grid Margin="20,0,20,0" HeightRequest="200">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -24,8 +24,8 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="Team1Label" AutomationId="Team1Label" Text="TEAM 1" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
-            <Label x:Name="Team2Label" AutomationId="Team2Label" Text="TEAM 2" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
+            <Button x:Name="Team1Label" BackgroundColor="Transparent" Clicked="ButtonTeam1Clicked" AutomationId="Team1Label" Text="TEAM 1" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
+            <Button x:Name="Team2Label" BackgroundColor="Transparent" Clicked="ButtonTeam2Clicked" AutomationId="Team2Label" Text="TEAM 2" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
             <Label x:Name="VS" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
 
             <Label x:Name="Team1PlaceLabel" AutomationId="Team1PlaceLabel" Text="xth Place"
@@ -167,7 +167,7 @@
 
             <Button x:Name="Button2Team1" Clicked="Button2Team1Clicked" BackgroundColor="Transparent" Text="Bravo" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" />
             <Label x:Name="VS2" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" />
-            <Button x:Name="Button2Team2" Clicked="Button2Team2Clicked" BackgroundColor="Transparent" Text="Tabor Sežana" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="20" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" />
+            <Button x:Name="Button2Team2" Clicked="Button2Team2Clicked" BackgroundColor="Transparent" Text="Tabor Sežana" TextColor="#3487cb" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" />
             <Label x:Name="date2" Text="20/02/2020" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" />
             <Label x:Name="city2" Text="Ljubljana" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" />
             <Label x:Name="hour2" Text="15:00" TextColor="#969FAA" FontAttributes="Bold,Italic" FontFamily="Lato" FontSize="15" Grid.Row="3" Grid.Column="2" HorizontalOptions="Center" />
@@ -203,14 +203,12 @@
             <StackLayout Padding="9,5,5,5" Margin="0" Scale="1" Spacing="6" AnchorX="0" VerticalOptions="Start" FlowDirection="LeftToRight" Orientation="Vertical" HeightRequest="-1">
             <Image Source="Settings.png" Scale="1" ScaleX="0.5" ScaleY="0.5" />
             <StackLayout Orientation="Horizontal" Scale="1">
-            <Label Text="DARK MODE" FontFamily="Lato" FontSize="15" TextColor="#969FAA" Margin="0" Scale="1"/>
-            <Label Text="{Binding IsToggled,Source={x:Reference switch1}}" TextColor="#3487CB"/>
-            <Switch x:Name="switch1" VerticalOptions="Fill" HorizontalOptions="Start" Margin="150,0,0,0" Toggled="OnToggledDarkMode"/>
+                <Label Text="Dark mode       " FontFamily="Lato" FontSize="15" TextColor="#969FAA" Margin="0" Scale="1"/>
+                <Switch x:Name="switch1" VerticalOptions="Fill" HorizontalOptions="End" Toggled="OnToggledDarkMode"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Scale="1">
-                <Label Text="SOUND ON/OFF" FontFamily="Lato" FontSize="15" TextColor="#969FAA" Margin="0"/>
-                <Label Text="{Binding IsToggled,Source={x:Reference switch2}}" TextColor="#3487CB"/>
-                <Switch x:Name="switch2" VerticalOptions="Fill" HorizontalOptions="Start" Margin="125,0,0,0" Toggled="OnToggledSound"/>
+                <Label Text="Notifications   " FontFamily="Lato" FontSize="15" TextColor="#969FAA" Margin="0"/>
+                <Switch x:Name="switch2" VerticalOptions="Fill" HorizontalOptions="End" Toggled="OnToggledNotifications"/>
             </StackLayout>
                 
             </StackLayout>

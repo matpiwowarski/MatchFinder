@@ -97,19 +97,27 @@ namespace MatchFinder
             }
         }
 
-        void OnToggledSound(object sender, ToggledEventArgs e)
+        void OnToggledNotifications(object sender, ToggledEventArgs e)
         {
             // Perform an action after examining e.Value
             if (e.Value == true)
             {
-                App.Current.Properties["Muted"] = true;
+                
             }
             else
             {
-                App.Current.Properties["Muted"] = false;
+                 
             }
         }
+        // main window teams buttons
+        void ButtonTeam1Clicked(object sender, EventArgs args)
+        {
 
+        }
+        void ButtonTeam2Clicked(object sender, EventArgs args)
+        {
+
+        }
         // buttons window teams
         void Button1Team1Clicked(object sender, EventArgs args)
         {
