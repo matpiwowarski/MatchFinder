@@ -112,7 +112,7 @@ namespace MatchFinder
         // main window teams buttons
         void ButtonTeam1Clicked(object sender, EventArgs args)
         {
-
+            App.Current.MainPage = new TeamInfo();
         }
         void ButtonTeam2Clicked(object sender, EventArgs args)
         {
