@@ -13,7 +13,7 @@
         <Image Source="Logo_Name.png" HeightRequest="94" WidthRequest="274" HorizontalOptions="Center"/>
 
         <!-- TEAM LABELS, TEAM PLACE LABELS -->
-        <Grid Margin="20,0,20,0" HeightRequest="200">
+        <Grid Margin="20,0,20,0" HeightRequest="350" ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -24,20 +24,22 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="Team1Label" BackgroundColor="Transparent" Clicked="ButtonTeamInfoClicked" AutomationId="Team1Label" Text="TEAM 1" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" />
-            <Button x:Name="Team2Label" BackgroundColor="Transparent" Clicked="ButtonTeamInfoClicked" AutomationId="Team2Label" Text="TEAM 2" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
-            <Label x:Name="VS" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
+            <Image x:Name="Team1LogoImage" Source="maribor.png" HeightRequest="120" WidthRequest="120" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
+            <Image x:Name="Team2LogoImage" Source="olimpija.png" HeightRequest="120" WidthRequest="120" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
+            <Button x:Name="Team1Label" BackgroundColor="Transparent" Clicked="ButtonTeamInfoClicked" AutomationId="Team1Label" Text="TEAM 1" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" />
+            <Button x:Name="Team2Label" BackgroundColor="Transparent" Clicked="ButtonTeamInfoClicked" AutomationId="Team2Label" Text="TEAM 2" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center"/>
+            <Label x:Name="VS" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
 
             <Label x:Name="Team1PlaceLabel" AutomationId="Team1PlaceLabel" Text="xth Place"
-               TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
+               TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center"/>
 
             <Label x:Name="Team2PlaceLabel" AutomationId="Team2PlaceLabel" Text="yth Place"
-               TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center"/>
+               TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center"/>
         </Grid>
 
         
             <!--TEAM FORMS-->
-            <Grid Margin="40,-20,40,0" HeightRequest="60">
+            <Grid Margin="40,-40,40,0" HeightRequest="60" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -116,7 +118,7 @@
             </Grid>
 
             <!--'LAST 5 MATCHES' LABELS-->
-            <Grid Margin="45,-20,45,0" HeightRequest="100">
+            <Grid Margin="45,-20,45,0" HeightRequest="100"  ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -130,7 +132,7 @@
             <Label Text="Last 5 matches" TextColor="#969FAA" FontFamily="Lato" FontSize="15" Grid.Row="0" Grid.Column="0" ></Label>
             <Label Text="Last 5 matches" TextColor="#969FAA" FontFamily="Lato" FontSize="15" Grid.Row="0" Grid.Column="1" ></Label>
             </Grid>
-            <Button x:Name="NavigateButton" Text="NAVIGATE" HeightRequest="50" BackgroundColor="#3487CB" Clicked="NavigateButtonClicked"/>
+            <Button x:Name="NavigateButton" Text="NAVIGATE" HeightRequest="50" BackgroundColor="#3487CB" Clicked="NavigateButtonClicked" Margin="5,-30,5,5"/>
 
             <!-- MARGIN: LEFT, TOP, RIGHT, BOTTOM -->
             <Grid x:Name="MapGrid" HeightRequest="350" Margin="5, 0, 5, 5"> </Grid> 
