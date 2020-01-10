@@ -23,7 +23,7 @@ namespace MatchFinder
             }
 
             TeamInfoManager manager = new TeamInfoManager();
-            manager.LoadTools(TeamNameLabel, TeamLogoImage);
+            manager.LoadTools(TeamNameLabel, TeamLogoImage, PlaceLabel, CityLabel);
             manager.LoadTeamInfo(teamName);
         }
 

@@ -10,7 +10,7 @@
         <Image x:Name="TeamLogoImage" Source="Logo_Name.png" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center"/>
         <Label x:Name="TeamNameLabel" Text="TEAM NAME" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="30" HorizontalOptions="Center"/>
         <Label x:Name="LeagueLabel" Text="League: Slovenian PrvaLiga" TextColor="#969FAA" FontAttributes="None" FontFamily="Lato" FontSize="20" HorizontalOptions="Center"/>
-        <Label x:Name="PlaceLabel" Text="Place: x" TextColor="#969FAA" FontAttributes="None" FontFamily="Lato" FontSize="15" HorizontalOptions="Center"/>
+        <Label x:Name="PlaceLabel" Text="Place: x" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" HorizontalOptions="Center"/>
                 
             <!--TEAM FORM-->
             <Grid Margin="70, 20 ,70,0" HeightRequest="80" ColumnSpacing="15" RowSpacing="0">
