@@ -44,7 +44,7 @@ namespace MatchFinder
             else if (teamName == "Bravo")
             {
                 this.teamName.Text = "NK Bravo";
-                teamLogo.Source = "bravo.png";
+                teamLogo.Source = "bravo.jpg";
             }
             else if (teamName == "Tabor Sežana")
             {
@@ -64,7 +64,7 @@ namespace MatchFinder
             else if (teamName == "Domzale")
             {
                 this.teamName.Text = "NK Domžale";
-                teamLogo.Source = "domzale.png";
+                teamLogo.Source = "domzale.jpg";
             }
             else if (teamName == "Mura")
             {
