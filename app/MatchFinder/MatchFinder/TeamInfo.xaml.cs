@@ -8,12 +8,15 @@ namespace MatchFinder
     public partial class TeamInfo : ContentPage
     {
         bool darkMode = false;
+        int backToPageIndex = 0;
 
-        public TeamInfo(string teamName, bool darkMode)
+        public TeamInfo(string teamName, bool darkMode, int backToPageIndex)
         {
             InitializeComponent();
 
             this.darkMode = darkMode;
+            this.backToPageIndex = backToPageIndex;
+
             if (this.darkMode == true)
             {
                 this.BackgroundColor = Color.FromHex("#232931");
@@ -26,7 +29,7 @@ namespace MatchFinder
 
         protected override bool OnBackButtonPressed()
         {
-            App.Current.MainPage = new MainPage(false, this.darkMode);
+            App.Current.MainPage = new MainPage(false, this.darkMode, this.backToPageIndex);
             return true;
         }
     }

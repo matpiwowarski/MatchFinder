@@ -26,8 +26,8 @@
 
             <Image x:Name="Team1LogoImage" Source="maribor.png" HeightRequest="120" WidthRequest="120" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
             <Image x:Name="Team2LogoImage" Source="olimpija.png" HeightRequest="120" WidthRequest="120" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
-            <Button x:Name="Team1Label" BackgroundColor="Transparent" Clicked="ButtonTeamInfoClicked" AutomationId="Team1Label" Text="TEAM 1" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" />
-            <Button x:Name="Team2Label" BackgroundColor="Transparent" Clicked="ButtonTeamInfoClicked" AutomationId="Team2Label" Text="TEAM 2" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center"/>
+            <Button x:Name="Team1Label" BackgroundColor="Transparent" Clicked="ButtonRecommendedTeamInfoClicked" AutomationId="Team1Label" Text="TEAM 1" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" />
+            <Button x:Name="Team2Label" BackgroundColor="Transparent" Clicked="ButtonRecommendedTeamInfoClicked" AutomationId="Team2Label" Text="TEAM 2" TextColor="#3487CB" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center"/>
             <Label x:Name="VS" Text="VS" TextColor="#F95F62" FontAttributes="Bold" FontFamily="Lato" FontSize="30" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
 
             <Label x:Name="Team1PlaceLabel" AutomationId="Team1PlaceLabel" Text="xth Place"

@@ -15,9 +15,15 @@ namespace MatchFinder
         Controller controller = Controller.Instance;
         Frontend frontend = Frontend.Instance;
 
-        public MainPage(bool displayRecommendation, bool darkMode)
+        public MainPage(bool displayRecommendation, bool darkMode, int startingPage)
         {
             InitializeComponent();
+
+            if(startingPage >= 0 && startingPage <= 2)
+            {
+                CurrentPage = Children[startingPage];
+            }
+
             this.darkMode = darkMode;
             if(this.darkMode == true)
             {
@@ -72,12 +78,12 @@ namespace MatchFinder
 
         private void Team2LogoClicked(View arg1, object arg2)
         {
-            App.Current.MainPage = new TeamInfo("Olimpija NK", this.darkMode);
+            App.Current.MainPage = new TeamInfo("Olimpija NK", this.darkMode, 0);
         }
 
         private void Team1LogoClicked(View arg1, object arg2)
         {
-            App.Current.MainPage = new TeamInfo("Maribor", this.darkMode);
+            App.Current.MainPage = new TeamInfo("Maribor", this.darkMode, 0);
         }
 
         private async Task OnAlertYesNoClickedAsync(string team1, string team2, string stadiumAddress)
@@ -139,7 +145,14 @@ namespace MatchFinder
         {
             Button button = (Button)sender;
             string teamName = button.Text;
-            App.Current.MainPage = new TeamInfo(teamName, this.darkMode);
+            App.Current.MainPage = new TeamInfo(teamName, this.darkMode, 1);
+        }
+
+        void ButtonRecommendedTeamInfoClicked(object sender, EventArgs args)
+        {
+            Button button = (Button)sender;
+            string teamName = button.Text;
+            App.Current.MainPage = new TeamInfo(teamName, this.darkMode, 0);
         }
     }
 }
