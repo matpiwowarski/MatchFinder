@@ -9,6 +9,55 @@
         <Image Source="TeamInfo.png" Scale="1" ScaleX="1" ScaleY="1"/>
         <Image x:Name="TeamLogoImage" Source="Logo_Name.png" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center"/>
         <Label x:Name="TeamNameLabel" Text="TEAM NAME" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="30" HorizontalOptions="Center"/>
+        <Label x:Name="LeagueLabel" Text="League: Slovenian PrvaLiga" TextColor="#969FAA" FontAttributes="None" FontFamily="Lato" FontSize="20" HorizontalOptions="Center"/>
+        <Label x:Name="PlaceLabel" Text="Place: x" TextColor="#969FAA" FontAttributes="None" FontFamily="Lato" FontSize="15" HorizontalOptions="Center"/>
+                
+            <!--TEAM FORM-->
+            <Grid Margin="70, 20 ,70,0" HeightRequest="80" ColumnSpacing="15" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="35" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView x:Name="Team1Match1" 
+                Color="#5B8813"
+                WidthRequest="30"
+                HeightRequest="15"
+                HorizontalOptions="Center"
+                Grid.Row="0" Grid.Column="0"/>
+            <BoxView x:Name="Team1Match2" 
+                Color="#6E6E6D"
+                WidthRequest="30"
+                HeightRequest="15"
+                HorizontalOptions="Center"
+                Grid.Row="0" Grid.Column="1"/>
+            <BoxView x:Name="Team1Match3" 
+                Color="#6E6E6D"
+                WidthRequest="30"
+                HeightRequest="15"
+                HorizontalOptions="Center"
+                Grid.Row="0" Grid.Column="2"/>
+            <BoxView x:Name="Team1Match4" 
+                Color="#6E6E6D"
+                WidthRequest="30"
+                HeightRequest="15"
+                HorizontalOptions="Center"
+                Grid.Row="0" Grid.Column="3"/>
+            <BoxView x:Name="Team1Match5" 
+                Color="#F6543B"
+                WidthRequest="30"
+                HeightRequest="15"
+                HorizontalOptions="Center"
+                Grid.Row="0" Grid.Column="4"/>
+
+            </Grid>
+        <Label x:Name="FormLabel" Text="LAST 5 MATCHES" TextColor="#969FAA" FontAttributes="Bold" FontFamily="Lato" FontSize="15" HorizontalOptions="Center" Margin="0,-50,0,0"/>
+        <Label x:Name="CityLabel" Text="City: X" TextColor="#969FAA" FontAttributes="Italic" FontFamily="Lato" FontSize="20" HorizontalOptions="Center" Margin="0,50,0,10"/>
 
     </StackLayout>
     
