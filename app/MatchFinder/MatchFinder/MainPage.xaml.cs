@@ -65,6 +65,19 @@ namespace MatchFinder
             {
                 OnAlertYesNoClickedAsync(team1, team2, stadiumAddress);
             }
+
+            Team1LogoImage.GestureRecognizers.Add(new TapGestureRecognizer(Team1LogoClicked));
+            Team2LogoImage.GestureRecognizers.Add(new TapGestureRecognizer(Team2LogoClicked));
+        }
+
+        private void Team2LogoClicked(View arg1, object arg2)
+        {
+            App.Current.MainPage = new TeamInfo("Olimpija NK", this.darkMode);
+        }
+
+        private void Team1LogoClicked(View arg1, object arg2)
+        {
+            App.Current.MainPage = new TeamInfo("Maribor", this.darkMode);
         }
 
         private async Task OnAlertYesNoClickedAsync(string team1, string team2, string stadiumAddress)
