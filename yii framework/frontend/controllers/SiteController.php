@@ -14,6 +14,9 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Game;
+use frontend\models\GameSearch;
+use frontend\models\LatLngForm;
 
 /**
  * Site controller
@@ -74,7 +77,45 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // if($model->load(Yii::$app->request->post())
+        // let's assume user is in Maribor for now
+            // pobierz wartosci z formularza postem i wyslij do modelu
+      // $model = new GameSearch();
+       // $model.getGame(1,2);
+        //model.getTeam();
+        // return $this->render('index',[
+        // 'first_team' -> ss,
+        // 'second_team' -> sq,
+        // ])
+       // ]);
+       
+       $model = new GameSearch();
+
+        $modelForm = new LatLngForm();     
+
+
+       $test = 112;
+       if($modelForm->load(Yii::$app->request->post()))
+       {
+            $array = $model->getGame($modelForm->latitude,$modelForm->longitude);     
+       }
+       else{
+           // defoult: Maribro
+        $Latitude = 46.560252;
+        $Longitude= 15.637292;
+  
+       $array = $model->getGame($Latitude,$Longitude);
+       
+       }      
+       $homeTeam = $model->getTeam($array[0]['id'],'home');
+       $awayTeam = $model->getTeam($array[0]['id'],'away');     
+
+        return $this->render('index', [
+            'hometeam' => $homeTeam ,
+            'awayteam' => $awayTeam ,
+            'array' => $array,
+            'model'=> $modelForm,
+        ]);
     }
 
     /**
@@ -256,5 +297,16 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
+    }
+    public function actionLatLngForm()
+    {
+        $model = new LatLngForm();
+
+        if($model->load(Yii::$app->request->post()) && $model->validate()){
+            return $this->render('login');
+        }
+        else
+             return $this->render('login');
+
     }
 }

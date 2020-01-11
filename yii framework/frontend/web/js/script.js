@@ -19,6 +19,7 @@ function createMap () {
   });
 
   var markers = [];
+  var longitude;
   
 
   // For search suggestions
@@ -41,6 +42,7 @@ function createMap () {
       if (!p.geometry)
         return;
       
+      longitude = p.geometry.location.longitude;
       // push new marker for our markers array
       markers.push(new google.maps.Marker({
         map: map,
@@ -49,7 +51,9 @@ function createMap () {
         draggable: true,
         animation: google.maps.Animation.DROP
       }));
+
       markers[0].addListener('click', toggleBounce);
+      
 
       function toggleBounce() {
         if (markers[0].getAnimation() !== null) {
@@ -59,7 +63,6 @@ function createMap () {
         }
       }
 
-     
 
       if (p.geometry.viewport)
         bounds.union(p.geometry.viewport);
@@ -68,12 +71,21 @@ function createMap () {
     });
     
     map.fitBounds(bounds);
+
+
     
+    document.getElementById('latlngform-latitude').value =  markers[0].position.lat();
+    document.getElementById('latlngform-longitude').value =  markers[0].position.lng();
   });
   
 
   function displayStadiumsOnMap(country){
     
+        // erase all markers, foreach marker set null
+        markers.forEach(function (m) { m.setMap(null); });
+        // delete all markers from array
+        markers = [];
+        
     $.get('index.php?r=stadium/stadium-array-json&countryName='+country+'&json=true)', function(data)
       {
           stadiumArray = JSON.parse(data);
@@ -86,13 +98,14 @@ function createMap () {
         position:{lat: parseFloat(stadiumArray[i].latitude), lng: parseFloat(stadiumArray[i].longitude)},
       }));;
       }
-      markers=[];
-      var bounds = new google.maps.LatLngBounds();
+    
+      // setting right bounds
+    var bounds = new google.maps.LatLngBounds();
   
      bounds.extend({lat: parseFloat(stadiumArray[1].latitude), lng: parseFloat(stadiumArray[1].longitude)});
      
      map.setCenter(bounds.getCenter());
-    //  map.fitBounds(bounds);
+
     zoomChangeBoundsListener = 
       google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
           if ( this.getZoom() ){   // or set a minimum
@@ -104,7 +117,7 @@ function createMap () {
     }
     )
   };
-
+// ------------------------- Button Show stadiums --------------------------------
 document.getElementById("showAllStadiums").addEventListener("click", function(){
   displayStadiumsOnMap('Austria');
   displayStadiumsOnMap('Slovenia');
@@ -112,7 +125,6 @@ document.getElementById("showAllStadiums").addEventListener("click", function(){
 );
 
 document.getElementById("showSloviniaStadiums").addEventListener("click", function(){
-  
   displayStadiumsOnMap('Slovenia');
 }
 );
@@ -121,7 +133,11 @@ document.getElementById("showAustrianStadiums").addEventListener("click", functi
   displayStadiumsOnMap('Austria');
 }
 );
+// ------------------------- Button Show stadiums --------------------------------
 }
+
+
+
 
 // function getStadiumJson(countryName)
 // {

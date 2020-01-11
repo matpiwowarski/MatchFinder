@@ -26,7 +26,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap"> 
+<div class="wrap">
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
@@ -37,7 +37,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [ // dodaj do tablicy
         ['label' => 'Home', 'url' => ['/site/index']], 
-        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Teams', 'url' => ['/team/index']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'Stadiums', 'url' => ['/stadium/index']],  // /controller/akcja kontorollera 
     ];

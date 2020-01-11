@@ -35,15 +35,17 @@ class StadiumController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new StadiumSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new StadiumSearch(); // build for dataProvider
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams); // not table, receipt how to obtain data (SQL + ...), object not string & 
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+        return $this->render('index', [ // put index view into $content variable
+            'searchModel' => $searchModel, // in case of filtering in view
+            'dataProvider' => $dataProvider, 
         ]);
     }
 
+    // render -> stay in the same controller (same url), redner view
+    // redirect -> change controller
     /**
      * Displays a single Stadium model.
      * @param integer $id
@@ -52,7 +54,7 @@ class StadiumController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+        return $this->render('view', [  // put view view into $content variable with found model(one row)
             'model' => $this->findModel($id),
         ]);
     }
@@ -64,12 +66,14 @@ class StadiumController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Stadium();
+        $model = new Stadium(); // create new row for stadium table
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) // take data from from put them into model  $model = form paramters
+         && $model->save()) {                        // insert row intotable Stadium   
+            return $this->redirect(['view', 'id' => $model->id]); // change controller action  (change url)
         }
 
+        // if fail render new create view again
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -84,6 +88,7 @@ class StadiumController extends Controller
      */
     public function actionUpdate($id)
     {
+        // find model 
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -104,8 +109,10 @@ class StadiumController extends Controller
      */
     public function actionDelete($id)
     {
+        // find model and delete 
         $this->findModel($id)->delete();
 
+        // get back to index
         return $this->redirect(['index']);
     }
 
@@ -125,44 +132,44 @@ class StadiumController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-// DISPLAY SQL
-//     public function getStadiumArray()
-//     {
-//         $query = (new \yii\db\Query());
-//         $query->select('city.name, street,latitude,longitude, country.name');
-//         $query->from('stadium')->leftJoin('city','stadium.City_id = city.id')->leftJoin('country','city.Country_id = country.id');
+// // not dataProvider, just data in array 
+// // DISPLAY SQL
+// public function getStadiumArray()
+// {
+//     $query = (new \yii\db\Query());
+//     $query->select('city.name, street,latitude,longitude, country.name');
+//     $query->from('stadium')->leftJoin('city','stadium.City_id = city.id')->leftJoin('country','city.Country_id = country.id');
 
-//         return  $query->createCommand()->rawSql;
-// //        return $query->all();
-//         // $query->andWhere
-//     }
+//     return  $query->createCommand()->rawSql;        // return sql string
+// //        return $query->all();                         // 
+//     // $query->andWhere
+// }
+
 //     public function actionStadiumArray()
 //     {
 //         $searchModel = new StadiumSearch();
-//         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
 //         return $this->render('stadiumArray', [
-//             'array' => $this->getStadiumArray(),
+//             'array' => $searchModel->getStadiumArray(),
 //             //'sql' => $query->createCommand()->rawSql,
 //         ]);
 //     }
 
-    public function getStadiumArray($countryName)
+    // PHP Array unusable in js(json needed), in stadiumArray view array display in implemented
+    public function actionStadiumArray($countryName, $json = false)
     {
-        $query = (new \yii\db\Query());
-        $query->select('city.name AS city_name, street,latitude,longitude, country.name');
-        $query->from('stadium')->leftJoin('city','stadium.City_id = city.id')->leftJoin('country','city.Country_id = country.id');
-
-        $query->andWhere(['country.name' => $countryName]);
-
-       return $query->all();
-       
-    }
-    public function actionStadiumArray($countryName)
-    {
-        return $this->render('stadiumArray', [
-            'array' => $this->getStadiumArray($countryName),
+        $model = new StadiumSearch();
+        return $this->render('stadiumArray', [ // open view stadiumArray and pass array
+            'array' => $model->getStadiumArray($countryName, $json), 
         ]);
+    }
+    // JSON
+    public function actionStadiumArrayJson($countryName, $json = false)
+    {
+         // open view stadiumArray and pass array in json
+         $model = new stadiumSearch();
+            $arrayPhp = $model->getStadiumArray($countryName, $json);
+            return $arrayPhp;
     }
 
     

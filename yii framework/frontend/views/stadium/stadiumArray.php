@@ -21,6 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <pre>  <?php yii\helpers\VarDumper::dump($array, 10, true) ?> </pre>
+
+    <?= Html::button('click',['onClick'=> 'getStadiumJson("Austria")']) ?>
+    <?= Html::button('click',['onClick'=> 'test()']) ?>
     
  </div>
-?>

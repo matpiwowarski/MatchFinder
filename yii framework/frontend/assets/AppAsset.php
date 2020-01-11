@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/scrollButton.js',
         'js/script.js',
+        'js/test.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -1,25 +1,30 @@
 <?php
 
+use yii\helpers\Html;
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+
+//ACTIVE FORM POST 
+use yii\widgets\ActiveForm;
+
+
+$this->title = 'Match Finder';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
+    <center>
+        <div>
+            <?= Html::img("@web/photos/Logo_Name.png")?>
+         </div>
+    </center>
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
+            <div class="col-lg-5">
+            
+                <!-- echo($frist_team)  -->
+                <center><h2> <?= $hometeam ?> </h2></center>
+               
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
@@ -27,8 +32,12 @@ $this->title = 'My Yii Application';
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <div class="col-lg-2">
+            <center><h2>Vs</h2></center>
+          
+            </div>
+            <div class="col-lg-5">
+             <center><h2> <?= $awayteam?> </h2></center> 
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -37,20 +46,32 @@ $this->title = 'My Yii Application';
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
         </div>
+       
+            <p><button id="showAllStadiums" class="btn btn-default">Show all stadiums </a></button>
+            <button id="showSloviniaStadiums" class="btn btn-default">Show Slovenian stadiums </a></button>
+            <button id="showAustrianStadiums" class="btn btn-default">Show Austrian stadiums </a></button>
+            
+            <!-- <form action="index.php" method="post">
+                 <input type="text" name="latitude"  id="latitude">
+                 <input type="hidden" name="longitude"  id="longitude">
+            
+            <input type="submit" class="btn btn-default">
+            </form> -->
 
-                 <!-- Google maps -->
-                 <input id="search" type+"text" placeholder="Search place..."/>
+            <!-- ACTIVE FORM POST -->
+            <?php $form = ActiveForm::begin(); ?>
+                <?= $form->field($model,'latitude')?>
+                <?= $form->field($model,'longitude')?>
+
+                <?= Html::submitButton('Submit',['class'=>'btn btn-success']); ?>
+            
+            <?php ActiveForm::end() ?>
+            <!-- ACTIVE FORM POST -->
+
+            </p>
+        <!-- Google maps -->
+         <input id="search" class="form-control" type+"text" placeholder="Search place..."/>
          <div id="map"></div>
         <!-- Top click -->
         <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
@@ -59,4 +80,4 @@ $this->title = 'My Yii Application';
 
 
   <!-- -----------------------  GOOGLE MAPS API  --------------------- -->  
-  <script src="https://maps.googleapis.com/maps/api/js?key=IzaSyDLvth24crhg6AXpC-C2P1-buCS1s4l1oE&callback=createMap&libraries=places" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLvth24crhg6AXpC-C2P1-buCS1s4l1oE&callback=createMap&libraries=places" async defer></script>

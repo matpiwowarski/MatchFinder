@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'id',
-            'city.country.name',    // getters country -> getCountry()
+            'city.country.name',   // getters country -> getCountry()
             'city.name',
             'street',
             // 'City_id',
