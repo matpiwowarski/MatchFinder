@@ -24,6 +24,7 @@ namespace MatchFinder
 
             TeamInfoManager manager = new TeamInfoManager();
             manager.LoadTools(TeamNameLabel, TeamLogoImage, PlaceLabel, CityLabel);
+            manager.LoadTeamForm(Match1, Match2, Match3, Match4, Match5);
             manager.LoadTeamInfo(teamName);
         }
 

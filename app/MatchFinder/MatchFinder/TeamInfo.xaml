@@ -24,31 +24,31 @@
                 <ColumnDefinition Width="35" />
             </Grid.ColumnDefinitions>
 
-            <BoxView x:Name="Team1Match1" 
+            <BoxView x:Name="Match1" 
                 Color="#5B8813"
                 WidthRequest="30"
                 HeightRequest="15"
                 HorizontalOptions="Center"
                 Grid.Row="0" Grid.Column="0"/>
-            <BoxView x:Name="Team1Match2" 
+            <BoxView x:Name="Match2" 
                 Color="#6E6E6D"
                 WidthRequest="30"
                 HeightRequest="15"
                 HorizontalOptions="Center"
                 Grid.Row="0" Grid.Column="1"/>
-            <BoxView x:Name="Team1Match3" 
+            <BoxView x:Name="Match3" 
                 Color="#6E6E6D"
                 WidthRequest="30"
                 HeightRequest="15"
                 HorizontalOptions="Center"
                 Grid.Row="0" Grid.Column="2"/>
-            <BoxView x:Name="Team1Match4" 
+            <BoxView x:Name="Match4" 
                 Color="#6E6E6D"
                 WidthRequest="30"
                 HeightRequest="15"
                 HorizontalOptions="Center"
                 Grid.Row="0" Grid.Column="3"/>
-            <BoxView x:Name="Team1Match5" 
+            <BoxView x:Name="Match5" 
                 Color="#F6543B"
                 WidthRequest="30"
                 HeightRequest="15"
