@@ -19,6 +19,7 @@ function createMap () {
   });
 
   var markers = [];
+  var markersStadiums = [];
   var longitude;
   
 
@@ -52,7 +53,7 @@ function createMap () {
         animation: google.maps.Animation.DROP
       }));
 
-      markers[0].addListener('click', toggleBounce);
+      map.addListener('center_changed', toggleBounce);
       
 
       function toggleBounce() {
@@ -71,20 +72,20 @@ function createMap () {
     });
     
     map.fitBounds(bounds);
-
-
     
     document.getElementById('latlngform-latitude').value =  markers[0].position.lat();
     document.getElementById('latlngform-longitude').value =  markers[0].position.lng();
+    
   });
   
 
   function displayStadiumsOnMap(country){
     
+    
         // erase all markers, foreach marker set null
-        markers.forEach(function (m) { m.setMap(null); });
+        markersStadiums.forEach(function (m) { m.setMap(null); });
         // delete all markers from array
-        markers = [];
+        markersStadiums = [];
         
     $.get('index.php?r=stadium/stadium-array-json&countryName='+country+'&json=true)', function(data)
       {
@@ -92,13 +93,46 @@ function createMap () {
   
           var i;
           for (i = 0; i < stadiumArray.length; i++) {
-        markers.push(new google.maps.Marker({
+        markersStadiums.push(new google.maps.Marker({
         map: map,
         title: stadiumArray[i].street,
         position:{lat: parseFloat(stadiumArray[i].latitude), lng: parseFloat(stadiumArray[i].longitude)},
       }));;
       }
-    
+      
+      
+      // Opening google maps with navigate to stadium
+      for (i = 0; i < markersStadiums.length; i++){ 
+        let stadiumChosen = markersStadiums[i];
+        markersStadiums[i].addListener('click', function(){
+        
+         $lonUser = markers[0].getPosition().lat();
+         $lngUser = markers[0].getPosition().lng();
+         $lonStadium = stadiumChosen.getPosition().lat();
+         $lngStadium = stadiumChosen.getPosition().lng();
+         window.open(" https://www.google.pl/maps/dir/'"+$lonUser+","+$lngUser+"'/'"+$lonStadium+","+$lngStadium+"'","_blank");
+       });   
+
+      }
+      
+      // for (i = 0; i < markersStadiums.length; i++){ (function() {
+      //   markersStadiums[i].addListener('click', function(){
+      //     window.alert(i);
+      //    // window.open("index.php?r=stadium%2Findex","_self")
+      //   // window.alert(document.getElementById('latlngform-latitude').value);
+      //    window.alert( markers[i].getPosition().lat());
+      //     //window.alert("hello");
+      //     //$lonUser = 46;
+      //    // $lngUser = 15;
+      //    $lonUser = markers[0].getPosition().lat();
+      //    $lngUser = markers[0].getPosition().lng();
+      //    //$lonStadium = markersStadiums[i].getPosition().lat();
+      //   // $lngStadium = markersStadiums[i].getPosition().lng();
+      //    //window.open(" https://www.google.pl/maps/dir/'"+$lonUser+","+$lngUser+"'/'"+$lonStadium+","+$lngStadium+"'","_blank");
+      //  });   
+      // }()); 
+       
+
       // setting right bounds
     var bounds = new google.maps.LatLngBounds();
   
@@ -106,17 +140,25 @@ function createMap () {
      
      map.setCenter(bounds.getCenter());
 
+     
     zoomChangeBoundsListener = 
       google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
           if ( this.getZoom() ){   // or set a minimum
               this.setZoom(6);  // set zoom here
           }
+          
   });
   
   setTimeout(function(){google.maps.event.removeListener(zoomChangeBoundsListener)}, 2000);
     }
     )
+    function stadiumS()
+    {
+      
+    }
+      
   };
+  
 // ------------------------- Button Show stadiums --------------------------------
 document.getElementById("showAllStadiums").addEventListener("click", function(){
   displayStadiumsOnMap('Austria');
@@ -134,8 +176,9 @@ document.getElementById("showAustrianStadiums").addEventListener("click", functi
 }
 );
 // ------------------------- Button Show stadiums --------------------------------
-}
 
+
+}
 
 
 
