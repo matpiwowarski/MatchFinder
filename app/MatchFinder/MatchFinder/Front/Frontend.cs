@@ -12,8 +12,8 @@ namespace MatchFinder
 
         // MainPage
         private Label VSLabel = new Label();
-        private Label team1 = new Label();
-        private Label team2 = new Label();
+        private Button team1 = new Button();
+        private Button team2 = new Button();
         private Label teamPlace1 = new Label();
         private Label teamPlace2 = new Label();
         private List<BoxView> teamForm1 = new List<BoxView>()
@@ -43,7 +43,7 @@ namespace MatchFinder
         {
             this.VSLabel = VS;
         }
-        public void LoadTeamsLabels(Label team1, Label team2)
+        public void LoadTeamsLabels(Button team1, Button team2)
         {
             this.team1 = team1;
             this.team2 = team2;
@@ -254,19 +254,19 @@ namespace MatchFinder
             }
         }
 
-        private void CheckLenghtRescaleLabels(Label label1, Label label2, int lenght)
+        private void CheckLenghtRescaleLabels(Button label1, Button label2, int lenght)
         {
             if (lenght > 25)
-            {
-                label1.FontSize = 5;
-                label2.FontSize = 5;
-                VSLabel.FontSize = 5;
-            }
-            else if (lenght > 20)
             {
                 label1.FontSize = 10;
                 label2.FontSize = 10;
                 VSLabel.FontSize = 10;
+            }
+            else if (lenght > 20)
+            {
+                label1.FontSize = 15;
+                label2.FontSize = 15;
+                VSLabel.FontSize = 15;
             }
             else if (lenght > 15)
             {
@@ -276,15 +276,15 @@ namespace MatchFinder
             }
             else if (lenght > 10)
             {
-                label1.FontSize = 20;
-                label2.FontSize = 20;
-                VSLabel.FontSize = 20;
-            }
-            else if (lenght > 5)
-            {
                 label1.FontSize = 25;
                 label2.FontSize = 25;
                 VSLabel.FontSize = 25;
+            }
+            else if (lenght > 5)
+            {
+                label1.FontSize = 30;
+                label2.FontSize = 30;
+                VSLabel.FontSize = 30;
             }
         }
     }   

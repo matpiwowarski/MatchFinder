@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Front.Page2" BackgroundColor="White" >
+    <ContentPage.Content>
+    <StackLayout Padding="9,5,5,5" Margin="0" Scale="1" Spacing="6" AnchorX="0" VerticalOptions="Start" FlowDirection="LeftToRight" Orientation="Vertical" HeightRequest="-1">
+            <Image Source="settingsC.png}" Scale="1" ScaleX="0.5" ScaleY="0.5" />
+            <StackLayout Orientation="Horizontal" Scale="1">
+            <Label Text="DARK MODE" FontFamily="Lato" FontSize="15" TextColor="#47525E" Margin="0" Scale="1"/>
+            <Label Text="{Binding IsToggled,Source={x:Reference switch}}" TextColor="#3487CB"/>
+            <Switch x:Name="switch" VerticalOptions="Fill" HorizontalOptions="Start" Margin="150,0,0,0"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Scale="1">
+                <Label Text="SOUND ON/OFF" FontFamily="Lato" FontSize="15" TextColor="#47525E" Margin="0"/>
+                <Label Text="{Binding IsToggled,Source={x:Reference switch}}" TextColor="#3487CB"/>
+                <Switch x:Name="switch" VerticalOptions="Fill" HorizontalOptions="Start" Margin="125,0,0,0"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Scale="1">
+                <Label Text="NOTIFICATIONS " FontFamily="Lato" FontSize="15" TextColor="#47525E" Margin="0"/>
+                <Label Text="{Binding IsToggled,Source={x:Reference switch}}" TextColor="#3487CB"/>
+                <Switch x:Name="switch" VerticalOptions="Fill" HorizontalOptions="Start" Margin="120,0,0,0"/>
+            </StackLayout>
+
+            <Button Text="Language" FontFamily="Lato" FontSize="15" TextColor="#47525E" Margin="0" BackgroundColor="White" HorizontalOptions="Start"/>
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
