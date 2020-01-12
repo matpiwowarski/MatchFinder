@@ -80,8 +80,8 @@ class Stadium extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTeams()
+    public function getTeam()
     {
-        return $this->hasMany(Team::className(), ['Stadium_id' => 'id']);
+        return $this->hasOne(Team::className(), ['Stadium_id' => 'id']);
     }
 }

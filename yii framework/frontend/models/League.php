@@ -19,7 +19,7 @@ class League extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'League';
+        return 'league';
     }
 
     /**

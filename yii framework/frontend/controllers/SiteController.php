@@ -16,7 +16,6 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Game;
 use frontend\models\GameSearch;
-use frontend\models\LatLngForm;
 
 /**
  * Site controller
@@ -77,45 +76,24 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        // if($model->load(Yii::$app->request->post())
-        // let's assume user is in Maribor for now
-            // pobierz wartosci z formularza postem i wyslij do modelu
-      // $model = new GameSearch();
-       // $model.getGame(1,2);
-        //model.getTeam();
-        // return $this->render('index',[
-        // 'first_team' -> ss,
-        // 'second_team' -> sq,
-        // ])
-       // ]);
-       
+
        $model = new GameSearch();
-
-        $modelForm = new LatLngForm();     
-
-
-       $test = 112;
-       if($modelForm->load(Yii::$app->request->post()))
-       {
-            $array = $model->getGame($modelForm->latitude,$modelForm->longitude);     
-       }
-       else{
-           // defoult: Maribro
-        $Latitude = 46.560252;
-        $Longitude= 15.637292;
   
-       $array = $model->getGame($Latitude,$Longitude);
-       
-       }      
-       $homeTeam = $model->getTeam($array[0]['id'],'home');
-       $awayTeam = $model->getTeam($array[0]['id'],'away');     
-
-        return $this->render('index', [
-            'hometeam' => $homeTeam ,
-            'awayteam' => $awayTeam ,
-            'array' => $array,
-            'model'=> $modelForm,
-        ]);
+         // defoult: Maribor
+         $Latitude = 53.560252;
+         $Longitude= -2.637292;
+ 
+         $model = new GameSearch();
+         
+        $array = $model->getGame($Latitude,$Longitude);
+        $homeTeam = $model->getTeam($array[0]['id'],'home');
+        $awayTeam = $model->getTeam($array[0]['id'],'away'); 
+             
+         return $this->render('index', [
+             'hometeam' => $homeTeam ,
+             'awayteam' => $awayTeam ,
+             'array' => $array,
+         ]);
     }
 
     /**
@@ -162,7 +140,7 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+            if ($model->sendEmail(Yii::$app->params['tomaszewski.pablo@gmail.com'])) {
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending your message.');

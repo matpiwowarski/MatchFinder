@@ -17,7 +17,7 @@ class Country extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Country';
+        return 'country';
     }
 
     /**

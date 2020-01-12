@@ -29,14 +29,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // 'id',
             'city.country.name',   // getters country -> getCountry()
-            'city.name',
+            ['attribute' => 'city.name',
+            'header' => 'City'],
             'street',
+            ['attribute' => 'number',
+            'header' => 'Number'],
+            ['attribute' => 'team.name',
+            'header' => 'Home team'],
             // 'City_id',
             //'number',
             //'name',
             //'capacity',
-            'latitude',
-            'longitude',
+            //'latitude',
+            //'longitude',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -14,7 +14,7 @@ $this->title = 'Match Finder';
 
     <center>
         <div>
-            <?= Html::img("@web/photos/Logo_Name.png")?>
+            <?= Html::img("@web/photos/Logo_Name.png", ['width' => '70%'])?>
          </div>
     </center>
     <div class="body-content">
@@ -22,8 +22,7 @@ $this->title = 'Match Finder';
         <div class="row">
             <div class="col-lg-5">
             
-                <!-- echo($frist_team)  -->
-                <center><h2> <?= $hometeam ?> </h2></center>
+                <center><h2 id='homeTeam'> <?= $hometeam ?> </h2></center>
                
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -37,7 +36,7 @@ $this->title = 'Match Finder';
           
             </div>
             <div class="col-lg-5">
-             <center><h2> <?= $awayteam?> </h2></center> 
+             <center><h2 id="awayTeam"> <?= $awayteam?> </h2></center> 
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
                     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -52,22 +51,6 @@ $this->title = 'Match Finder';
             <button id="showSloviniaStadiums" class="btn btn-default">Show Slovenian stadiums </a></button>
             <button id="showAustrianStadiums" class="btn btn-default">Show Austrian stadiums </a></button>
             
-            <!-- <form action="index.php" method="post">
-                 <input type="text" name="latitude"  id="latitude">
-                 <input type="hidden" name="longitude"  id="longitude">
-            
-            <input type="submit" class="btn btn-default">
-            </form> -->
-
-            <!-- ACTIVE FORM POST -->
-            <?php $form = ActiveForm::begin(); ?>
-                <?= $form->field($model,'latitude')?>
-                <?= $form->field($model,'longitude')?>
-
-                <?= Html::submitButton('Submit',['class'=>'btn btn-success']); ?>
-            
-            <?php ActiveForm::end() ?>
-            <!-- ACTIVE FORM POST -->
 
             </p>
         <!-- Google maps -->

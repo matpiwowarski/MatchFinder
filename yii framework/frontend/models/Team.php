@@ -23,7 +23,7 @@ class Team extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Team';
+        return 'team';
     }
 
     /**

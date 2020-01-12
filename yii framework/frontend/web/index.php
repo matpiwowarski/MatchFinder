@@ -1,4 +1,3 @@
-
 <?php
 
 defined('YII_DEBUG') or define('YII_DEBUG', true);
@@ -21,3 +20,5 @@ $config = yii\helpers\ArrayHelper::merge(
 );
 
 (new yii\web\Application($config))->run();
+
+?>

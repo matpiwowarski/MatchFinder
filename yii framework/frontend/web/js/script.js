@@ -79,6 +79,7 @@ function createMap() {
         bestGame = JSON.parse(data);
         document.getElementById("homeTeam").textContent = bestGame.hometeam;
         document.getElementById("awayTeam").textContent = bestGame.awayteam;
+        topFunction();
       }
     );
   });
