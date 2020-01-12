@@ -38,22 +38,25 @@ AppAsset::register($this);
     $menuItems = [ // dodaj do tablicy
         ['label' => 'Home', 'url' => ['/site/index']], 
         ['label' => 'Teams', 'url' => ['/team/index']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'Stadiums', 'url' => ['/stadium/index']],  // /controller/akcja kontorollera 
+        ['label' => 'Games', 'url' => ['/game/index']],  // /controller/akcja kontorollera 
+        ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
-    if (Yii::$app->user->isGuest) {     // if GUEST, dopisz na koniec
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
+
+    // --------- Register --------
+    // if (Yii::$app->user->isGuest) {     // if GUEST, dopisz na koniec
+    //     $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+    //     $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+    // } else {
+    //     $menuItems[] = '<li>'
+    //         . Html::beginForm(['/site/logout'], 'post')
+    //         . Html::submitButton(
+    //             'Logout (' . Yii::$app->user->identity->username . ')',
+    //             ['class' => 'btn btn-link logout']
+    //         )
+    //         . Html::endForm()
+    //         . '</li>';
+    // }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,

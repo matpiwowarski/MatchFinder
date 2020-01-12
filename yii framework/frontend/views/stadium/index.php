@@ -14,9 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
+    <!-- <p>
         <?= Html::a('Create Stadium', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    </p> -->
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -32,10 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ['attribute' => 'city.name',
             'header' => 'City'],
             'street',
-            ['attribute' => 'number',
-            'header' => 'Number'],
+            // ['attribute' => 'number',
+            // 'header' => 'Number'],
             ['attribute' => 'team.name',
             'header' => 'Home team'],
+            ['attribute' => 'name',
+            'header' => 'Stadium'],
             // 'City_id',
             //'number',
             //'name',
@@ -43,7 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'latitude',
             //'longitude',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            // FOR CRUD
+         //   ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?> 
      

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\GameSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Games';
+$this->title = 'Coming footaball games';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="game-index">
@@ -15,8 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Game', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <button class = 'btn btn-success' href="http://example.com/css/ie5.css">More games</button>
+
+        
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -26,16 +27,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'Stadium_id',
-            'League_id',
-            'Team_home_id',
-            'Team_away_id',
+           // 'id',
+           ['attribute' => 'stadium.name',
+            'header' => 'Stadium'],
+            ['attribute' => 'league.name',
+            'header' => 'League'],
+            ['attribute' => 'teamHome.name',
+            'header' => 'Home Team'],
+            ['attribute' => 'teamAway.name',
+            'header' => 'Away Team'],
+            
             //'game_date',
             //'home_score',
             //'away_score',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            //FOR CRUD
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

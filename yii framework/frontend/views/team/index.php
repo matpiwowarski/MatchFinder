@@ -14,9 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Team', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!-- <p>
+        <?=  Html::a('Create Team', ['create'], ['class' => 'btn btn-success']) ?>
+    </p> -->
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -29,22 +29,26 @@ $this->params['breadcrumbs'][] = $this->title;
             //'id',
            //  'Stadium_id',
            // 'League_id',
-           'name',
+        ['attribute' => 'name',
+         'header' => 'Team'],
         'coach_name',
          ['attribute' => 'city.name',
          'header' => 'City'],
          ['attribute' => 'stadium.street',
          'header' => 'Street'],
          ['attribute' => 'stadium.number',
-         'header' => 'Nr'],   
-            'league.name',
+         'header' => 'Nr'],  
+         ['attribute' => 'league.name',
+         'header' => 'League'], 
+            
             //'Team_currentForm_id',
             //'Team_achievements_id',
             
             
             //'logo_image',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            // FOR CRUD
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

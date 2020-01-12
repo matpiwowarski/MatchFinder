@@ -136,23 +136,6 @@ function createMap() {
           });
         }
 
-        // for (i = 0; i < markersStadiums.length; i++){ (function() {
-        //   markersStadiums[i].addListener('click', function(){
-        //     window.alert(i);
-        //    // window.open("index.php?r=stadium%2Findex","_self")
-        //   // window.alert(document.getElementById('latlngform-latitude').value);
-        //    window.alert( markers[i].getPosition().lat());
-        //     //window.alert("hello");
-        //     //$lonUser = 46;
-        //    // $lngUser = 15;
-        //    $lonUser = markers[0].getPosition().lat();
-        //    $lngUser = markers[0].getPosition().lng();
-        //    //$lonStadium = markersStadiums[i].getPosition().lat();
-        //   // $lngStadium = markersStadiums[i].getPosition().lng();
-        //    //window.open(" https://www.google.pl/maps/dir/'"+$lonUser+","+$lngUser+"'/'"+$lonStadium+","+$lngStadium+"'","_blank");
-        //  });
-        // }());
-
         // setting right bounds
         var bounds = new google.maps.LatLngBounds();
 
