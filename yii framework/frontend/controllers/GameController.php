@@ -124,4 +124,10 @@ class GameController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+     // JSON
+     public function actionGetGameJson($userlatitude, $userlongitude)
+     {
+          $model = new gameSearch();
+          return $model->getGameJson($userlatitude, $userlongitude);
+     }
 }

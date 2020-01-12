@@ -99,10 +99,48 @@ class GameSearch extends Game
 
             $arrayTeam = $query2->all();
 
-            return $arrayTeam[0]['name'];
-            
+            return $arrayTeam[0]['name'];     
+        }
+
+        public function getGameJson($userlongitude, $userlangitude)
+        {
+            $gameArray = getGame($userlongitude, $userlangitude);
+
+            $finalArray = $gameArray[0]; // only best game
+            $finalArray['hometeam'] = getTeam($gameArray[0]['id'],'home');
+            $finalArray['awayteam'] = getTeam($gameArray[0]['id'],'away');
+
+            return json_encode($finalArray);
         }
     }
+
+    function getGame($UserLongitude, $UserLangitude)
+    {
+        $query = (new \yii\db\Query());
+        $query->select('game.id, stadium.latitude,stadium.longitude, stadium.street, stadium.number');
+        $query->from('game')->leftJoin('stadium','stadium.id = game.Stadium_id');
+
+
+         $array = $query->all();
+
+        $sortedArray= stadiumData($array, $UserLongitude, $UserLangitude);   
+
+        return  $sortedArray;  
+    }
+    function getTeam($id, $team)
+        {
+            $query2 = (new \yii\db\Query());
+            $query2->select('Team.name');
+            if($team=='home')
+                $query2->from('team')->leftJoin('game','team.id = game.Team_home_id');
+            else
+                $query2->from('team')->leftJoin('game','team.id = game.Team_away_id');
+            $query2->andWhere(['game.id' => $id]);
+
+            $arrayTeam = $query2->all();
+
+            return $arrayTeam[0]['name'];     
+        }
 
         function distance($lat1, $lon1, $lat2, $lon2, $unit) {
             if (($lat1 == $lat2) && ($lon1 == $lon2)) {
