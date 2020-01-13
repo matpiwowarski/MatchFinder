@@ -77,7 +77,11 @@ class GameSearch extends Game
     public function getGame($UserLongitude, $UserLangitude)
     {
         $query = (new \yii\db\Query());
+<<<<<<< HEAD
         $query->select('game.id as gameID, team.name  as teamName, league.name as leagueName, game.Team_home_id, game.Team_away_id, team.id as teamID, stadium.latitude, stadium.longitude, stadium.street, stadium.number, team_currentForm.position, team_currentForm.games_played, team_currentForm.wins, team_currentForm.draws, 
+=======
+        $query->select('game.id as gameID, team.name  as hTeamName, league.name as leagueName, game.Team_home_id, game.Team_away_id, team.id as teamID, stadium.latitude, stadium.longitude, stadium.street, stadium.number, team_currentForm.position, team_currentForm.games_played, team_currentForm.wins, team_currentForm.draws, 
+>>>>>>> Kuba
         team_currentForm.loses, team_currentForm.5th_last_game, team_currentForm.4th_last_game, team_currentForm.3rd_last_game, 
         team_currentForm.2nd_last_game, team_currentForm.last_game, team_currentForm.points, team_currentForm.goalsScored, team_currentForm.goalsAgainst 
         ,team_currentForm.goalsDifference, stadium.name, city.name as cityname, country.name as countryname, game.game_date');
@@ -110,6 +114,7 @@ class GameSearch extends Game
             else
                 $query2->from('team')->leftJoin('game','team.id = game.Team_away_id');
             $query2->andWhere(['game.id' => $id]);
+<<<<<<< HEAD
 
             $arrayTeam = $query2->all();
 
@@ -130,6 +135,28 @@ class GameSearch extends Game
 
             $arrayTeamCurrentForm = $query3->all();
 
+=======
+
+            $arrayTeam = $query2->all();
+
+            return $arrayTeam[0]['name'];
+            
+        }
+
+        
+        public function getTeamCurrentForm($id)
+        {
+            $query3 = (new \yii\db\Query());
+            $query3->select('team.id, team.name  as aTeamName, team_currentForm.id, team_currentForm.position, team_currentForm.games_played, team_currentForm.wins, team_currentForm.draws, 
+            team_currentForm.loses, team_currentForm.5th_last_game as a5th_last_game, team_currentForm.4th_last_game as a4th_last_game, team_currentForm.3rd_last_game 
+            as a3rd_last_game, team_currentForm.2nd_last_game  as a2nd_last_game, team_currentForm.last_game as alast_game, team_currentForm.points, team_currentForm.goalsScored, team_currentForm.goalsAgainst 
+            ,team_currentForm.goalsDifference');
+            $query3->from('team_currentForm')->leftJoin('team','team_currentForm.id = team.Team_currentForm_id');
+            $query3->andWhere(['team.id' => $id]);
+
+            $arrayTeamCurrentForm = $query3->all();
+
+>>>>>>> Kuba
             return $arrayTeamCurrentForm;
         }
         public function getGameJson($userlongitude, $userlangitude)
@@ -138,17 +165,39 @@ class GameSearch extends Game
 
             $finalArray = $gameArray; // only best game
            // $finalArray[1] = $gameArray[1]; // only best game
+<<<<<<< HEAD
             $finalArray[0]['team'] = getTeam($gameArray[0]['id'],'home');
             $finalArray[1]['team'] = getTeam($gameArray[1]['id'],'away');
+=======
+            //$finalArray[0]= getTeamCurrentForm($gameArray[0]['Team_away_id']);
+           // $finalArray[0]['team'] = getTeam($gameArray[0]['id'],'home');
+
+            
+            return json_encode($finalArray);
+        }
+        public function getaGameJson($id)
+        {
+            $gameArray = getTeamCurrentForm($id);
+
+            $finalArray = $gameArray; // only best game
+           // $finalArray[1] = $gameArray[1]; // only best game
+            //$finalArray[0]= getTeamCurrentForm($gameArray[0]['Team_away_id']);
+           // $finalArray[0]['team'] = getTeam($gameArray[0]['id'],'home');
+>>>>>>> Kuba
 
             
             return json_encode($finalArray);
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Kuba
 // FOR JSON 
 function getGame($UserLongitude, $UserLangitude)
 {
     $query = (new \yii\db\Query());
+<<<<<<< HEAD
     $query->select('game.id, stadium.latitude, stadium.longitude, stadium.street, stadium.number, team_currentForm.position, team_currentForm.games_played, team_currentForm.wins, team_currentForm.draws, 
     team_currentForm.loses, team_currentForm.5th_last_game as a5th_last_game, team_currentForm.4th_last_game as a4th_last_game, team_currentForm.3rd_last_game as a3rd_last_game, 
     team_currentForm.2nd_last_game as a2nd_last_game, team_currentForm.last_game as alast_game, team_currentForm.points, team_currentForm.goalsScored, team_currentForm.goalsAgainst 
@@ -156,6 +205,15 @@ function getGame($UserLongitude, $UserLangitude)
     //$query->from('game')->leftJoin('stadium','stadium.id = game.Stadium_id')->leftJoin('city', 'city.id=stadium.City_id')->leftJoin('country', 'country.id=city.Country_id')->leftJoin('team', 'team.id=game.Team_home_id')
     $query->from('game')->leftJoin('stadium','stadium.id = game.Stadium_id')->leftJoin('city', 'city.id=stadium.City_id')->leftJoin('country', 'country.id=city.Country_id')->leftJoin('team', 'team.id=game.Team_home_id OR team.id=game.Team_away_id')
     ->leftJoin('team_currentForm', 'team_currentForm.id=team.Team_currentForm_id');
+=======
+    $query->select('game.id as gameID, team.name  as hTeamName, league.name as leagueName, game.Team_home_id, game.Team_away_id, team.id as teamID, stadium.latitude, stadium.longitude, stadium.street, stadium.number, team_currentForm.position, team_currentForm.games_played, team_currentForm.wins, team_currentForm.draws, 
+    team_currentForm.loses, team_currentForm.5th_last_game as a5th_last_game, team_currentForm.4th_last_game as a4th_last_game, team_currentForm.3rd_last_game 
+    as a3rd_last_game, team_currentForm.2nd_last_game  as a2nd_last_game, team_currentForm.last_game as alast_game, team_currentForm.points, team_currentForm.goalsScored, team_currentForm.goalsAgainst 
+    ,team_currentForm.goalsDifference, stadium.name as stadiumName, city.name as cityname, country.name as countryname, game.game_date');
+    $query->from('game')->leftJoin('stadium','stadium.id = game.Stadium_id')->leftJoin('city', 'city.id=stadium.City_id')->leftJoin('country', 'country.id=city.Country_id')->leftJoin('team', 'team.id=game.Team_home_id')
+    //$query->from('game')->leftJoin('stadium','stadium.id = game.Stadium_id')->leftJoin('city', 'city.id=stadium.City_id')->leftJoin('country', 'country.id=city.Country_id')->leftJoin('team', 'team.id=game.Team_home_id OR team.id=game.Team_away_id')
+    ->leftJoin('team_currentForm', 'team_currentForm.id=team.Team_currentForm_id')->leftJoin('league', 'league.id=team.League_id');
+>>>>>>> Kuba
 
 
      $array = $query->all();
@@ -181,6 +239,7 @@ function getGame($UserLongitude, $UserLangitude)
             
         }
 
+<<<<<<< HEAD
         
         function getTeamCurrentForm($id)
         {
@@ -196,6 +255,9 @@ function getGame($UserLongitude, $UserLangitude)
 
             return $arrayTeamCurrentForm;
         }
+=======
+
+>>>>>>> Kuba
 
     // alghoritm describing teams attractivness, on scale froom 0 to 100. 100 attractiveness should be for team that is 1 in league, it's last 5 games are wins,
     // has 90% of wins, and it it's games are at least 3 goals on average.

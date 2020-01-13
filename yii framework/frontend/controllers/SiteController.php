@@ -76,8 +76,39 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+<<<<<<< HEAD
 
        $model = new GameSearch();
+=======
+        // if($model->load(Yii::$app->request->post())
+        // let's assume user is in Maribor for now
+            // pobierz wartosci z formularza postem i wyslij do modelu
+      // $model = new GameSearch();
+       // $model.getGame(1,2);
+        //model.getTeam();
+        // return $this->render('index',[
+        // 'first_team' -> ss,
+        // 'second_team' -> sq,
+        // ])
+       // ]);
+       
+       $model = new GameSearch();
+
+
+        $modelForm = new LatLngForm();     
+
+
+       $test = 112;
+       if($modelForm->load(Yii::$app->request->post()))
+       {
+            $array = $model->getGame($modelForm->latitude,$modelForm->longitude);     
+       }
+       else{
+           // defoult: Maribro
+        $Latitude = 47.560252;
+        $Longitude= 9.637292;
+        
+>>>>>>> Kuba
   
          // defoult: Maribor
          $Latitude = 46.555541;
