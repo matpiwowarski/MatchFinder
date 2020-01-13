@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-    <button class = 'btn btn-success' href="http://example.com/css/ie5.css">More games</button>
+    <button class = 'btn btn-success' href="https://www.theguardian.com/football/fixtures">More games</button>
 
         
 

@@ -2,7 +2,35 @@ html,
 body {
   height: 100%;
 }
-
+#showAllStadiums {
+  margin-top: 10px;
+}
+#showAustrianStadiums {
+  margin-top: 10px;
+}
+#showSloviniaStadiums {
+  margin-top: 10px;
+}
+#stadiumName {
+  color: rgb(52, 135, 203);
+}
+#gameDate {
+  font-weight: bold;
+}
+h1 {
+  margin-top: 0px;
+  margin-bottom: 4px;
+  display: block;
+}
+h6 {
+  display: inline;
+}
+h5 {
+  display: inline;
+}
+h4 {
+  display: inline;
+}
 .wrap {
   min-height: 100%;
   height: auto;

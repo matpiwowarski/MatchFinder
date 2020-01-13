@@ -80,19 +80,23 @@ class SiteController extends Controller
        $model = new GameSearch();
   
          // defoult: Maribor
-         $Latitude = 53.560252;
-         $Longitude= -2.637292;
+         $Latitude = 46.555541;
+         $Longitude= 15.643863;
  
          $model = new GameSearch();
          
         $array = $model->getGame($Latitude,$Longitude);
         $homeTeam = $model->getTeam($array[0]['id'],'home');
-        $awayTeam = $model->getTeam($array[0]['id'],'away'); 
-             
+        $awayTeam = $model->getTeam($array[0]['id'],'away');
+        
+        $arrayAwayTeamForm= $model->getTeamCurrentForm($array[0]['Team_away_id']);
+
+
          return $this->render('index', [
              'hometeam' => $homeTeam ,
              'awayteam' => $awayTeam ,
              'array' => $array,
+             'arrayForm' =>$arrayAwayTeamForm,
          ]);
     }
 

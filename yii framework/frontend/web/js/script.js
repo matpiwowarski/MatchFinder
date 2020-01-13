@@ -57,7 +57,7 @@ function createMap() {
       else bounds.extend(p.geometry.location);
     });
 
-    toggleBounce();
+    //toggleBounce();
     function toggleBounce() {
       if (markers[0].getAnimation() !== null) {
         markers[0].setAnimation(null);
@@ -68,18 +68,88 @@ function createMap() {
 
     map.fitBounds(bounds);
 
-    toggleBounce();
+    //toggleBounce();
+  });
 
+  searchBox.addListener("places_changed", function() {
     $.get(
       "index.php?r=game/get-game-json&userlatitude=" +
         markers[0].position.lat() +
         "&userlongitude=" +
         markers[0].position.lng(),
       function(data) {
-        bestGame = JSON.parse(data);
-        document.getElementById("homeTeam").textContent = bestGame.hometeam;
-        document.getElementById("awayTeam").textContent = bestGame.awayteam;
-        topFunction();
+        const bestGame = JSON.parse(data);
+        console.log(bestGame);
+        // console.log(typeof data);
+        //SCROLL UP
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+        document.getElementById("homeTeam").textContent = bestGame[0].team;
+        document.getElementById("awayTeam").textContent = bestGame[1].team;
+        // Stadium info
+        document.getElementById("stadiumName").textContent = bestGame[0].name;
+        //        document.getElementById("leagueName").textContent = bestGame[0].league;
+        document.getElementById("stadiumStreet").textContent =
+          bestGame[0].street;
+        document.getElementById("stadiumNumber").textContent =
+          bestGame[0].number;
+        document.getElementById("cityName").textContent = bestGame[0].cityname;
+        document.getElementById("countryName").textContent =
+          bestGame[0].countryname;
+        document.getElementById("gameDate").textContent = bestGame[0].game_date;
+        // Home team info
+        document.getElementById("teamPosition").textContent =
+          bestGame[0].position;
+        document.getElementById("games_played").textContent =
+          bestGame[0].games_played;
+        document.getElementById("wins").textContent = bestGame[0].wins;
+        document.getElementById("draws").textContent = bestGame[0].draws;
+        document.getElementById("loses").textContent = bestGame[0].loses;
+        document.getElementById("points").textContent = bestGame[0].points;
+        document.getElementById("goalsScored").textContent =
+          bestGame[0].goalsScored;
+        document.getElementById("goalsAgainst").textContent =
+          bestGame[0].goalsAgainst;
+        document.getElementById("goalsDifference").textContent =
+          bestGame[0].goalsDifference;
+        document.getElementById("5th_last_game").textContent =
+          bestGame[0].a5th_last_game;
+        document.getElementById("4th_last_game").textContent =
+          bestGame[0].a4th_last_game;
+        document.getElementById("3rd_last_game").textContent =
+          bestGame[0].a3rd_last_game;
+        document.getElementById("2nd_last_game").textContent =
+          bestGame[0].a2nd_last_game;
+        document.getElementById("last_game").textContent =
+          bestGame[0].alast_game;
+
+        // Away team info
+
+        document.getElementById("teamPosition1").textContent =
+          bestGame[1].position;
+        document.getElementById("games_played1").textContent =
+          bestGame[1].games_played;
+        document.getElementById("wins1").textContent = bestGame[1].wins;
+        document.getElementById("draws1").textContent = bestGame[1].draws;
+        document.getElementById("loses1").textContent = bestGame[1].loses;
+        document.getElementById("points1").textContent = bestGame[1].points;
+        document.getElementById("goalsScored1").textContent =
+          bestGame[1].goalsScored;
+        document.getElementById("goalsAgainst1").textContent =
+          bestGame[1].goalsAgainst;
+        document.getElementById("goalsDifference1").textContent =
+          bestGame[1].goalsDifference;
+        document.getElementById("5th_last_game1").textContent =
+          bestGame[1].a3rd_last_game;
+        document.getElementById("4th_last_game1").textContent =
+          bestGame[1].a4th_last_game;
+        document.getElementById("3rd_last_game1").textContent =
+          bestGame[1].a3rd_last_game;
+        document.getElementById("2nd_last_game1").textContent =
+          bestGame[1].a2nd_last_game;
+        document.getElementById("last_game1").textContent =
+          bestGame[1].alast_game;
       }
     );
   });
