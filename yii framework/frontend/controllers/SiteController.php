@@ -91,6 +91,7 @@ class SiteController extends Controller
        
        $model = new GameSearch();
 
+
         $modelForm = new LatLngForm();     
 
 
@@ -101,8 +102,9 @@ class SiteController extends Controller
        }
        else{
            // defoult: Maribro
-        $Latitude = 46.560252;
-        $Longitude= 15.637292;
+        $Latitude = 47.560252;
+        $Longitude= 9.637292;
+        
   
        $array = $model->getGame($Latitude,$Longitude);
        
