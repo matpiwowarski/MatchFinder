@@ -27,6 +27,7 @@ namespace MatchFinder
             this.view = view;
         }
         // CHANGE VIEW
+        // main window
         public void ChangeTeam1Text(string text)
         {
             view.ChangeTeamLabelText(text, 1);
@@ -58,6 +59,11 @@ namespace MatchFinder
         public void ChangeTeam2Form(char matchForm, int matchIndex)
         {
             view.ChangeTeamOneMatchForm(matchForm, matchIndex, 2);
+        }
+        // 2nd window (match list)
+        public void ChangeMatchTexts(int matchIndex, string team1, string team2, string city, string date, string hour)
+        {
+            view.ChangeMatchTexts(matchIndex, team1, team2, city, date, hour);
         }
 
         // GOOGLE PLACES

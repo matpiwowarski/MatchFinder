@@ -36,6 +36,25 @@ namespace MatchFinder
         Button button5Team1 = new Button();
         Button button5Team2 = new Button();
 
+        // dates
+        Label date1 = new Label();
+        Label date2 = new Label();
+        Label date3 = new Label();
+        Label date4 = new Label();
+        Label date5 = new Label();
+        // cities
+        Label city1 = new Label();
+        Label city2 = new Label();
+        Label city3 = new Label();
+        Label city4 = new Label();
+        Label city5 = new Label();
+        // hours
+        Label hour1 = new Label();
+        Label hour2 = new Label();
+        Label hour3 = new Label();
+        Label hour4 = new Label();
+        Label hour5 = new Label();
+
         public MainMap MainMap = new MainMap();
         // Constructors
         static View() { }
@@ -47,6 +66,36 @@ namespace MatchFinder
                 return instance;
             }
         }
+
+        internal void LoadDatesListLabels(Label date1, Label date2, Label date3, Label date4, Label date5)
+        {
+            this.date1 = date1;
+            this.date2 = date2;
+            this.date3 = date3;
+            this.date4 = date4;
+            this.date5 = date5;
+        }
+
+        internal void LoadHoursListLabels(Label hour1, Label hour2, Label hour3, Label hour4, Label hour5)
+        {
+            this.hour1 = hour1;
+            this.hour2 = hour2;
+            this.hour3 = hour3;
+            this.hour4 = hour4;
+            this.hour5 = hour5;
+        }
+
+        internal void LoadCitiesListLabels(Label city1, Label city2, Label city3, Label city4, Label city5)
+        {
+            this.city1 = city1;
+            this.city2 = city2;
+            this.city3 = city3;
+            this.city4 = city4;
+            this.city5 = city5;
+        }
+
+        // Team Info Page
+
 
         // Load Methods
 
@@ -223,6 +272,51 @@ namespace MatchFinder
         {
             ChangeTeamMatchForm(R1, R2, R3, R4, R5, 1);
             ChangeTeamMatchForm(r1, r2, r3, r4, r5, 2);
+        }
+
+        // 2nd window (match list)
+        public void ChangeMatchTexts(int matchIndex, string team1, string team2, string city, string date, string hour)
+        {
+            switch(matchIndex)
+            {
+                case 1:
+                    this.button1Team1.Text = team1;
+                    this.button1Team2.Text = team2;
+                    this.city1.Text = city;
+                    this.date1.Text = date;
+                    this.hour1.Text = hour;
+                    break;
+                case 2:
+                    this.button2Team1.Text = team1;
+                    this.button2Team2.Text = team2;
+                    this.city2.Text = city;
+                    this.date2.Text = date;
+                    this.hour2.Text = hour;
+                    break;
+                case 3:
+                    this.button3Team1.Text = team1;
+                    this.button3Team2.Text = team2;
+                    this.city3.Text = city;
+                    this.date3.Text = date;
+                    this.hour3.Text = hour;
+                    break;
+                case 4:
+                    this.button4Team1.Text = team1;
+                    this.button4Team2.Text = team2;
+                    this.city4.Text = city;
+                    this.date4.Text = date;
+                    this.hour4.Text = hour;
+                    break;
+                case 5:
+                    this.button5Team1.Text = team1;
+                    this.button5Team2.Text = team2;
+                    this.city5.Text = city;
+                    this.date5.Text = date;
+                    this.hour5.Text = hour;
+                    break;
+                default:
+                    break;
+            }
         }
 
         // OTHER

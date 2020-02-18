@@ -31,15 +31,19 @@ namespace MatchFinder
                 this.switch1.IsToggled = true;
             }
             // LOAD TOOLS TO VIEW OBJECT
+            // main page
             View.LoadVSLabel(VS);
             View.LoadTeamsLabels(Team1Label, Team2Label);
             View.LoadTeamsPlacesLabels(Team1PlaceLabel, Team2PlaceLabel);
             View.LoadTeam1Form(Team1Match1, Team1Match2, Team1Match3, Team1Match4, Team1Match5);
             View.LoadTeam2Form(Team2Match1, Team2Match2, Team2Match3, Team2Match4, Team2Match5);
             // 2nd window (matches list)
-            View.LoadWindow2Buttons(Button1Team1, Button1Team2, Button2Team1, Button2Team2, Button3Team1, Button3Team2,
+            View.LoadTeamListButtons(Button1Team1, Button1Team2, Button2Team1, Button2Team2, Button3Team1, Button3Team2,
                 Button4Team1, Button4Team2, Button5Team1, Button5Team2);
-
+            View.LoadDatesListLabels(date1, date2, date3, date4, date5);
+            View.LoadCitiesListLabels(city1, city2, city3, city4, city5);
+            View.LoadHoursListLabels(hour1, hour2, hour3, hour4, hour5);
+            // Team Info Page
 
             string team1 = "NK Maribor";
             string team2 = "NK Olimpija Ljubljana";
@@ -51,6 +55,7 @@ namespace MatchFinder
             controller.ChangeTeam2Place(1);
             controller.ChangeTeam1FullForm('D', 'L', 'W', 'W', 'W');
             controller.ChangeTeam2FullForm('L', 'W', 'W', 'W', 'L');
+            // 
 
             // DATABASE
             //DatabaseConnector databaseConn = new DatabaseConnector();
