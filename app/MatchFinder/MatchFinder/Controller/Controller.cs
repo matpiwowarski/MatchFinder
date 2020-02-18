@@ -9,7 +9,7 @@ namespace MatchFinder
     {
         private static readonly Controller instance = new Controller();
         private GooglePlacesAPI placesAPI = new GooglePlacesAPI();
-        private Frontend view = Frontend.Instance;
+        private View view = View.Instance;
 
         static Controller() { }
         private Controller() { }
@@ -21,12 +21,12 @@ namespace MatchFinder
             }
         }
 
-        // LOAD FRONT
-        public void LoadView(Frontend view)
+        // LOAD VIEW
+        public void LoadView(View view)
         {
             this.view = view;
         }
-        // CHANGE FRONT
+        // CHANGE VIEW
         public void ChangeTeam1Text(string text)
         {
             view.ChangeTeamLabelText(text, 1);

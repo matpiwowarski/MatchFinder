@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Google API\" />
-    <Folder Include="Front\" />
+    <Folder Include="View\" />
     <Folder Include="Controller\" />
     <Folder Include="Database\" />
   </ItemGroup>

@@ -23,19 +23,19 @@ namespace xUnitTests
         public void LoadViewTest()
         {
             Controller controller = Controller.Instance;
-            Frontend frontend = Frontend.Instance;
+            MatchFinder.View view = MatchFinder.View.Instance;
 
-            controller.LoadView(frontend);
+            controller.LoadView(view);
 
-            Assert.NotNull(frontend);
+            Assert.NotNull(view);
         }
         [Fact]
         public void CheckViewWithoutLoadingTest()
         {
             Controller controller = Controller.Instance;
-            Frontend frontend = Frontend.Instance;
+            MatchFinder.View view = MatchFinder.View.Instance;
 
-            Assert.NotNull(frontend);
+            Assert.NotNull(view);
         }
         /*[Fact]
         public void ChangeMainLabelWithoutLoadingTest()

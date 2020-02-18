@@ -6,9 +6,9 @@ using Xamarin.Forms;
 namespace MatchFinder
 {
     // singleton pattern
-    public sealed class Frontend
+    public sealed class View
     {
-        private static readonly Frontend instance = new Frontend();
+        private static readonly View instance = new View();
 
         // MainPage
         private Label VSLabel = new Label();
@@ -24,12 +24,23 @@ namespace MatchFinder
         {
             new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
         };
+        // 2nd Page (match list)
+        Button button1Team1 = new Button();
+        Button button1Team2 = new Button();
+        Button button2Team1 = new Button();
+        Button button2Team2 = new Button();
+        Button button3Team1 = new Button();
+        Button button3Team2 = new Button();
+        Button button4Team1 = new Button();
+        Button button4Team2 = new Button();
+        Button button5Team1 = new Button();
+        Button button5Team2 = new Button();
 
         public MainMap MainMap = new MainMap();
         // Constructors
-        static Frontend() { }
-        private Frontend() { }
-        public static Frontend Instance
+        static View() { }
+        private View() { }
+        public static View Instance
         {
             get
             {
@@ -48,6 +59,21 @@ namespace MatchFinder
             this.team1 = team1;
             this.team2 = team2;
         }
+
+        internal void LoadTeamListButtons(Button button1Team1, Button button1Team2, Button button2Team1, Button button2Team2, Button button3Team1, Button button3Team2, Button button4Team1, Button button4Team2, Button button5Team1, Button button5Team2)
+        {
+            this.button1Team1 = button1Team1;
+            this.button1Team2 = button1Team2;
+            this.button2Team1 = button2Team1;
+            this.button2Team2 = button2Team2;
+            this.button3Team1 = button3Team1;
+            this.button3Team2 = button3Team2;
+            this.button4Team1 = button4Team1;
+            this.button4Team2 = button4Team2;
+            this.button5Team1 = button5Team1;
+            this.button5Team2 = button5Team2;
+        }
+
         public void LoadTeamsPlacesLabels(Label teamPlace1, Label teamPlace2)
         {
             this.teamPlace1 = teamPlace1;
