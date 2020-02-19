@@ -25,37 +25,50 @@ namespace MatchFinder
             new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
         };
         // 2nd Page (match list)
-        Button button1Team1 = new Button();
-        Button button1Team2 = new Button();
-        Button button2Team1 = new Button();
-        Button button2Team2 = new Button();
-        Button button3Team1 = new Button();
-        Button button3Team2 = new Button();
-        Button button4Team1 = new Button();
-        Button button4Team2 = new Button();
-        Button button5Team1 = new Button();
-        Button button5Team2 = new Button();
+        private Button button1Team1 = new Button();
+        private Button button1Team2 = new Button();
+        private Button button2Team1 = new Button();
+        private Button button2Team2 = new Button();
+        private Button button3Team1 = new Button();
+        private Button button3Team2 = new Button();
+        private Button button4Team1 = new Button();
+        private Button button4Team2 = new Button();
+        private Button button5Team1 = new Button();
+        private Button button5Team2 = new Button();
 
         // dates
-        Label date1 = new Label();
-        Label date2 = new Label();
-        Label date3 = new Label();
-        Label date4 = new Label();
-        Label date5 = new Label();
+        private Label date1 = new Label();
+        private Label date2 = new Label();
+        private Label date3 = new Label();
+        private Label date4 = new Label();
+        private Label date5 = new Label();
         // cities
-        Label city1 = new Label();
-        Label city2 = new Label();
-        Label city3 = new Label();
-        Label city4 = new Label();
-        Label city5 = new Label();
+        private Label city1 = new Label();
+        private Label city2 = new Label();
+        private Label city3 = new Label();
+        private Label city4 = new Label();
+        private Label city5 = new Label();
         // hours
-        Label hour1 = new Label();
-        Label hour2 = new Label();
-        Label hour3 = new Label();
-        Label hour4 = new Label();
-        Label hour5 = new Label();
+        private Label hour1 = new Label();
+        private Label hour2 = new Label();
+        private Label hour3 = new Label();
+        private Label hour4 = new Label();
+        private Label hour5 = new Label();
 
+        // TEAM INFO page
+        private Image teamInfoImage = new Image();
+        private Label teamInfoName = new Label();
+        private Label teamInfoLeague = new Label();
+        private Label teamInfoPlace = new Label();
+        private Label teamInfoCity = new Label();
+        private List<BoxView> teamInfoForm = new List<BoxView>()
+        {
+            new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
+        };
+
+        // google map
         public MainMap MainMap = new MainMap();
+
         // Constructors
         static View() { }
         private View() { }
@@ -67,6 +80,7 @@ namespace MatchFinder
             }
         }
 
+        // Load Methods
         internal void LoadDatesListLabels(Label date1, Label date2, Label date3, Label date4, Label date5)
         {
             this.date1 = date1;
@@ -94,10 +108,23 @@ namespace MatchFinder
             this.city5 = city5;
         }
 
-        // Team Info Page
+        public void LoadTeamInfoWindow(Image teamLogoImage, Label teamNameLabel, Label leagueLabel, Label placeLabel, Label cityLabel)
+        {
+            this.teamInfoImage = teamLogoImage;
+            this.teamInfoName = teamNameLabel;
+            this.teamInfoLeague = leagueLabel;
+            this.teamInfoPlace = placeLabel;
+            this.teamInfoCity = cityLabel;
+        }
 
-
-        // Load Methods
+        public void LoadTeamInfoFormBoxViews(BoxView match1, BoxView match2, BoxView match3, BoxView match4, BoxView match5)
+        {
+            teamInfoForm[0] = match1;
+            teamInfoForm[1] = match2;
+            teamInfoForm[2] = match3;
+            teamInfoForm[3] = match4;
+            teamInfoForm[4] = match5;
+        }
 
         public void LoadVSLabel(Label VS)
         {
@@ -317,6 +344,11 @@ namespace MatchFinder
                 default:
                     break;
             }
+        }
+        // team info page
+        internal void ChangeTeamInfoName(string name)
+        {
+            this.teamInfoName.Text = name;
         }
 
         // OTHER

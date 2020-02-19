@@ -14,6 +14,12 @@ namespace MatchFinder
         {
             InitializeComponent();
 
+            View View = View.Instance;
+            Controller controller = Controller.Instance;
+
+            View.LoadTeamInfoWindow(TeamLogoImage, TeamNameLabel, LeagueLabel, PlaceLabel, CityLabel);
+            View.LoadTeamInfoFormBoxViews(Match1, Match2, Match3, Match4, Match5);
+
             this.darkMode = darkMode;
             this.backToPageIndex = backToPageIndex;
 
@@ -22,6 +28,8 @@ namespace MatchFinder
                 this.BackgroundColor = Color.FromHex("#232931");
             }
 
+            // TeamInfoManager to be deleted after getting data from database
+            // View will be used here
             TeamInfoManager manager = new TeamInfoManager();
             manager.LoadTools(TeamNameLabel, TeamLogoImage, PlaceLabel, CityLabel);
             manager.LoadTeamForm(Match1, Match2, Match3, Match4, Match5);
