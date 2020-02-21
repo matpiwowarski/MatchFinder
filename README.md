@@ -1,22 +1,10 @@
 # MatchFinder
 
 ## Mobile app:
-### Screenshots:
 
-<img width="200" src="https://github.com/matpiwowarski/MatchFinder/blob/master/Screenshots/86390990_505091643414362_73658328349147136_n.png?raw=true">
-<img width="200" src="https://github.com/matpiwowarski/MatchFinder/blob/master/Screenshots/86487161_143618276743142_6984876696117706752_n.png?raw=true">
-<img width="200" src="https://github.com/matpiwowarski/MatchFinder/blob/master/Screenshots/86698060_2512989938963192_557227910226771968_n.png?raw=true">
-<img width="200" src="https://github.com/matpiwowarski/MatchFinder/blob/master/Screenshots/86694578_127260245286694_8273704735635144704_n.png?raw=true">
-<img width="200" src="https://github.com/matpiwowarski/MatchFinder/blob/master/Screenshots/Screenshot_1581775241.png?raw=true">
-<img width="200" src="https://github.com/matpiwowarski/MatchFinder/blob/master/Screenshots/85077499_568922470501186_7403801466797817856_n.png?raw=true">
+#### Click on gif to watch full video:
 
-*Dark mode:*
-
-<img width="200" src="https://github.com/matpiwowarski/MatchFinder/blob/master/Screenshots/Screenshot_1581775200.png?raw=true">
-<img width="200" src="https://github.com/matpiwowarski/MatchFinder/blob/master/Screenshots/Screenshot_1581775209.png?raw=true">
-<img width="200" src="https://github.com/matpiwowarski/MatchFinder/blob/master/Screenshots/Screenshot_1581775196.png?raw=true">
-<img width="200" src="https://github.com/matpiwowarski/MatchFinder/blob/master/Screenshots/Screenshot_1581775194.png?raw=true">
-
+[![Demo CountPages alpha](https://j.gifs.com/jZVzmR.gif)](https://youtu.be/YOxnhUZD_b4)
 
 ## Web app:
 ### http://www.matchfinder.pl
