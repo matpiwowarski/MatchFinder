@@ -6,24 +6,28 @@ namespace MatchFinder.GoogleAPI
 {
     public class MainMap: ContentPage
     {
-        private Locationer locationer = new Locationer();
-        private PinManager pinManager = new PinManager();
-        private Map mainMap = new Map();
+        private Locationer _locationer;
+        private PinManager _pinManager;
+        private Map _mainMap;
 
         public MainMap()
         {
+            _locationer = new Locationer();
+            _pinManager = new PinManager();
+            _mainMap = new Map();
+
             CreateMainMapAsync(); // map with current location
         }
 
         public async System.Threading.Tasks.Task CreateMainMapAsync()
         {
-            await locationer.LoadCurrentPositionAsync();
+            await _locationer.LoadCurrentPositionAsync();
 
-            double latitude = locationer.getCurrentLatitude();
-            double longitude = locationer.getCurrentLongitude();
+            double latitude = _locationer.getCurrentLatitude();
+            double longitude = _locationer.getCurrentLongitude();
 
             // map
-            mainMap = new Map(
+            _mainMap = new Map(
                 MapSpan.FromCenterAndRadius
                 (
                     new Position(latitude, longitude),
@@ -36,9 +40,9 @@ namespace MatchFinder.GoogleAPI
                 Position = new Position(latitude, longitude),
                 Label = "You are here!"
             };
-            mainMap.Pins.Add(pin);
+            _mainMap.Pins.Add(pin);
 
-            this.Content = mainMap;
+            this.Content = _mainMap;
             // ADD PINS WITH STADIUMS:
             LoadPinsFromPinManager();
         }
@@ -57,19 +61,19 @@ namespace MatchFinder.GoogleAPI
 
         public void AddPin(Pin pin)
         {
-            mainMap.Pins.Add(pin);
-            this.Content = mainMap;
+            _mainMap.Pins.Add(pin);
+            this.Content = _mainMap;
         }
 
         private void LoadPinsFromPinManager()
         {
-            this.pinManager.LoadMainMapPins();
+            _pinManager.LoadMainMapPins();
 
-            foreach (var pin in pinManager.pinList)
+            foreach (var pin in _pinManager.PinList)
             {
-                mainMap.Pins.Add(pin);
+                _mainMap.Pins.Add(pin);
             }
-            this.Content = mainMap;
+            this.Content = _mainMap;
         }
     }
 }

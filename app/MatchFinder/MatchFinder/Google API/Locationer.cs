@@ -7,13 +7,17 @@ namespace MatchFinder
 {
     public class Locationer
     {
-        private Position currentPosition = new Position();
+        private Position _currentPosition;
+
+        public Locationer()
+        {
+            _currentPosition = new Position();
+        }
 
         public async Task<string> GetLocationStringAsync()
         {
             string locationString = "";
-            
-
+           
             try
             {
                 var request = new GeolocationRequest(GeolocationAccuracy.Medium);
@@ -44,7 +48,7 @@ namespace MatchFinder
                 if (location != null)
                 {
                     var currentPosition = new Position(location.Latitude, location.Longitude);
-                    this.currentPosition = currentPosition;
+                    _currentPosition = currentPosition;
                 }
             }
             catch (Exception ex)
@@ -53,17 +57,17 @@ namespace MatchFinder
                 Console.WriteLine(ex.Message);
             }
 
-            return currentPosition;
+            return _currentPosition;
         }
 
         public double getCurrentLatitude()
         {
-            return currentPosition.Latitude;
+            return _currentPosition.Latitude;
         }
 
         public double getCurrentLongitude()
         {
-            return currentPosition.Longitude;
+            return _currentPosition.Longitude;
         }
     }
 }

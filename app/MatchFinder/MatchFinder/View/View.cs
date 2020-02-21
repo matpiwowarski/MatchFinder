@@ -8,173 +8,225 @@ namespace MatchFinder
     // singleton pattern
     public sealed class View
     {
-        private static readonly View instance = new View();
+        private static readonly View _instance;
 
         // MainPage
-        private Label VSLabel = new Label();
-        private Button team1 = new Button();
-        private Button team2 = new Button();
-        private Label teamPlace1 = new Label();
-        private Label teamPlace2 = new Label();
-        private List<BoxView> teamForm1 = new List<BoxView>()
-        {
-            new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
-        };
-        private List<BoxView> teamForm2 = new List<BoxView>()
-        {
-            new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
-        };
+        private Label _vsLabel;
+        private Button _team1;
+        private Button _team2;
+        private Label _teamPlace1;
+        private Label _teamPlace2;
+        private List<BoxView> _teamForm1;
+        private List<BoxView> _teamForm2;
+
         // 2nd Page (match list)
-        private Button button1Team1 = new Button();
-        private Button button1Team2 = new Button();
-        private Button button2Team1 = new Button();
-        private Button button2Team2 = new Button();
-        private Button button3Team1 = new Button();
-        private Button button3Team2 = new Button();
-        private Button button4Team1 = new Button();
-        private Button button4Team2 = new Button();
-        private Button button5Team1 = new Button();
-        private Button button5Team2 = new Button();
+        private Button _button1Team1;
+        private Button _button1Team2;
+        private Button _button2Team1;
+        private Button _button2Team2;
+        private Button _button3Team1;
+        private Button _button3Team2;
+        private Button _button4Team1;
+        private Button _button4Team2;
+        private Button _button5Team1;
+        private Button _button5Team2;
 
         // dates
-        private Label date1 = new Label();
-        private Label date2 = new Label();
-        private Label date3 = new Label();
-        private Label date4 = new Label();
-        private Label date5 = new Label();
-        // cities
-        private Label city1 = new Label();
-        private Label city2 = new Label();
-        private Label city3 = new Label();
-        private Label city4 = new Label();
-        private Label city5 = new Label();
-        // hours
-        private Label hour1 = new Label();
-        private Label hour2 = new Label();
-        private Label hour3 = new Label();
-        private Label hour4 = new Label();
-        private Label hour5 = new Label();
+        private Label _date1;
+        private Label _date2;
+        private Label _date3;
+        private Label _date4;
+        private Label _date5;
+        // cities           ;
+        private Label _city1;
+        private Label _city2;
+        private Label _city3;
+        private Label _city4;
+        private Label _city5;
+        // hours            ;
+        private Label _hour1;
+        private Label _hour2;
+        private Label _hour3;
+        private Label _hour4;
+        private Label _hour5;
 
         // TEAM INFO page
-        private Image teamInfoImage = new Image();
-        private Label teamInfoName = new Label();
-        private Label teamInfoLeague = new Label();
-        private Label teamInfoPlace = new Label();
-        private Label teamInfoCity = new Label();
-        private List<BoxView> teamInfoForm = new List<BoxView>()
-        {
-            new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
-        };
+        private Image _teamInfoImage;
+        private Label _teamInfoName;
+        private Label _teamInfoLeague;
+        private Label _teamInfoPlace;
+        private Label _teamInfoCity;
+        private List<BoxView> _teamInfoForm;
 
         // google map
-        public MainMap MainMap = new MainMap();
+        public MainMap MainMap;
 
         // Constructors
-        static View() { }
-        private View() { }
+        static View() {
+            _instance = new View();
+        }
+
+        private View()
+        {
+            _vsLabel = new Label();
+            _team1 = new Button();
+            _team2 = new Button();
+            _teamPlace1 = new Label();
+            _teamPlace2 = new Label();
+
+            _teamForm1 = new List<BoxView>()
+            {
+                new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
+            };
+            _teamForm2 = new List<BoxView>()
+            {
+                new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
+            };
+
+            _button1Team1 = new Button();
+            _button1Team2 = new Button();
+            _button2Team1 = new Button();
+            _button2Team2 = new Button();
+            _button3Team1 = new Button();
+            _button3Team2 = new Button();
+            _button4Team1 = new Button();
+            _button4Team2 = new Button();
+            _button5Team1 = new Button();
+            _button5Team2 = new Button();
+
+            _date1 = new Label();
+            _date2 = new Label();
+            _date3 = new Label();
+            _date4 = new Label();
+            _date5 = new Label();
+            
+            _city1 = new Label();
+            _city2 = new Label();
+            _city3 = new Label();
+            _city4 = new Label();
+            _city5 = new Label();
+            
+            _hour1 = new Label();
+            _hour2 = new Label();
+            _hour3 = new Label();
+            _hour4 = new Label();
+            _hour5 = new Label();
+
+            _teamInfoImage = new Image();
+            _teamInfoName = new Label();
+            _teamInfoLeague = new Label();
+            _teamInfoPlace = new Label();
+            _teamInfoCity = new Label();
+            _teamInfoForm = new List<BoxView>()
+            {
+                new BoxView(), new BoxView(), new BoxView(), new BoxView(), new BoxView()
+            };
+
+            MainMap = new MainMap();
+    }
         public static View Instance
         {
             get
             {
-                return instance;
+                return _instance;
             }
         }
 
         // Load Methods
         internal void LoadDatesListLabels(Label date1, Label date2, Label date3, Label date4, Label date5)
         {
-            this.date1 = date1;
-            this.date2 = date2;
-            this.date3 = date3;
-            this.date4 = date4;
-            this.date5 = date5;
+            _date1 = date1;
+            _date2 = date2;
+            _date3 = date3;
+            _date4 = date4;
+            _date5 = date5;
         }
 
         internal void LoadHoursListLabels(Label hour1, Label hour2, Label hour3, Label hour4, Label hour5)
         {
-            this.hour1 = hour1;
-            this.hour2 = hour2;
-            this.hour3 = hour3;
-            this.hour4 = hour4;
-            this.hour5 = hour5;
+            _hour1 = hour1;
+            _hour2 = hour2;
+            _hour3 = hour3;
+            _hour4 = hour4;
+            _hour5 = hour5;
         }
 
         internal void LoadCitiesListLabels(Label city1, Label city2, Label city3, Label city4, Label city5)
         {
-            this.city1 = city1;
-            this.city2 = city2;
-            this.city3 = city3;
-            this.city4 = city4;
-            this.city5 = city5;
+            _city1 = city1;
+            _city2 = city2;
+            _city3 = city3;
+            _city4 = city4;
+            _city5 = city5;
         }
 
         public void LoadTeamInfoWindow(Image teamLogoImage, Label teamNameLabel, Label leagueLabel, Label placeLabel, Label cityLabel)
         {
-            this.teamInfoImage = teamLogoImage;
-            this.teamInfoName = teamNameLabel;
-            this.teamInfoLeague = leagueLabel;
-            this.teamInfoPlace = placeLabel;
-            this.teamInfoCity = cityLabel;
+            _teamInfoImage = teamLogoImage;
+            _teamInfoName = teamNameLabel;
+            _teamInfoLeague = leagueLabel;
+            _teamInfoPlace = placeLabel;
+            _teamInfoCity = cityLabel;
         }
 
         public void LoadTeamInfoFormBoxViews(BoxView match1, BoxView match2, BoxView match3, BoxView match4, BoxView match5)
         {
-            teamInfoForm[0] = match1;
-            teamInfoForm[1] = match2;
-            teamInfoForm[2] = match3;
-            teamInfoForm[3] = match4;
-            teamInfoForm[4] = match5;
+            _teamInfoForm[0] = match1;
+            _teamInfoForm[1] = match2;
+            _teamInfoForm[2] = match3;
+            _teamInfoForm[3] = match4;
+            _teamInfoForm[4] = match5;
         }
 
         public void LoadVSLabel(Label VS)
         {
-            this.VSLabel = VS;
+            _vsLabel = VS;
         }
         public void LoadTeamsLabels(Button team1, Button team2)
         {
-            this.team1 = team1;
-            this.team2 = team2;
+            _team1 = team1;
+            _team2 = team2;
         }
 
         internal void LoadTeamListButtons(Button button1Team1, Button button1Team2, Button button2Team1, Button button2Team2, Button button3Team1, Button button3Team2, Button button4Team1, Button button4Team2, Button button5Team1, Button button5Team2)
         {
-            this.button1Team1 = button1Team1;
-            this.button1Team2 = button1Team2;
-            this.button2Team1 = button2Team1;
-            this.button2Team2 = button2Team2;
-            this.button3Team1 = button3Team1;
-            this.button3Team2 = button3Team2;
-            this.button4Team1 = button4Team1;
-            this.button4Team2 = button4Team2;
-            this.button5Team1 = button5Team1;
-            this.button5Team2 = button5Team2;
+            _button1Team1 = button1Team1;
+            _button1Team2 = button1Team2;
+            _button2Team1 = button2Team1;
+            _button2Team2 = button2Team2;
+            _button3Team1 = button3Team1;
+            _button3Team2 = button3Team2;
+            _button4Team1 = button4Team1;
+            _button4Team2 = button4Team2;
+            _button5Team1 = button5Team1;
+            _button5Team2 = button5Team2;
         }
 
         public void LoadTeamsPlacesLabels(Label teamPlace1, Label teamPlace2)
         {
-            this.teamPlace1 = teamPlace1;
-            this.teamPlace2 = teamPlace2;
+            _teamPlace1 = teamPlace1;
+            _teamPlace2 = teamPlace2;
         }
         public void LoadTeamsForms(List<BoxView> teamForm1, List<BoxView> teamForm2)
         {
-            this.teamForm1 = teamForm1;
-            this.teamForm2 = teamForm2;
+            _teamForm1 = teamForm1;
+            _teamForm2 = teamForm2;
         }
         public void LoadTeam1Form(BoxView m1, BoxView m2, BoxView m3, BoxView m4, BoxView m5)
         {
-            teamForm1[0] = m1;
-            teamForm1[1] = m2;
-            teamForm1[2] = m3;
-            teamForm1[3] = m4;
-            teamForm1[4] = m5;
+            _teamForm1[0] = m1;
+            _teamForm1[1] = m2;
+            _teamForm1[2] = m3;
+            _teamForm1[3] = m4;
+            _teamForm1[4] = m5;
         }
         public void LoadTeam2Form(BoxView m1, BoxView m2, BoxView m3, BoxView m4, BoxView m5)
         {
-            teamForm2[0] = m1;
-            teamForm2[1] = m2;
-            teamForm2[2] = m3;
-            teamForm2[3] = m4;
-            teamForm2[4] = m5;
+            _teamForm2[0] = m1;
+            _teamForm2[1] = m2;
+            _teamForm2[2] = m3;
+            _teamForm2[3] = m4;
+            _teamForm2[4] = m5;
         }
 
         // Change Methods
@@ -182,25 +234,25 @@ namespace MatchFinder
         {
             if(teamNumber == 1)
             {
-                this.team1.Text = text;
+                _team1.Text = text;
 
                 int maxLenght = 0;
-                if (this.team1.Text.Length > this.team2.Text.Length)
-                    maxLenght = this.team1.Text.Length;
-                else maxLenght = this.team2.Text.Length;
+                if (_team1.Text.Length > _team2.Text.Length)
+                    maxLenght = _team1.Text.Length;
+                else maxLenght = _team2.Text.Length;
 
-                CheckLenghtRescaleLabels(this.team1, this.team2, maxLenght);
+                CheckLenghtRescaleLabels(_team1, _team2, maxLenght);
             }
             else if(teamNumber == 2)
             {
-                this.team2.Text = text;
+                _team2.Text = text;
 
                 int maxLenght = 0;
-                if (this.team1.Text.Length > this.team2.Text.Length)
-                    maxLenght = this.team1.Text.Length;
-                else maxLenght = this.team2.Text.Length;
+                if (_team1.Text.Length > _team2.Text.Length)
+                    maxLenght = _team1.Text.Length;
+                else maxLenght = _team2.Text.Length;
 
-                CheckLenghtRescaleLabels(this.team1, this.team2, maxLenght);
+                CheckLenghtRescaleLabels(_team1, _team2, maxLenght);
             }
             else
             {
@@ -217,17 +269,17 @@ namespace MatchFinder
                 maxLenght = text1.Length;
             else maxLenght = text2.Length;
 
-            CheckLenghtRescaleLabels(this.team1, this.team2, maxLenght);
+            CheckLenghtRescaleLabels(_team1, _team2, maxLenght);
         }
         public void ChangeTeamPlace(int place, int teamNumber)
         {
             if (teamNumber == 1)
             {
-                this.teamPlace1.Text = CardinalToOrdinalNumber(place) + " Place";
+                _teamPlace1.Text = CardinalToOrdinalNumber(place) + " Place";
             }
             else if (teamNumber == 2)
             {
-                this.teamPlace2.Text = CardinalToOrdinalNumber(place) + " Place";
+                _teamPlace2.Text = CardinalToOrdinalNumber(place) + " Place";
             }
             else
             {
@@ -243,11 +295,11 @@ namespace MatchFinder
         {
             if (teamNumber == 1)
             {
-                teamForm1[matchIndex] = matchBoxView;
+                _teamForm1[matchIndex] = matchBoxView;
             }
             else if (teamNumber == 2)
             {
-                teamForm2[matchIndex] = matchBoxView;
+                _teamForm2[matchIndex] = matchBoxView;
             }
             else
             {
@@ -258,11 +310,11 @@ namespace MatchFinder
         {
             if (teamNumber == 1)
             {
-                GetMatchResultBoxView(result, teamForm1[matchIndex]);
+                GetMatchResultBoxView(result, _teamForm1[matchIndex]);
             }
             else if (teamNumber == 2)
             {
-                GetMatchResultBoxView(result, teamForm2[matchIndex]);
+                GetMatchResultBoxView(result, _teamForm2[matchIndex]);
             }
             else
             {
@@ -307,39 +359,39 @@ namespace MatchFinder
             switch(matchIndex)
             {
                 case 1:
-                    this.button1Team1.Text = team1;
-                    this.button1Team2.Text = team2;
-                    this.city1.Text = city;
-                    this.date1.Text = date;
-                    this.hour1.Text = hour;
+                    _button1Team1.Text = team1;
+                    _button1Team2.Text = team2;
+                    _city1.Text = city;
+                    _date1.Text = date;
+                    _hour1.Text = hour;
                     break;
                 case 2:
-                    this.button2Team1.Text = team1;
-                    this.button2Team2.Text = team2;
-                    this.city2.Text = city;
-                    this.date2.Text = date;
-                    this.hour2.Text = hour;
+                    _button2Team1.Text = team1;
+                    _button2Team2.Text = team2;
+                    _city2.Text = city;
+                    _date2.Text = date;
+                    _hour2.Text = hour;
                     break;
                 case 3:
-                    this.button3Team1.Text = team1;
-                    this.button3Team2.Text = team2;
-                    this.city3.Text = city;
-                    this.date3.Text = date;
-                    this.hour3.Text = hour;
+                    _button3Team1.Text = team1;
+                    _button3Team2.Text = team2;
+                    _city3.Text = city;
+                    _date3.Text = date;
+                    _hour3.Text = hour;
                     break;
                 case 4:
-                    this.button4Team1.Text = team1;
-                    this.button4Team2.Text = team2;
-                    this.city4.Text = city;
-                    this.date4.Text = date;
-                    this.hour4.Text = hour;
+                    _button4Team1.Text = team1;
+                    _button4Team2.Text = team2;
+                    _city4.Text = city;
+                    _date4.Text = date;
+                    _hour4.Text = hour;
                     break;
                 case 5:
-                    this.button5Team1.Text = team1;
-                    this.button5Team2.Text = team2;
-                    this.city5.Text = city;
-                    this.date5.Text = date;
-                    this.hour5.Text = hour;
+                    _button5Team1.Text = team1;
+                    _button5Team2.Text = team2;
+                    _city5.Text = city;
+                    _date5.Text = date;
+                    _hour5.Text = hour;
                     break;
                 default:
                     break;
@@ -348,7 +400,7 @@ namespace MatchFinder
         // team info page
         internal void ChangeTeamInfoName(string name)
         {
-            this.teamInfoName.Text = name;
+            _teamInfoName.Text = name;
         }
 
         // OTHER
@@ -412,31 +464,31 @@ namespace MatchFinder
             {
                 label1.FontSize = 10;
                 label2.FontSize = 10;
-                VSLabel.FontSize = 10;
+                _vsLabel.FontSize = 10;
             }
             else if (lenght > 20)
             {
                 label1.FontSize = 15;
                 label2.FontSize = 15;
-                VSLabel.FontSize = 15;
+                _vsLabel.FontSize = 15;
             }
             else if (lenght > 15)
             {
                 label1.FontSize = 15;
                 label2.FontSize = 15;
-                VSLabel.FontSize = 15;
+                _vsLabel.FontSize = 15;
             }
             else if (lenght > 10)
             {
                 label1.FontSize = 25;
                 label2.FontSize = 25;
-                VSLabel.FontSize = 25;
+                _vsLabel.FontSize = 25;
             }
             else if (lenght > 5)
             {
                 label1.FontSize = 30;
                 label2.FontSize = 30;
-                VSLabel.FontSize = 30;
+                _vsLabel.FontSize = 30;
             }
         }
     }   

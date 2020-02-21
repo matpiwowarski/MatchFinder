@@ -6,16 +6,16 @@ namespace MatchFinder.GoogleAPI
 {
     public class PinManager
     {
-        public List<Pin> pinList = new List<Pin>();
+        public List<Pin> PinList;
 
         public PinManager()
         {
-
+            PinList = new List<Pin>();
         }
 
         public void AddPinToList(Pin pin)
         {
-            pinList.Add(pin);
+            PinList.Add(pin);
         }
 
         public void AddPinToList(double latitude, double longitude, string pinLabel)
@@ -27,7 +27,7 @@ namespace MatchFinder.GoogleAPI
                 Type = PinType.Place
             };
 
-            pinList.Add(pin);
+            PinList.Add(pin);
         }
 
         public void AddPinToList(double latitude, double longitude, string pinLabel, string address)
@@ -40,7 +40,7 @@ namespace MatchFinder.GoogleAPI
                 Address = address
             };
 
-            pinList.Add(pin);
+            PinList.Add(pin);
         }
 
         public void LoadMainMapPins()

@@ -7,8 +7,8 @@ namespace MatchFinder
 {
     public partial class TeamInfo : ContentPage
     {
-        bool darkMode = false;
-        int backToPageIndex = 0;
+        private bool _darkMode = false;
+        private int _backToPageIndex = 0;
 
         public TeamInfo(string teamName, bool darkMode, int backToPageIndex)
         {
@@ -20,10 +20,10 @@ namespace MatchFinder
             View.LoadTeamInfoWindow(TeamLogoImage, TeamNameLabel, LeagueLabel, PlaceLabel, CityLabel);
             View.LoadTeamInfoFormBoxViews(Match1, Match2, Match3, Match4, Match5);
 
-            this.darkMode = darkMode;
-            this.backToPageIndex = backToPageIndex;
+            _darkMode = darkMode;
+            _backToPageIndex = backToPageIndex;
 
-            if (this.darkMode == true)
+            if (_darkMode == true)
             {
                 this.BackgroundColor = Color.FromHex("#232931");
             }
@@ -38,7 +38,7 @@ namespace MatchFinder
 
         protected override bool OnBackButtonPressed()
         {
-            App.Current.MainPage = new MainPage(false, this.darkMode, this.backToPageIndex);
+            App.Current.MainPage = new MainPage(false, _darkMode, _backToPageIndex);
             return true;
         }
     }

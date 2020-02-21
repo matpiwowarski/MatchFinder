@@ -18,7 +18,7 @@ namespace MatchFinder.GoogleAPI
             string placeID = String.Empty;
             // request for place
             PlacesFindSearchRequest request = new PlacesFindSearchRequest();
-            request.Key = this.GoogleAPIKey;
+            request.Key = _googleAPIKey;
             request.Input = placeName;
 
             try
@@ -48,7 +48,7 @@ namespace MatchFinder.GoogleAPI
 
             // request for details
             PlacesDetailsRequest detailsRequest = new PlacesDetailsRequest();
-            detailsRequest.Key = this.GoogleAPIKey;
+            detailsRequest.Key = _googleAPIKey;
             detailsRequest.PlaceId = id;
 
             try
