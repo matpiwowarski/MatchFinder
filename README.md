@@ -1,6 +1,6 @@
 # MatchFinder
 
-## Mobile app:
+## Mobile app (Xamarin + Google API):
 
 #### Click on gif to watch full video:
 
