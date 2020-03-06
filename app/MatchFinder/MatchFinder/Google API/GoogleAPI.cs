@@ -7,13 +7,13 @@ namespace MatchFinder.GoogleAPI
 {
     public class GoogleAPI
     {
-        private APIKeyManager ApiKeyManager;
-        protected string GoogleAPIKey;
+        private APIKeyManager _apiKeyManager;
+        protected string _googleAPIKey;
 
         public GoogleAPI()
         {
-            ApiKeyManager = new APIKeyManager();
-            GoogleAPIKey = ApiKeyManager.GetSavedValueAsync("APIkey").Result; // load API key
+            _apiKeyManager = new APIKeyManager();
+            _googleAPIKey = _apiKeyManager.GetSavedValueAsync("APIkey").Result; // load API key
         }
 
     }   

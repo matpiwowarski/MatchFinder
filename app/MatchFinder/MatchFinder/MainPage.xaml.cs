@@ -11,55 +11,55 @@ namespace MatchFinder
     [DesignTimeVisible(false)]
     public partial class MainPage : CarouselPage
     {
-        bool darkMode = false;
-        Controller controller = Controller.Instance;
-        Frontend frontend = Frontend.Instance;
+        private bool _darkMode;
+        private Controller _controller;
+        private View _view;
 
         public MainPage(bool displayRecommendation, bool darkMode, int startingPage)
         {
+            _darkMode = false;
+            _controller = Controller.Instance;
+            _view = View.Instance;
+
             InitializeComponent();
 
-            if(startingPage >= 0 && startingPage <= 2)
+            if (startingPage >= 0 && startingPage <= 2)
             {
                 CurrentPage = Children[startingPage];
             }
 
-            this.darkMode = darkMode;
-            if(this.darkMode == true)
+            _darkMode = darkMode;
+            if (_darkMode == true)
             {
                 this.BackgroundColor = Color.FromHex("#232931");
                 this.switch1.IsToggled = true;
             }
-            // LOAD TOOLS TO FRONTEND OBJECT
-            frontend.LoadVSLabel(VS);
-            frontend.LoadTeamsLabels(Team1Label, Team2Label);
-            frontend.LoadTeamsPlacesLabels(Team1PlaceLabel, Team2PlaceLabel);
-            frontend.LoadTeam1Form(Team1Match1, Team1Match2, Team1Match3, Team1Match4, Team1Match5);
-            frontend.LoadTeam2Form(Team2Match1, Team2Match2, Team2Match3, Team2Match4, Team2Match5);
-
+            // LOAD TOOLS TO VIEW OBJECT
+            // main page
+            _view.LoadVSLabel(VS);
+            _view.LoadTeamsLabels(Team1Label, Team2Label);
+            _view.LoadTeamsPlacesLabels(Team1PlaceLabel, Team2PlaceLabel);
+            _view.LoadTeam1Form(Team1Match1, Team1Match2, Team1Match3, Team1Match4, Team1Match5);
+            _view.LoadTeam2Form(Team2Match1, Team2Match2, Team2Match3, Team2Match4, Team2Match5);
+            // 2nd window (matches list)
+            _view.LoadTeamListButtons(Button1Team1, Button1Team2, Button2Team1, Button2Team2, Button3Team1, Button3Team2,
+                Button4Team1, Button4Team2, Button5Team1, Button5Team2);
+            _view.LoadDatesListLabels(date1, date2, date3, date4, date5);
+            _view.LoadCitiesListLabels(city1, city2, city3, city4, city5);
+            _view.LoadHoursListLabels(hour1, hour2, hour3, hour4, hour5);
+            // Team Info Page
 
             string team1 = "NK Maribor";
             string team2 = "NK Olimpija Ljubljana";
             string stadiumAddress = "Mladinska ulica 29, 2000 Maribor";
-            // CHANGE FRONTEND
-            controller.ChangeTeam1Text(team1);
-            controller.ChangeTeam2Text(team2);
-            controller.ChangeTeam1Place(3);
-            controller.ChangeTeam2Place(1);
-            controller.ChangeTeam1FullForm('D', 'L', 'W', 'W', 'W');
-            controller.ChangeTeam2FullForm('L', 'W', 'W', 'W', 'L');
-            // GOOGLE PLACES
-            //controller.CheckPlaceIDAsync("Maribor");
-            //controller.CheckPlaceDetailsAsync("ChIJUSBA6qZ3b0cRIqoNvJCvUxA");
-            // NAVIGATOR
-            //controller.TestNavigate();
-
-            // DISTANCE
-            DistanceCalculator distanceCalculator = new DistanceCalculator();
-            double distance = distanceCalculator.GetDistance(46.562222, 15.640278, 46.0804442, 14.524306); // from Maribor to Ljubljana
-
-            DrivingDistanceCalculator drivingCaluclatior = new DrivingDistanceCalculator();
-            double drivingDistance = drivingCaluclatior.GetDrivingDistance(46.562222, 15.640278, 46.0804442, 14.524306); // from Maribor to Ljubljana
+            // CHANGE VIEW
+            _controller.ChangeTeam1Text(team1);
+            _controller.ChangeTeam2Text(team2);
+            _controller.ChangeTeam1Place(3);
+            _controller.ChangeTeam2Place(1);
+            _controller.ChangeTeam1FullForm('D', 'L', 'W', 'W', 'W');
+            _controller.ChangeTeam2FullForm('L', 'W', 'W', 'W', 'L');
+            // 
 
             // DATABASE
             //DatabaseConnector databaseConn = new DatabaseConnector();
@@ -67,7 +67,7 @@ namespace MatchFinder
             //databaseConn.TestQuery();
             //databaseConn.CloseConnection();
 
-            if(displayRecommendation)
+            if (displayRecommendation)
             {
                 OnAlertYesNoClickedAsync(team1, team2, stadiumAddress);
             }
@@ -76,26 +76,26 @@ namespace MatchFinder
             Team2LogoImage.GestureRecognizers.Add(new TapGestureRecognizer(Team2LogoClicked));
         }
 
-        private void Team2LogoClicked(View arg1, object arg2)
+        private void Team2LogoClicked(Xamarin.Forms.View arg1, object arg2)
         {
-            App.Current.MainPage = new TeamInfo("Olimpija NK", this.darkMode, 0);
+            App.Current.MainPage = new TeamInfo("Olimpija NK", _darkMode, 0);
         }
 
-        private void Team1LogoClicked(View arg1, object arg2)
+        private void Team1LogoClicked(Xamarin.Forms.View arg1, object arg2)
         {
-            App.Current.MainPage = new TeamInfo("Maribor", this.darkMode, 0);
+            App.Current.MainPage = new TeamInfo("Maribor", _darkMode, 0);
         }
 
         private async Task OnAlertYesNoClickedAsync(string team1, string team2, string stadiumAddress)
         {
             bool answer = await DisplayAlert("MATCH NEAR YOU!", team1 + " vs " + team2 + "\n\naddress: " + stadiumAddress, "NAVIGATE", "MAYBE LATER");
 
-            if(answer == true)
+            if (answer == true)
             {
                 double latitude = 46.562222;
                 double longitude = 15.640278;
                 string name = "NK Maribor"; // "Mladinska ulica 29, 2000 Maribor"
-                controller.Navigate(latitude, longitude, name);
+                _controller.Navigate(latitude, longitude, name);
             }
 
         }
@@ -105,26 +105,26 @@ namespace MatchFinder
             double latitude = 46.562222;
             double longitude = 15.640278;
             string name = "NK Maribor"; // "Mladinska ulica 29, 2000 Maribor"
-            controller.Navigate(latitude, longitude, name);
+            _controller.Navigate(latitude, longitude, name);
         }
 
         protected override void OnAppearing()
         {
-            this.MapGrid.Children.Add(controller.GetMainMap().Content);
+            this.MapGrid.Children.Add(_controller.GetMainMap().Content);
         }
 
         void OnToggledDarkMode(object sender, ToggledEventArgs e)
         {
             // Perform an action after examining e.Value
-            if(e.Value == true)
+            if (e.Value == true)
             {
                 this.BackgroundColor = Color.FromHex("#232931");
-                this.darkMode = true;
+                _darkMode = true;
             }
             else
             {
                 this.BackgroundColor = Color.White;
-                this.darkMode = false;
+                _darkMode = false;
             }
         }
 
@@ -133,11 +133,11 @@ namespace MatchFinder
             // Perform an action after examining e.Value
             if (e.Value == true)
             {
-                
+
             }
             else
             {
-                 
+
             }
         }
 
@@ -145,14 +145,14 @@ namespace MatchFinder
         {
             Button button = (Button)sender;
             string teamName = button.Text;
-            App.Current.MainPage = new TeamInfo(teamName, this.darkMode, 1);
+            App.Current.MainPage = new TeamInfo(teamName, _darkMode, 1);
         }
 
         void ButtonRecommendedTeamInfoClicked(object sender, EventArgs args)
         {
             Button button = (Button)sender;
             string teamName = button.Text;
-            App.Current.MainPage = new TeamInfo(teamName, this.darkMode, 0);
+            App.Current.MainPage = new TeamInfo(teamName, _darkMode, 0);
         }
     }
 }

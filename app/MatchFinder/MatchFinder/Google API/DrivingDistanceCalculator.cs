@@ -19,7 +19,7 @@ namespace MatchFinder.GoogleAPI
         {
             var request = new DistanceMatrixRequest();
 
-            request.Key = this.GoogleAPIKey;
+            request.Key = _googleAPIKey;
             request.Origins = new[] { start };
             request.Destinations = new[] { end };
 

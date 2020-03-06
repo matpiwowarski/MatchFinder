@@ -1,6 +1,12 @@
 # MatchFinder
+
 Becis idea: 
 Web & mobile app will help user to find the nearest stadium and the match.
+
+
+## Mobile app (Xamarin + Google API):
+[![Demo CountPages alpha](https://j.gifs.com/jZVzmR.gif)](https://youtu.be/YOxnhUZD_b4)
+#### *Click on gif to watch full video*
 
 User will be able to get information about the matches, stadium location, football team names. App will recommend the best games for user based on teams rankings and distance between user and stadium. Our application will use the user's location and it will display near matches places on the map.
 
@@ -89,10 +95,11 @@ Carolina Alves and Ipek Bengisu Aydemir:
 * Connect to football api, to fulfill our data base in real time.
 
 
-Team:
-1. Mateusz Piwowarski
-2. Carolina Alves 
-3. Viktor Angelovski
-4. Jakub Glatki
-5. Pawel Tomaszewski
+## Team:
+1. Mateusz Piwowarski https://github.com/matpiwowarski (Mobile App)
+2. Pawel Tomaszewski https://github.com/tomaszewskipablo (Web App)
+3. Jakub Glatki https://github.com/jakubglatki (Web App)
+4. Viktor Angelovski
+5. Carolina Alves
 6. Ipek Bengisu Aydemir
+

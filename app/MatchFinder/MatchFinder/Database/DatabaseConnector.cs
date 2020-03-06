@@ -5,10 +5,11 @@ namespace MatchFinder.Database
 {
     public class DatabaseConnector
     {
-        private MySqlConnection mySqlConnection;
+        private MySqlConnection _mySqlConnection;
 
         public DatabaseConnector()
         {
+
         }
 
         public void Connect()
@@ -16,8 +17,8 @@ namespace MatchFinder.Database
             try
             {
                 string connSqlString = "server=178.47.140.149;port=3306;database=test;user=root;password=;charset=utf8";
-                mySqlConnection = new MySqlConnection(connSqlString);
-                mySqlConnection.Open();
+                _mySqlConnection = new MySqlConnection(connSqlString);
+                _mySqlConnection.Open();
 
             } catch(Exception e)
             {
@@ -35,7 +36,7 @@ namespace MatchFinder.Database
         {
             try
             {
-                MySqlCommand sqlcmd = new MySqlCommand(query, this.mySqlConnection);
+                MySqlCommand sqlcmd = new MySqlCommand(query, _mySqlConnection);
                 MySqlDataReader sqlDataReader;
                 sqlDataReader = sqlcmd.ExecuteReader();
             }
@@ -47,7 +48,7 @@ namespace MatchFinder.Database
 
         public void CloseConnection()
         {
-            this.mySqlConnection.Close();
+            _mySqlConnection.Close();
         }
     }
 }
